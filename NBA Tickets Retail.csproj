@@ -52,6 +52,12 @@
     <Compile Include="frmAddSeatType.Designer.cs">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDeleteSeatType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeleteSeatType.Designer.cs">
+      <DependentUpon>frmDeleteSeatType.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAddSeatType.resx">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeleteSeatType.resx">
+      <DependentUpon>frmDeleteSeatType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>

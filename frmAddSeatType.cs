@@ -12,9 +12,11 @@ namespace NBA_Tickets_Retail
 {
     public partial class frmAddSeatType : Form
     {
-        public frmAddSeatType()
+        private static new Form Parent;
+        public frmAddSeatType(Form parent)
         {
             InitializeComponent();
+            Parent = parent;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -93,9 +95,21 @@ namespace NBA_Tickets_Retail
 
         private void btnASTback_Click(object sender, EventArgs e)
         {
-            frmMainMenu frmMainMenu = new frmMainMenu();    
-            frmMainMenu.Show();
-            Visible = false;
+            //frmMainMenu frmMainMenu = new frmMainMenu();    
+            //frmMainMenu.Show();
+            // Visible = false;
+            this.Close();
+            Parent.Visible = true;
+        }
+
+        private void frmAddSeatType_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmAddSeatType_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
         }
     }
 }

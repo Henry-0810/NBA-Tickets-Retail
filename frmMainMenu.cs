@@ -29,9 +29,9 @@ namespace NBA_Tickets_Retail
 
         private void addSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddSeatType frmAddSeatType = new frmAddSeatType();
+            this.Hide();
+            frmAddSeatType frmAddSeatType = new frmAddSeatType(this);
             frmAddSeatType.Show();
-            Visible = false;
         }
 
         private void checkAvailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,9 +46,14 @@ namespace NBA_Tickets_Retail
 
         private void updateSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUpdateSeatType frmUpdateSeatType = new frmUpdateSeatType();
+            frmUpdateSeatType frmUpdateSeatType = new frmUpdateSeatType(this);
             frmUpdateSeatType.Show();
             Visible = false;
+        }
+
+        private void frmMainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
