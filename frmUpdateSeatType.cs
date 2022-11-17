@@ -37,7 +37,8 @@ namespace NBA_Tickets_Retail
 
 
         private void cboSeatTypes_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+        {
+            txtDescription.Text = "Front Row block 1";
             txtPrice.Text = "85.00";
             grpType.Visible = true;
         }
@@ -53,5 +54,6 @@ namespace NBA_Tickets_Retail
                 return;
             }
         }
+
     }
 }

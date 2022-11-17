@@ -55,7 +55,7 @@
             this.picMainMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picMainMenu.Image = ((System.Drawing.Image)(resources.GetObject("picMainMenu.Image")));
             this.picMainMenu.Location = new System.Drawing.Point(0, 25);
-            this.picMainMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picMainMenu.Margin = new System.Windows.Forms.Padding(2);
             this.picMainMenu.Name = "picMainMenu";
             this.picMainMenu.Size = new System.Drawing.Size(706, 398);
             this.picMainMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -78,22 +78,23 @@
             // addSeatTypeToolStripMenuItem
             // 
             this.addSeatTypeToolStripMenuItem.Name = "addSeatTypeToolStripMenuItem";
-            this.addSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.addSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addSeatTypeToolStripMenuItem.Text = "Add Seat Type";
             this.addSeatTypeToolStripMenuItem.Click += new System.EventHandler(this.addSeatTypeToolStripMenuItem_Click);
             // 
             // updateSeatTypeToolStripMenuItem
             // 
             this.updateSeatTypeToolStripMenuItem.Name = "updateSeatTypeToolStripMenuItem";
-            this.updateSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.updateSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateSeatTypeToolStripMenuItem.Text = "Update Seat Type";
             this.updateSeatTypeToolStripMenuItem.Click += new System.EventHandler(this.updateSeatTypeToolStripMenuItem_Click);
             // 
             // deleteSeatTypeToolStripMenuItem1
             // 
             this.deleteSeatTypeToolStripMenuItem1.Name = "deleteSeatTypeToolStripMenuItem1";
-            this.deleteSeatTypeToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
+            this.deleteSeatTypeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.deleteSeatTypeToolStripMenuItem1.Text = "Delete Seat Type";
+            this.deleteSeatTypeToolStripMenuItem1.Click += new System.EventHandler(this.deleteSeatTypeToolStripMenuItem1_Click);
             // 
             // matchesToolStripMenuItem
             // 
@@ -108,8 +109,9 @@
             // scheduleMatchToolStripMenuItem
             // 
             this.scheduleMatchToolStripMenuItem.Name = "scheduleMatchToolStripMenuItem";
-            this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scheduleMatchToolStripMenuItem.Text = "Schedule Match";
+            this.scheduleMatchToolStripMenuItem.Click += new System.EventHandler(this.scheduleMatchToolStripMenuItem_Click);
             // 
             // manageSalesToolStripMenuItem
             // 
@@ -195,7 +197,7 @@
             this.Controls.Add(this.mnuMainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMainMenu;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMainMenu";
             this.Text = "NBA Tickets Retail - [Main Menu]";
             this.Load += new System.EventHandler(this.frmMainMenu_Load);

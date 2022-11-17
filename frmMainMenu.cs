@@ -55,5 +55,20 @@ namespace NBA_Tickets_Retail
         {
 
         }
+
+        private void deleteSeatTypeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmDeleteSeatType frmDeleteSeatType = new frmDeleteSeatType(this);
+            frmDeleteSeatType.Show();
+            
+        }
+
+        private void scheduleMatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmScheduleMatch frmScheduleMatch = new frmScheduleMatch(this);
+            frmScheduleMatch.Show(); 
+        }
     }
 }

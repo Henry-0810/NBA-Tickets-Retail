@@ -35,11 +35,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnUSTback = new System.Windows.Forms.Button();
             this.grpType = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpType.SuspendLayout();
             this.SuspendLayout();
@@ -47,18 +48,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(23, 40);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Imprint MT Shadow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(11, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 31);
+            this.label1.Size = new System.Drawing.Size(240, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Update Seat Type";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(25, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 23);
@@ -67,19 +71,21 @@
             // 
             // cboSeatTypes
             // 
+            this.cboSeatTypes.BackColor = System.Drawing.SystemColors.MenuText;
             this.cboSeatTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSeatTypes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboSeatTypes.ForeColor = System.Drawing.SystemColors.Menu;
             this.cboSeatTypes.FormattingEnabled = true;
             this.cboSeatTypes.Location = new System.Drawing.Point(193, 101);
             this.cboSeatTypes.Name = "cboSeatTypes";
-            this.cboSeatTypes.Size = new System.Drawing.Size(110, 27);
+            this.cboSeatTypes.Size = new System.Drawing.Size(146, 27);
             this.cboSeatTypes.TabIndex = 0;
             this.cboSeatTypes.SelectedIndexChanged += new System.EventHandler(this.cboSeatTypes_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(229, 323);
+            this.pictureBox1.Location = new System.Drawing.Point(276, 323);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(118, 90);
@@ -89,7 +95,7 @@
             // 
             // btnUSTback
             // 
-            this.btnUSTback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUSTback.BackColor = System.Drawing.SystemColors.Menu;
             this.btnUSTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUSTback.Location = new System.Drawing.Point(0, 0);
             this.btnUSTback.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -102,22 +108,45 @@
             // 
             // grpType
             // 
+            this.grpType.BackColor = System.Drawing.Color.Transparent;
             this.grpType.Controls.Add(this.txtDescription);
             this.grpType.Controls.Add(this.label4);
             this.grpType.Controls.Add(this.txtPrice);
             this.grpType.Controls.Add(this.label3);
             this.grpType.Controls.Add(this.btnUpdate);
             this.grpType.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpType.ForeColor = System.Drawing.Color.White;
             this.grpType.Location = new System.Drawing.Point(17, 150);
             this.grpType.Name = "grpType";
-            this.grpType.Size = new System.Drawing.Size(330, 167);
+            this.grpType.Size = new System.Drawing.Size(376, 167);
             this.grpType.TabIndex = 17;
             this.grpType.TabStop = false;
             this.grpType.Text = "Update Details";
             this.grpType.Visible = false;
             // 
+            // txtDescription
+            // 
+            this.txtDescription.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtDescription.Location = new System.Drawing.Point(122, 26);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(248, 100);
+            this.txtDescription.TabIndex = 1;
+            
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 23);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Description";
+            // 
             // txtPrice
             // 
+            this.txtPrice.BackColor = System.Drawing.SystemColors.Menu;
             this.txtPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(122, 134);
             this.txtPrice.MaxLength = 6;
@@ -138,10 +167,10 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.Menu;
             this.btnUpdate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnUpdate.Location = new System.Drawing.Point(247, 132);
+            this.btnUpdate.Location = new System.Drawing.Point(292, 132);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(78, 29);
@@ -150,29 +179,18 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // label4
+            // directorySearcher1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 23);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Description";
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Location = new System.Drawing.Point(122, 26);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(194, 100);
-            this.txtDescription.TabIndex = 1;
+            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // frmUpdateSeatType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 425);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(405, 425);
             this.Controls.Add(this.grpType);
             this.Controls.Add(this.btnUSTback);
             this.Controls.Add(this.pictureBox1);
@@ -182,7 +200,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmUpdateSeatType";
-            this.Text = "NBA Tickets Retail - [Update Seat Type]";
+            this.Text = "NBA Tickets Retail - [Seat Type] - [Update Seat Type]";
             this.Load += new System.EventHandler(this.frmUpdateSeatType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpType.ResumeLayout(false);
@@ -204,5 +222,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.DirectoryServices.DirectorySearcher directorySearcher1;
     }
 }
