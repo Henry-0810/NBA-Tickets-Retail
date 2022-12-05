@@ -53,17 +53,23 @@
     <Compile Include="frmAddSeatType.Designer.cs">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDeleteSeatType.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDeleteSeatType.Designer.cs">
-      <DependentUpon>frmDeleteSeatType.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageSales.Designer.cs">
+      <DependentUpon>frmManageSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcessTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProcessTickets.Designer.cs">
+      <DependentUpon>frmProcessTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="frmScheduleMatches.cs">
       <SubType>Form</SubType>
@@ -82,11 +88,14 @@
     <EmbeddedResource Include="frmAddSeatType.resx">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDeleteSeatType.resx">
-      <DependentUpon>frmDeleteSeatType.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageSales.resx">
+      <DependentUpon>frmManageSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProcessTickets.resx">
+      <DependentUpon>frmProcessTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScheduleMatches.resx">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>

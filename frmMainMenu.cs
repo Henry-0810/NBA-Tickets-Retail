@@ -17,16 +17,6 @@ namespace NBA_Tickets_Retail
             InitializeComponent();
         }
 
-        private void seatTypeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void picMainMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -34,15 +24,6 @@ namespace NBA_Tickets_Retail
             frmAddSeatType.Show();
         }
 
-        private void checkAvailToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void updateSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -51,24 +32,19 @@ namespace NBA_Tickets_Retail
             Visible = false;
         }
 
-        private void frmMainMenu_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void deleteSeatTypeToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmDeleteSeatType frmDeleteSeatType = new frmDeleteSeatType(this);
-            frmDeleteSeatType.Show();
-            
-        }
 
         private void scheduleMatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmScheduleMatch frmScheduleMatch = new frmScheduleMatch(this);
             frmScheduleMatch.Show(); 
+        }
+
+        private void manageSalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageSales frmManageSales = new frmManageSales(this);
+            frmManageSales.Show();
         }
     }
 }

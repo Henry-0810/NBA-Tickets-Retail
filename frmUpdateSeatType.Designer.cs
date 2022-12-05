@@ -50,7 +50,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Imprint MT Shadow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(11, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(240, 32);
@@ -62,7 +62,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(25, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 23);
@@ -71,10 +71,10 @@
             // 
             // cboSeatTypes
             // 
-            this.cboSeatTypes.BackColor = System.Drawing.SystemColors.MenuText;
+            this.cboSeatTypes.BackColor = System.Drawing.SystemColors.Window;
             this.cboSeatTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSeatTypes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboSeatTypes.ForeColor = System.Drawing.SystemColors.Menu;
+            this.cboSeatTypes.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cboSeatTypes.FormattingEnabled = true;
             this.cboSeatTypes.Location = new System.Drawing.Point(193, 101);
             this.cboSeatTypes.Name = "cboSeatTypes";
@@ -115,7 +115,7 @@
             this.grpType.Controls.Add(this.label3);
             this.grpType.Controls.Add(this.btnUpdate);
             this.grpType.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpType.ForeColor = System.Drawing.Color.White;
+            this.grpType.ForeColor = System.Drawing.Color.Black;
             this.grpType.Location = new System.Drawing.Point(17, 150);
             this.grpType.Name = "grpType";
             this.grpType.Size = new System.Drawing.Size(376, 167);
@@ -126,18 +126,18 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtDescription.BackColor = System.Drawing.SystemColors.Window;
             this.txtDescription.Location = new System.Drawing.Point(122, 26);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(248, 100);
             this.txtDescription.TabIndex = 1;
-            
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(8, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 23);
@@ -146,7 +146,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtPrice.BackColor = System.Drawing.SystemColors.Window;
             this.txtPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(122, 134);
             this.txtPrice.MaxLength = 6;
@@ -167,7 +167,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.SystemColors.Menu;
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUpdate.Location = new System.Drawing.Point(292, 132);
@@ -189,7 +189,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(405, 425);
             this.Controls.Add(this.grpType);
             this.Controls.Add(this.btnUSTback);

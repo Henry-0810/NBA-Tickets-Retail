@@ -46,6 +46,13 @@ namespace NBA_Tickets_Retail
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //check validation
+            if (txtDescription.Text.Equals(""))
+            {
+                MessageBox.Show("Description must be entered", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtDescription.Focus();
+                return;
+            }
             if (Convert.ToDouble(txtPrice.Text) <= 0)
             {
                 MessageBox.Show("Price must be more than 0", "Error!", MessageBoxButtons.OK,
@@ -53,6 +60,20 @@ namespace NBA_Tickets_Retail
                 txtPrice.Focus();
                 return;
             }
+
+            //Save data in database
+            //YOU ARE NOT IMPLEMENTING THIS!!!
+
+            //Display confirmation message
+            MessageBox.Show("Seat Type has Been Updated", "Information", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            //Reset UI
+            cboSeatTypes.SelectedIndex = -1;
+            txtDescription.Clear();
+            txtPrice.Text = "0.00";
+            grpType.Visible = false;
+            cboSeatTypes.Focus();
         }
 
     }

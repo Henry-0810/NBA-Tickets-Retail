@@ -20,10 +20,55 @@ namespace NBA_Tickets_Retail
             Parent = parent;
         }
 
-        private void btnUSTback_Click(object sender, EventArgs e)
+        private void btnSMback_Click(object sender, EventArgs e)
         {
             this.Close();
             Parent.Visible = true;
         }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            //check all fields entered
+            //Match Time
+            if(dtPickMatchTime.Value <= DateTime.Now)
+            {
+                MessageBox.Show("Match Time must be in the future", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                dtPickMatchTime.Focus();
+                return;
+            }
+
+            //Home Team
+            if(txtHomeTeam.Text.Equals(""))
+            {
+                MessageBox.Show("Home Team must be Entered", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtHomeTeam.Focus();
+                return;
+            }
+
+            //Away Team
+            if(txtAwayTeam.Text.Equals(""))
+            {
+                MessageBox.Show("Away Team must be Entered", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtAwayTeam.Focus();
+                return;
+            }
+
+            //Save data in database
+            //YOU ARE NOT IMPLEMENTING THIS!!!
+
+            //Display confirmation message
+            MessageBox.Show("Match has Been Created", "Information", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            //Reset UI
+            dtPickMatchTime.Value = DateTime.Now;
+            txtHomeTeam.Clear();
+            txtAwayTeam.Clear();
+            dtPickMatchTime.Focus();
+        }
     }
+
 }
