@@ -48,7 +48,7 @@ namespace NBA_Tickets_Retail
             getSeatFrom.Text = "";
             getSeatTo.Text = "";
             cboStatusRT.SelectedIndex = -1;
-            cboSTID.SelectedIndex = -1;
+            cboSTID.SelectedIndex = -1; 
             grpReturn.Visible = false;
             cboSTID.Focus();
         }
