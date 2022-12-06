@@ -31,6 +31,7 @@ namespace NBA_Tickets_Retail
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheckAvailability));
             this.btnCAback = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCAback
@@ -46,21 +47,36 @@ namespace NBA_Tickets_Retail
             this.btnCAback.UseVisualStyleBackColor = false;
             this.btnCAback.Click += new System.EventHandler(this.btnCAback_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(33, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(304, 39);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Check Availability";
+            // 
             // frmCheckAvailability
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCAback);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCheckAvailability";
             this.Text = "NBA Tickets Retail - [Tickets] - [Check Availability]";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnCAback;
+        private System.Windows.Forms.Label label6;
     }
 }

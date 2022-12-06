@@ -29,14 +29,14 @@ namespace NBA_Tickets_Retail
         private void btnProcess_Click(object sender, EventArgs e)
         {
             //validation    
-            if(txtMatchID.Text == null)
+            if(txtMatchID.Text .Equals(""))
             {
                 MessageBox.Show("Match ID must be blank!", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMatchID.Focus();
                 return;
             }
-            if (Convert.ToInt32(txtMatchID.Text) <= 0)
+            else if (Convert.ToInt32(txtMatchID.Text) <= 0)
             {
                 MessageBox.Show("Match ID must be Entered within given range", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -69,8 +69,8 @@ namespace NBA_Tickets_Retail
 
             //Reset UI
             txtMatchID.Clear();
-            numSeatTo.Value = 0;
-            numSeatFrom.Value = 0;
+            numSeatTo.Value = 1;
+            numSeatFrom.Value = 1;
             cboStatusPS.SelectedIndex = -1;
             txtMatchID.Focus();
         }
