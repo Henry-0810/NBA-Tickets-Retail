@@ -28,7 +28,7 @@ namespace NBA_Tickets_Retail
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            //validation
+            //validation    
             if(txtMatchID.Text == null)
             {
                 MessageBox.Show("Match ID must be blank!", "Error!",
