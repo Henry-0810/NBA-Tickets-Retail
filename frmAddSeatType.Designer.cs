@@ -41,8 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnASTback = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnASTback = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             this.label1.Location = new System.Drawing.Point(28, 99);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 23);
+            this.label1.Size = new System.Drawing.Size(116, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Type Code";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -69,7 +69,7 @@
             this.label3.Location = new System.Drawing.Point(28, 237);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 23);
+            this.label3.Size = new System.Drawing.Size(61, 29);
             this.label3.TabIndex = 1;
             this.label3.Text = "Price";
             // 
@@ -82,7 +82,7 @@
             this.label2.Location = new System.Drawing.Point(28, 149);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 23);
+            this.label2.Size = new System.Drawing.Size(125, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Description";
             // 
@@ -94,7 +94,7 @@
             this.txtTypeCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTypeCode.MaxLength = 8;
             this.txtTypeCode.Name = "txtTypeCode";
-            this.txtTypeCode.Size = new System.Drawing.Size(114, 27);
+            this.txtTypeCode.Size = new System.Drawing.Size(114, 32);
             this.txtTypeCode.TabIndex = 0;
             // 
             // txtPrice
@@ -105,7 +105,7 @@
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPrice.MaxLength = 6;
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(60, 27);
+            this.txtPrice.Size = new System.Drawing.Size(60, 32);
             this.txtPrice.TabIndex = 2;
             this.txtPrice.Text = "0.00";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -131,7 +131,7 @@
             this.txtSeatFrom.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSeatFrom.MaxLength = 4;
             this.txtSeatFrom.Name = "txtSeatFrom";
-            this.txtSeatFrom.Size = new System.Drawing.Size(60, 27);
+            this.txtSeatFrom.Size = new System.Drawing.Size(60, 32);
             this.txtSeatFrom.TabIndex = 4;
             // 
             // txtSeatTo
@@ -142,7 +142,7 @@
             this.txtSeatTo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSeatTo.MaxLength = 4;
             this.txtSeatTo.Name = "txtSeatTo";
-            this.txtSeatTo.Size = new System.Drawing.Size(60, 27);
+            this.txtSeatTo.Size = new System.Drawing.Size(60, 32);
             this.txtSeatTo.TabIndex = 3;
             // 
             // label5
@@ -154,7 +154,7 @@
             this.label5.Location = new System.Drawing.Point(29, 337);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 23);
+            this.label5.Size = new System.Drawing.Size(112, 29);
             this.label5.TabIndex = 8;
             this.label5.Text = "Seat From";
             // 
@@ -167,7 +167,7 @@
             this.label4.Location = new System.Drawing.Point(28, 287);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 23);
+            this.label4.Size = new System.Drawing.Size(84, 29);
             this.label4.TabIndex = 6;
             this.label4.Text = "Seat To";
             // 
@@ -176,7 +176,7 @@
             this.btnAdd.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAdd.Location = new System.Drawing.Point(33, 390);
+            this.btnAdd.Location = new System.Drawing.Point(85, 391);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(113, 36);
@@ -196,40 +196,40 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // btnASTback
-            // 
-            this.btnASTback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnASTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnASTback.Location = new System.Drawing.Point(0, 1);
-            this.btnASTback.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnASTback.Name = "btnASTback";
-            this.btnASTback.Size = new System.Drawing.Size(43, 21);
-            this.btnASTback.TabIndex = 15;
-            this.btnASTback.Text = "Back";
-            this.btnASTback.UseVisualStyleBackColor = false;
-            this.btnASTback.Click += new System.EventHandler(this.btnASTback_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Imprint MT Shadow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(26, 35);
+            this.label6.Location = new System.Drawing.Point(26, 43);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(202, 32);
+            this.label6.Size = new System.Drawing.Size(255, 39);
             this.label6.TabIndex = 16;
             this.label6.Text = "Add Seat Type";
             // 
+            // btnASTback
+            // 
+            this.btnASTback.BackColor = System.Drawing.SystemColors.Menu;
+            this.btnASTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnASTback.Location = new System.Drawing.Point(1, 2);
+            this.btnASTback.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnASTback.Name = "btnASTback";
+            this.btnASTback.Size = new System.Drawing.Size(57, 26);
+            this.btnASTback.TabIndex = 20;
+            this.btnASTback.Text = "Back";
+            this.btnASTback.UseVisualStyleBackColor = false;
+            this.btnASTback.Click += new System.EventHandler(this.btnASTback_Click_1);
+            // 
             // frmAddSeatType
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(405, 450);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnASTback);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtSeatFrom);
@@ -249,8 +249,6 @@
             this.MaximizeBox = false;
             this.Name = "frmAddSeatType";
             this.Text = "NBA Tickets Retail - [Seat Type] - [Add Seat Type]";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddSeatType_FormClosing);
-            this.Load += new System.EventHandler(this.frmAddSeatType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -271,7 +269,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnASTback;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnASTback;
     }
 }

@@ -46,5 +46,40 @@ namespace NBA_Tickets_Retail
             frmManageSales frmManageSales = new frmManageSales(this);
             frmManageSales.Show();
         }
+
+        private void processSalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmProcessSales frmProcessSales = new frmProcessSales(this);
+            frmProcessSales.Show();
+        }
+
+        private void returnTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmReturnTickets frmReturnTickets = new frmReturnTickets(this);
+            frmReturnTickets.Show();
+        }
+
+        private void checkAvailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCheckAvailability frmCheckAvailability = new frmCheckAvailability(this);
+            frmCheckAvailability.Show();
+        }
+
+        private void yearlyRevenueAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmYearlyRevenueAnalysis frmYearlyRevenueAnalysis = new frmYearlyRevenueAnalysis(this);
+            frmYearlyRevenueAnalysis.Show();
+        }
+
+        private void seatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmSeatsAvailability frmSeatsAvailability = new frmSeatsAvailability(this);
+            frmSeatsAvailability.Show();
+        }
     }
 }

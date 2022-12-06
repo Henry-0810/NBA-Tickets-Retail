@@ -10,13 +10,19 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
-    public partial class frmProcessTickets : Form
+    public partial class frmSeatsAvailability : Form
     {
-        public frmProcessTickets()
+        private static new Form Parent;
+        public frmSeatsAvailability(Form parent)
         {
             InitializeComponent();
+            Parent = parent;
         }
 
-   
+        private void btnSAback_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Parent.Visible = true;
+        }
     }
 }

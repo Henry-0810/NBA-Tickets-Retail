@@ -93,23 +93,10 @@ namespace NBA_Tickets_Retail
             txtTypeCode.Focus();
         }
 
-        private void btnASTback_Click(object sender, EventArgs e)
+        private void btnASTback_Click_1(object sender, EventArgs e)
         {
-            //frmMainMenu frmMainMenu = new frmMainMenu();    
-            //frmMainMenu.Show();
-            // Visible = false;
             this.Close();
             Parent.Visible = true;
-        }
-
-        private void frmAddSeatType_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmAddSeatType_FormClosing(object sender, FormClosingEventArgs e)
-        {
-           
         }
     }
 }
