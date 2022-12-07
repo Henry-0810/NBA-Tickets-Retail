@@ -89,11 +89,11 @@
     <Compile Include="frmScheduleMatches.Designer.cs">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSeatsAvailability.cs">
+    <Compile Include="frmSeatsSoldperMatch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSeatsAvailability.Designer.cs">
-      <DependentUpon>frmSeatsAvailability.cs</DependentUpon>
+    <Compile Include="frmSeatsSoldperMatch.Designer.cs">
+      <DependentUpon>frmSeatsSoldperMatch.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUpdateSeatType.cs">
       <SubType>Form</SubType>
@@ -130,8 +130,8 @@
     <EmbeddedResource Include="frmScheduleMatches.resx">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSeatsAvailability.resx">
-      <DependentUpon>frmSeatsAvailability.cs</DependentUpon>
+    <EmbeddedResource Include="frmSeatsSoldperMatch.resx">
+      <DependentUpon>frmSeatsSoldperMatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateSeatType.resx">
       <DependentUpon>frmUpdateSeatType.cs</DependentUpon>

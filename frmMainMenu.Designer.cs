@@ -155,15 +155,15 @@
             // yearlyRevenueAnalysisToolStripMenuItem
             // 
             this.yearlyRevenueAnalysisToolStripMenuItem.Name = "yearlyRevenueAnalysisToolStripMenuItem";
-            this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(266, 26);
+            this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
             // seatsToolStripMenuItem
             // 
             this.seatsToolStripMenuItem.Name = "seatsToolStripMenuItem";
-            this.seatsToolStripMenuItem.Size = new System.Drawing.Size(266, 26);
-            this.seatsToolStripMenuItem.Text = "Seats Availability per Match";
+            this.seatsToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.seatsToolStripMenuItem.Text = "Seats sold per Match";
             this.seatsToolStripMenuItem.Click += new System.EventHandler(this.seatsToolStripMenuItem_Click);
             // 
             // mnuMainMenu
@@ -192,6 +192,7 @@
             this.MainMenuStrip = this.mnuMainMenu;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Main Menu]";
             ((System.ComponentModel.ISupportInitialize)(this.picMainMenu)).EndInit();
             this.mnuMainMenu.ResumeLayout(false);

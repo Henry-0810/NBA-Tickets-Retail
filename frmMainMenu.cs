@@ -78,7 +78,7 @@ namespace NBA_Tickets_Retail
         private void seatsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmSeatsAvailability frmSeatsAvailability = new frmSeatsAvailability(this);
+            frmSeatsSoldperMatch frmSeatsAvailability = new frmSeatsSoldperMatch(this);
             frmSeatsAvailability.Show();
         }
     }

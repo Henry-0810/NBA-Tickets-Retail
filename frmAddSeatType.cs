@@ -19,16 +19,7 @@ namespace NBA_Tickets_Retail
             Parent = parent;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void btnSubmit_Click(object sender, EventArgs e)
         {   
             //check all fields entered
@@ -59,21 +50,35 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
-            //Seat to
-            if(Convert.ToInt32(txtSeatTo.Text) < 0 && Convert.ToInt32(txtSeatTo.Text) > 500)
+            //SeatFrom
+            if (txtSeatFrom.Text.Equals(""))
             {
-                MessageBox.Show("Seat To must be Entered within given range", "Error!",
+                MessageBox.Show("Seat From is blank", "Error!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSeatFrom.Focus();
+                return;
+            }
+            else if (Convert.ToInt32(txtSeatFrom.Text) <= 0 || Convert.ToInt32(txtSeatFrom.Text) > 500)
+            {
+                MessageBox.Show("Seat From must be Entered within given range", "Error!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSeatFrom.Focus();
+                return;
+            }
+
+            //Seat to
+            if (txtSeatTo.Text.Equals(""))
+            {
+                MessageBox.Show("Seat To is blank", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSeatTo.Focus();
                 return;
             }
-
-            //SeatFrom
-            if(Convert.ToInt32(txtSeatFrom.Text) < 0 && Convert.ToInt32(txtSeatFrom.Text) > 500)
+            else if(Convert.ToInt32(txtSeatTo.Text) <= 0 || Convert.ToInt32(txtSeatTo.Text) > 500)
             {
-                MessageBox.Show("Seat From must be Entered within given range", "Error!", 
+                MessageBox.Show("Seat To must be Entered within given range", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSeatFrom.Focus();
+                txtSeatTo.Focus();
                 return;
             }
 
@@ -96,6 +101,11 @@ namespace NBA_Tickets_Retail
         private void btnASTback_Click_1(object sender, EventArgs e)
         {
             this.Close();
+            Parent.Visible = true;
+        }
+
+        private void frmAddSeatType_FormClosed(object sender, FormClosedEventArgs e)
+        {
             Parent.Visible = true;
         }
     }

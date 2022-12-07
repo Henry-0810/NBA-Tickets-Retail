@@ -58,7 +58,6 @@
             this.label1.Size = new System.Drawing.Size(116, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Type Code";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -66,7 +65,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(28, 237);
+            this.label3.Location = new System.Drawing.Point(28, 235);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 29);
@@ -79,7 +78,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(28, 149);
+            this.label2.Location = new System.Drawing.Point(28, 154);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 29);
@@ -90,7 +89,7 @@
             // 
             this.txtTypeCode.BackColor = System.Drawing.SystemColors.Window;
             this.txtTypeCode.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTypeCode.Location = new System.Drawing.Point(172, 99);
+            this.txtTypeCode.Location = new System.Drawing.Point(167, 100);
             this.txtTypeCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTypeCode.MaxLength = 8;
             this.txtTypeCode.Name = "txtTypeCode";
@@ -101,7 +100,7 @@
             // 
             this.txtPrice.BackColor = System.Drawing.SystemColors.Window;
             this.txtPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrice.Location = new System.Drawing.Point(172, 237);
+            this.txtPrice.Location = new System.Drawing.Point(167, 236);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPrice.MaxLength = 6;
             this.txtPrice.Name = "txtPrice";
@@ -109,13 +108,12 @@
             this.txtPrice.TabIndex = 2;
             this.txtPrice.Text = "0.00";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPrice.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtDescription
             // 
             this.txtDescription.BackColor = System.Drawing.SystemColors.Window;
             this.txtDescription.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(172, 149);
+            this.txtDescription.Location = new System.Drawing.Point(167, 154);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDescription.MaxLength = 40;
             this.txtDescription.Multiline = true;
@@ -127,7 +125,7 @@
             // 
             this.txtSeatFrom.BackColor = System.Drawing.SystemColors.Window;
             this.txtSeatFrom.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeatFrom.Location = new System.Drawing.Point(172, 337);
+            this.txtSeatFrom.Location = new System.Drawing.Point(167, 285);
             this.txtSeatFrom.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSeatFrom.MaxLength = 4;
             this.txtSeatFrom.Name = "txtSeatFrom";
@@ -138,7 +136,7 @@
             // 
             this.txtSeatTo.BackColor = System.Drawing.SystemColors.Window;
             this.txtSeatTo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeatTo.Location = new System.Drawing.Point(172, 287);
+            this.txtSeatTo.Location = new System.Drawing.Point(167, 334);
             this.txtSeatTo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSeatTo.MaxLength = 4;
             this.txtSeatTo.Name = "txtSeatTo";
@@ -151,7 +149,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(29, 337);
+            this.label5.Location = new System.Drawing.Point(28, 284);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 29);
@@ -164,7 +162,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(28, 287);
+            this.label4.Location = new System.Drawing.Point(28, 333);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 29);
@@ -226,6 +224,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(405, 450);
             this.Controls.Add(this.btnASTback);
@@ -248,7 +247,9 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "frmAddSeatType";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Seat Type] - [Add Seat Type]";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddSeatType_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

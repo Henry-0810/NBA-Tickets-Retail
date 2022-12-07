@@ -29,21 +29,6 @@ namespace NBA_Tickets_Retail
         private void btnProcess_Click(object sender, EventArgs e)
         {
             //validation    
-            if(txtMatchID.Text .Equals(""))
-            {
-                MessageBox.Show("Match ID must be blank!", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMatchID.Focus();
-                return;
-            }
-            else if (Convert.ToInt32(txtMatchID.Text) <= 0)
-            {
-                MessageBox.Show("Match ID must be Entered within given range", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMatchID.Focus();
-                return;
-            }
-
             if(numSeatFrom.Value > numSeatTo.Value)
             {
                 MessageBox.Show("Seat To must be greater than Seat From", "Error!",
@@ -68,17 +53,30 @@ namespace NBA_Tickets_Retail
                 MessageBoxIcon.Information);
 
             //Reset UI
-            txtMatchID.Clear();
+            cboMatchID.SelectedIndex = -1;
             numSeatTo.Value = 1;
             numSeatFrom.Value = 1;
             cboStatusPS.SelectedIndex = -1;
-            txtMatchID.Focus();
+            grpProcessSales.Visible = false;
+            cboMatchID.Focus();
         }
 
         private void frmProcessSales_Load(object sender, EventArgs e)
         {
+            cboMatchID.Items.Add(1);
+            cboMatchID.Items.Add(2);
             cboStatusPS.Items.Add("U");
             cboStatusPS.Items.Add("O");
+        }
+
+        private void cboMatchID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grpProcessSales.Visible = true;
+        }
+
+        private void frmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Parent.Visible = true;
         }
     }
 }

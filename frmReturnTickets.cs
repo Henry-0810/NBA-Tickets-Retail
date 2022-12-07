@@ -29,13 +29,21 @@ namespace NBA_Tickets_Retail
         {
             //SeatFrom and SeatTo number get from SalesTicket file
             //validation    
-            if (cboStatusRT.SelectedIndex == 1)
+            if (cboStatusRT.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please choose an option for Status", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                cboStatusRT.Focus();
+                return;
+            }
+            else if (cboStatusRT.SelectedIndex == 1)
             {
                 MessageBox.Show("Status must be 'U'!", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 cboStatusRT.Focus();
                 return;
             }
+            
 
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
@@ -45,8 +53,6 @@ namespace NBA_Tickets_Retail
                 MessageBoxIcon.Information);
 
             //Reset UI
-            getSeatFrom.Text = "";
-            getSeatTo.Text = "";
             cboStatusRT.SelectedIndex = -1;
             cboSTID.SelectedIndex = -1; 
             grpReturn.Visible = false;
@@ -65,6 +71,11 @@ namespace NBA_Tickets_Retail
             cboSTID.Items.Add("3");
             cboStatusRT.Items.Add("U");
             cboStatusRT.Items.Add("O");
+        }
+
+        private void frmReturnTickets_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Parent.Visible = true;
         }
     }
 }

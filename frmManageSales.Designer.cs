@@ -146,7 +146,7 @@ namespace NBA_Tickets_Retail
             this.assignedID.AutoSize = true;
             this.assignedID.BackColor = System.Drawing.SystemColors.Control;
             this.assignedID.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assignedID.Location = new System.Drawing.Point(214, 110);
+            this.assignedID.Location = new System.Drawing.Point(215, 106);
             this.assignedID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.assignedID.Name = "assignedID";
             this.assignedID.Size = new System.Drawing.Size(25, 29);
@@ -164,9 +164,9 @@ namespace NBA_Tickets_Retail
             this.grpSales.Controls.Add(this.label5);
             this.grpSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpSales.Location = new System.Drawing.Point(53, 161);
-            this.grpSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpSales.Margin = new System.Windows.Forms.Padding(4);
             this.grpSales.Name = "grpSales";
-            this.grpSales.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpSales.Padding = new System.Windows.Forms.Padding(4);
             this.grpSales.Size = new System.Drawing.Size(536, 251);
             this.grpSales.TabIndex = 29;
             this.grpSales.TabStop = false;
@@ -175,13 +175,15 @@ namespace NBA_Tickets_Retail
             // 
             // btnAdd
             // 
+            this.btnAdd.AutoSize = true;
+            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAdd.BackColor = System.Drawing.SystemColors.Menu;
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAdd.Location = new System.Drawing.Point(433, 207);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 34);
+            this.btnAdd.Size = new System.Drawing.Size(58, 34);
             this.btnAdd.TabIndex = 30;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -190,7 +192,7 @@ namespace NBA_Tickets_Retail
             // dtPickSalesDate
             // 
             this.dtPickSalesDate.Location = new System.Drawing.Point(183, 123);
-            this.dtPickSalesDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtPickSalesDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtPickSalesDate.Name = "dtPickSalesDate";
             this.dtPickSalesDate.Size = new System.Drawing.Size(324, 32);
             this.dtPickSalesDate.TabIndex = 2;
@@ -198,7 +200,7 @@ namespace NBA_Tickets_Retail
             // txtSeatSold
             // 
             this.txtSeatSold.Location = new System.Drawing.Point(183, 208);
-            this.txtSeatSold.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeatSold.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeatSold.Name = "txtSeatSold";
             this.txtSeatSold.Size = new System.Drawing.Size(101, 32);
             this.txtSeatSold.TabIndex = 3;
@@ -206,7 +208,7 @@ namespace NBA_Tickets_Retail
             // txtSales
             // 
             this.txtSales.Location = new System.Drawing.Point(183, 46);
-            this.txtSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSales.Margin = new System.Windows.Forms.Padding(4);
             this.txtSales.Name = "txtSales";
             this.txtSales.Size = new System.Drawing.Size(147, 32);
             this.txtSales.TabIndex = 1;
@@ -218,7 +220,7 @@ namespace NBA_Tickets_Retail
             this.cboManageSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboManageSales.FormattingEnabled = true;
             this.cboManageSales.Location = new System.Drawing.Point(472, 107);
-            this.cboManageSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboManageSales.Margin = new System.Windows.Forms.Padding(4);
             this.cboManageSales.Name = "cboManageSales";
             this.cboManageSales.Size = new System.Drawing.Size(180, 32);
             this.cboManageSales.TabIndex = 0;
@@ -228,6 +230,8 @@ namespace NBA_Tickets_Retail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(840, 446);
             this.Controls.Add(this.cboManageSales);
             this.Controls.Add(this.label2);
@@ -238,9 +242,11 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnMSback);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmManageSales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Matches] - [Manage Sales]";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmManageSales_FormClosed);
             this.Load += new System.EventHandler(this.frmManageSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpSales.ResumeLayout(false);

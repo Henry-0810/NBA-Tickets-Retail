@@ -213,6 +213,8 @@ namespace NBA_Tickets_Retail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(491, 471);
             this.Controls.Add(this.cboSTID);
             this.Controls.Add(this.grpReturn);
@@ -222,7 +224,9 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.btnRTback);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReturnTickets";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Tickets] - [Return Tickets]";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmReturnTickets_FormClosed);
             this.Load += new System.EventHandler(this.frmReturnTickets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpReturn.ResumeLayout(false);

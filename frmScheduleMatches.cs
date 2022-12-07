@@ -38,15 +38,6 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
-            //Home Team
-            if(txtHomeTeam.Text.Equals(""))
-            {
-                MessageBox.Show("Home Team must be Entered", "Error!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtHomeTeam.Focus();
-                return;
-            }
-
             //Away Team
             if(txtAwayTeam.Text.Equals(""))
             {
@@ -65,9 +56,13 @@ namespace NBA_Tickets_Retail
 
             //Reset UI
             dtPickMatchTime.Value = DateTime.Now;
-            txtHomeTeam.Clear();
             txtAwayTeam.Clear();
             dtPickMatchTime.Focus();
+        }
+
+        private void frmScheduleMatch_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Parent.Visible = true;
         }
     }
 

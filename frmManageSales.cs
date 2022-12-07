@@ -39,7 +39,14 @@ namespace NBA_Tickets_Retail
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(Convert.ToDouble(txtSales.Text) <= 0)
+            if (txtSales.Text.Equals(""))
+            {
+                MessageBox.Show("Sales is blank", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtSales.Focus();
+                return;
+            }
+            else if(Convert.ToDouble(txtSales.Text) <= 0)
             {
                 MessageBox.Show("Sales must be more than 0", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -55,7 +62,14 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
-            if (Convert.ToInt32(txtSeatSold.Text) <= 0)
+            if (txtSeatSold.Text.Equals(""))
+            {
+                MessageBox.Show("Seat sold is blank", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtSeatSold.Focus();
+                return;
+            }
+            else if (Convert.ToInt32(txtSeatSold.Text) <= 0)
             {
                 MessageBox.Show("Seat sold be more than 0", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -79,6 +93,9 @@ namespace NBA_Tickets_Retail
             cboManageSales.Focus();
         }
 
-      
+        private void frmManageSales_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Parent.Visible = true;
+        }
     }
 }

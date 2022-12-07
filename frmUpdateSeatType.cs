@@ -76,5 +76,9 @@ namespace NBA_Tickets_Retail
             cboSeatTypes.Focus();
         }
 
+        private void frmUpdateSeatType_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Parent.Visible = true;
+        }
     }
 }
