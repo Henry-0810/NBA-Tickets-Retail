@@ -1,7 +1,7 @@
 ﻿
 namespace NBA_Tickets_Retail
 {
-    partial class frmReturnTickets
+    partial class frmReturnSale
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NBA_Tickets_Retail
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReturnTickets));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReturnSale));
             this.btnRTback = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cboStatusRT = new System.Windows.Forms.ComboBox();

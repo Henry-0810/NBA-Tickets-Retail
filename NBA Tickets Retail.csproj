@@ -53,23 +53,11 @@
     <Compile Include="frmAddSeatType.Designer.cs">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCheckAvailability.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCheckAvailability.Designer.cs">
-      <DependentUpon>frmCheckAvailability.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmManageSales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmManageSales.Designer.cs">
-      <DependentUpon>frmManageSales.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProcessSales.cs">
       <SubType>Form</SubType>
@@ -77,11 +65,11 @@
     <Compile Include="frmProcessSales.Designer.cs">
       <DependentUpon>frmProcessSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReturnTickets.cs">
+    <Compile Include="frmReturnSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReturnTickets.Designer.cs">
-      <DependentUpon>frmReturnTickets.cs</DependentUpon>
+    <Compile Include="frmReturnSale.Designer.cs">
+      <DependentUpon>frmReturnSale.cs</DependentUpon>
     </Compile>
     <Compile Include="frmScheduleMatches.cs">
       <SubType>Form</SubType>
@@ -89,11 +77,11 @@
     <Compile Include="frmScheduleMatches.Designer.cs">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSeatsSoldperMatch.cs">
+    <Compile Include="frmPopulaityAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSeatsSoldperMatch.Designer.cs">
-      <DependentUpon>frmSeatsSoldperMatch.cs</DependentUpon>
+    <Compile Include="frmPopulaityAnalysis.Designer.cs">
+      <DependentUpon>frmPopulaityAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUpdateSeatType.cs">
       <SubType>Form</SubType>
@@ -101,43 +89,37 @@
     <Compile Include="frmUpdateSeatType.Designer.cs">
       <DependentUpon>frmUpdateSeatType.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmYearlyRevenueAnalysis.cs">
+    <Compile Include="frmSeasonalSalesAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmYearlyRevenueAnalysis.Designer.cs">
-      <DependentUpon>frmYearlyRevenueAnalysis.cs</DependentUpon>
+    <Compile Include="frmSeasonalSalesAnalysis.Designer.cs">
+      <DependentUpon>frmSeasonalSalesAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAddSeatType.resx">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCheckAvailability.resx">
-      <DependentUpon>frmCheckAvailability.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmManageSales.resx">
-      <DependentUpon>frmManageSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProcessSales.resx">
       <DependentUpon>frmProcessSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReturnTickets.resx">
-      <DependentUpon>frmReturnTickets.cs</DependentUpon>
+    <EmbeddedResource Include="frmReturnSale.resx">
+      <DependentUpon>frmReturnSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScheduleMatches.resx">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSeatsSoldperMatch.resx">
-      <DependentUpon>frmSeatsSoldperMatch.cs</DependentUpon>
+    <EmbeddedResource Include="frmPopulaityAnalysis.resx">
+      <DependentUpon>frmPopulaityAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateSeatType.resx">
       <DependentUpon>frmUpdateSeatType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmYearlyRevenueAnalysis.resx">
-      <DependentUpon>frmYearlyRevenueAnalysis.cs</DependentUpon>
+    <EmbeddedResource Include="frmSeasonalSalesAnalysis.resx">
+      <DependentUpon>frmSeasonalSalesAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

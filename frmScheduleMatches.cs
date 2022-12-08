@@ -39,11 +39,11 @@ namespace NBA_Tickets_Retail
             }
 
             //Away Team
-            if(txtAwayTeam.Text.Equals(""))
+            if(cboAwayTeamID.SelectedIndex == -1)
             {
-                MessageBox.Show("Away Team must be Entered", "Error!", MessageBoxButtons.OK,
+                MessageBox.Show("Away Team ID is blank!", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                txtAwayTeam.Focus();
+                cboAwayTeamID.Focus();
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace NBA_Tickets_Retail
 
             //Reset UI
             dtPickMatchTime.Value = DateTime.Now;
-            txtAwayTeam.Clear();
+            cboAwayTeamID.SelectedIndex = -1;
             dtPickMatchTime.Focus();
         }
 

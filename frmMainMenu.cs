@@ -40,12 +40,6 @@ namespace NBA_Tickets_Retail
             frmScheduleMatch.Show(); 
         }
 
-        private void manageSalesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmManageSales frmManageSales = new frmManageSales(this);
-            frmManageSales.Show();
-        }
 
         private void processSalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -57,29 +51,23 @@ namespace NBA_Tickets_Retail
         private void returnTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmReturnTickets frmReturnTickets = new frmReturnTickets(this);
-            frmReturnTickets.Show();
+            frmReturnSale frmReturnSale = new frmReturnSale(this);
+            frmReturnSale.Show();
         }
 
-        private void checkAvailToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmCheckAvailability frmCheckAvailability = new frmCheckAvailability(this);
-            frmCheckAvailability.Show();
-        }
 
         private void yearlyRevenueAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmYearlyRevenueAnalysis frmYearlyRevenueAnalysis = new frmYearlyRevenueAnalysis(this);
-            frmYearlyRevenueAnalysis.Show();
+            frmSeasonalSalesAnalysis frmSeasonalAnalysis = new frmSeasonalSalesAnalysis(this);
+            frmSeasonalAnalysis.Show();
         }
 
         private void seatsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmSeatsSoldperMatch frmSeatsAvailability = new frmSeatsSoldperMatch(this);
-            frmSeatsAvailability.Show();
+            frmPopulaityAnalysis frmPopulaityAnalysis = new frmPopulaityAnalysis(this);
+            frmPopulaityAnalysis.Show();
         }
     }
 }

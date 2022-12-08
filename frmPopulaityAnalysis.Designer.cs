@@ -1,7 +1,7 @@
 ﻿
 namespace NBA_Tickets_Retail
 {
-    partial class frmSeatsSoldperMatch
+    partial class frmPopulaityAnalysis
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NBA_Tickets_Retail
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeatsSoldperMatch));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPopulaityAnalysis));
             this.btnSAback = new System.Windows.Forms.Button();
             this.btnGraph = new System.Windows.Forms.Button();
             this.btnMostSeatsSold = new System.Windows.Forms.Button();

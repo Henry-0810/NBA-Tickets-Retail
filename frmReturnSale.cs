@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
-    public partial class frmReturnTickets : Form
+    public partial class frmReturnSale : Form
     {
         private static new Form Parent;
-        public frmReturnTickets(Form parent)
+        public frmReturnSale(Form parent)
         {
             InitializeComponent();
             Parent = parent;

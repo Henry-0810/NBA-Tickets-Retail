@@ -50,38 +50,6 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
-            //SeatFrom
-            if (txtSeatFrom.Text.Equals(""))
-            {
-                MessageBox.Show("Seat From is blank", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSeatFrom.Focus();
-                return;
-            }
-            else if (Convert.ToInt32(txtSeatFrom.Text) <= 0 || Convert.ToInt32(txtSeatFrom.Text) > 500)
-            {
-                MessageBox.Show("Seat From must be Entered within given range", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSeatFrom.Focus();
-                return;
-            }
-
-            //Seat to
-            if (txtSeatTo.Text.Equals(""))
-            {
-                MessageBox.Show("Seat To is blank", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSeatTo.Focus();
-                return;
-            }
-            else if(Convert.ToInt32(txtSeatTo.Text) <= 0 || Convert.ToInt32(txtSeatTo.Text) > 500)
-            {
-                MessageBox.Show("Seat To must be Entered within given range", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSeatTo.Focus();
-                return;
-            }
-
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
@@ -93,8 +61,6 @@ namespace NBA_Tickets_Retail
             txtTypeCode.Clear();
             txtDescription.Clear(); 
             txtPrice.Text = "0.00";
-            txtSeatTo.Clear();
-            txtSeatFrom.Clear();
             txtTypeCode.Focus();
         }
 

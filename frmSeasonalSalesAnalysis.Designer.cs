@@ -1,7 +1,7 @@
 ﻿
 namespace NBA_Tickets_Retail
 {
-    partial class frmYearlyRevenueAnalysis
+    partial class frmSeasonalSalesAnalysis
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NBA_Tickets_Retail
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmYearlyRevenueAnalysis));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeasonalSalesAnalysis));
             this.btnYRAback = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,21 +30,7 @@ namespace NBA_Tickets_Retail
         private void btnProcess_Click(object sender, EventArgs e)
         {
             //validation    
-            if(numSeatFrom.Value > numSeatTo.Value)
-            {
-                MessageBox.Show("Seat To must be greater than Seat From", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                numSeatFrom.Focus();
-                return;
-            }
-
-            if(cboStatusPS.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please choose an option for Status", "Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboStatusPS.Focus();
-                return;
-            }
+            
 
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
@@ -54,10 +41,8 @@ namespace NBA_Tickets_Retail
 
             //Reset UI
             cboMatchID.SelectedIndex = -1;
-            numSeatTo.Value = 1;
-            numSeatFrom.Value = 1;
-            cboStatusPS.SelectedIndex = -1;
-            grpProcessSales.Visible = false;
+            
+            
             cboMatchID.Focus();
         }
 
@@ -65,18 +50,32 @@ namespace NBA_Tickets_Retail
         {
             cboMatchID.Items.Add(1);
             cboMatchID.Items.Add(2);
-            cboStatusPS.Items.Add("U");
-            cboStatusPS.Items.Add("O");
+            cboNumSeats.Items.AddRange(new object[] { 1, 2, 3, 4 });
         }
 
         private void cboMatchID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grpProcessSales.Visible = true;
+            cboNumSeats.Enabled = true;
         }
 
         private void frmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
         {
             Parent.Visible = true;
+        }
+
+        private void cboNumSeats_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBox[] textBoxes = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
+            int idx = cboNumSeats.SelectedIndex + 1;
+            foreach (TextBox text in textBoxes)
+            {
+                text.Enabled = false;
+            }
+            btnProcess.Enabled = true;
+            for(int i = 0; i < idx; i++)
+            {
+                textBoxes[i].Enabled = true;
+            }
         }
     }
 }
