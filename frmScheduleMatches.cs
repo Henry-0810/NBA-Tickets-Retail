@@ -13,6 +13,8 @@ namespace NBA_Tickets_Retail
    
     public partial class frmScheduleMatch : Form
     {
+        Match match;
+        private static int count = 0;
         private static new Form Parent;
         public frmScheduleMatch(Form parent)
         {
@@ -47,11 +49,13 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
+            //save to class
+            match = new Match(Convert.ToInt32(txtMatchID.Text), dtPickMatchTime.Value, 1);
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message
-            MessageBox.Show("Match has Been Created", "Information", MessageBoxButtons.OK,
+            MessageBox.Show("Match has Been Created\n" + match.ToString(), "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             //Reset UI
@@ -63,6 +67,12 @@ namespace NBA_Tickets_Retail
         private void frmScheduleMatch_FormClosed(object sender, FormClosedEventArgs e)
         {
             Parent.Visible = true;
+        }
+
+        private void frmScheduleMatch_Load(object sender, EventArgs e)
+        {
+            cboAwayTeamID.Items.Add(1);
+            txtMatchID.Text = (++count).ToString();
         }
     }
 

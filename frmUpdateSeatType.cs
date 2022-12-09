@@ -13,6 +13,7 @@ namespace NBA_Tickets_Retail
     public partial class frmUpdateSeatType : Form
     {
         private static new Form Parent;
+        SeatType seatType;
         public frmUpdateSeatType(Form parent)
         {
             InitializeComponent();
@@ -25,7 +26,6 @@ namespace NBA_Tickets_Retail
         {
             //Load Seat types
             cboSeatTypes.Items.Add("FR - Front Row");
-            cboSeatTypes.Items.Add("BR - Back Row");
         }
 
         private void btnUSTback_Click(object sender, EventArgs e)
@@ -61,11 +61,13 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
+            //save to class
+            seatType = new SeatType("FR - Front Row", txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message
-            MessageBox.Show("Seat Type has Been Updated", "Information", MessageBoxButtons.OK,
+            MessageBox.Show("Seat Type has Been Updated\n" + seatType.ToString(), "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             //Reset UI

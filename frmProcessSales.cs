@@ -29,8 +29,53 @@ namespace NBA_Tickets_Retail
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            //validation    
-            
+            //validation
+            TextBox[] textBoxes = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
+            for (int i = 0; i < cboNumSeats.SelectedIndex + 1; i++)
+            { 
+                string txtBox = textBoxes[i].Text;
+                //check null
+                if (txtBox.Equals(""))
+                {
+                    MessageBox.Show("All fields are required to enter!!", "Error!", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                    textBoxes[i].Focus();
+                    return;
+                }
+                int isInt;
+                bool valid = int.TryParse(txtBox, out isInt);
+                //check isDigit
+                if (!valid)
+                {
+                    MessageBox.Show("Seat Number must be an integer", "Error!", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                    textBoxes[i].Focus();
+                    return;
+                }
+                //check in range of 1-500
+                else if (Convert.ToInt32(txtBox) <= 0 || Convert.ToInt32(txtBox) > 500) 
+                {
+                    MessageBox.Show("Seat Number must be in range of 1-500", "Error!", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                    textBoxes[i].Focus();
+                    return;
+                }
+
+                List<int> Seats = new List<int> { };
+                for(int j = i; j >= 0; j--)
+                {
+                    Seats.Add(Convert.ToInt32(textBoxes[j].Text));
+                }
+                //check all seat number entered is distinct
+                if(new HashSet<int>(Seats).Count() != Seats.Count)
+                {
+                    MessageBox.Show("Seat Numbers entered cannot be the same", "Error!", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                    textBoxes[i].Focus();
+                    return;
+                }
+
+            }
 
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
@@ -41,8 +86,14 @@ namespace NBA_Tickets_Retail
 
             //Reset UI
             cboMatchID.SelectedIndex = -1;
-            
-            
+            cboNumSeats.SelectedIndex = -1;
+            cboNumSeats.Enabled = false;
+            foreach (TextBox text in textBoxes)
+            {
+                text.Clear();
+                text.Enabled = false;
+            }
+            btnProcess.Enabled = false;
             cboMatchID.Focus();
         }
 

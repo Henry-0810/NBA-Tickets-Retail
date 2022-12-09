@@ -12,6 +12,7 @@ namespace NBA_Tickets_Retail
 {
     public partial class frmAddSeatType : Form
     {
+        SeatType seatType;
         private static new Form Parent;
         public frmAddSeatType(Form parent)
         {
@@ -42,19 +43,40 @@ namespace NBA_Tickets_Retail
             }
 
             //price
-            if(Convert.ToDouble(txtPrice.Text) <= 0)
+            if (txtPrice.Text.Equals(""))
+            {
+                MessageBox.Show("Price is blank!", "Error!", MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+                txtPrice.Focus();
+                return;
+            }
+            double price;
+            string strPrice = txtPrice.Text;
+            bool valid = double.TryParse(strPrice, out price);
+            if (!valid)
+            {
+                MessageBox.Show("Price must be an integer", "Error!", MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+                txtPrice.Focus();
+                return;
+            }
+            if (Convert.ToDouble(txtPrice.Text) <= 0)
             {
                 MessageBox.Show("Price must be more than 0", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
             }
-
+            
+            //save to class
+            //create 100 object in next semester
+            seatType = new SeatType(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message
-            MessageBox.Show("Seat Type has Been Created", "Information", MessageBoxButtons.OK,
+            MessageBox.Show("Seat Type has Been Created\n" + seatType.ToString() + 
+                "\nSeatID 1-100 has been assigned to " + seatType.TypeCode, "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             //Reset UI

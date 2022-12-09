@@ -32,19 +32,25 @@ namespace NBA_Tickets_Retail
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReturnSale));
             this.btnRTback = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.cboStatusRT = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnReturn = new System.Windows.Forms.Button();
-            this.grpReturn = new System.Windows.Forms.GroupBox();
-            this.getSeatFrom = new System.Windows.Forms.Label();
-            this.getSeatTo = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.cboSTID = new System.Windows.Forms.ComboBox();
+            this.btnReturn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSeat4 = new System.Windows.Forms.TextBox();
+            this.txtSeat3 = new System.Windows.Forms.TextBox();
+            this.txtSeat2 = new System.Windows.Forms.TextBox();
+            this.txtSeat1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtMatchID = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtPickSalesDate = new System.Windows.Forms.DateTimePicker();
+            this.txtTotSales = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.grpReturn.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRTback
@@ -68,32 +74,9 @@ namespace NBA_Tickets_Retail
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(37, 47);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(250, 39);
+            this.label6.Size = new System.Drawing.Size(208, 39);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Return Tickets";
-            // 
-            // cboStatusRT
-            // 
-            this.cboStatusRT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStatusRT.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboStatusRT.FormattingEnabled = true;
-            this.cboStatusRT.Location = new System.Drawing.Point(182, 138);
-            this.cboStatusRT.Name = "cboStatusRT";
-            this.cboStatusRT.Size = new System.Drawing.Size(117, 32);
-            this.cboStatusRT.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(35, 137);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 29);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Status:";
+            this.label6.Text = "Return Sale";
             // 
             // label1
             // 
@@ -104,96 +87,20 @@ namespace NBA_Tickets_Retail
             this.label1.Location = new System.Drawing.Point(39, 106);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 29);
+            this.label1.Size = new System.Drawing.Size(95, 29);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Sale Ticket ID:";
+            this.label1.Text = "Sales ID:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(362, 369);
+            this.pictureBox1.Location = new System.Drawing.Point(454, 571);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(118, 90);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 34;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnReturn.Location = new System.Drawing.Point(330, 153);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(113, 36);
-            this.btnReturn.TabIndex = 35;
-            this.btnReturn.Text = "RETURN";
-            this.btnReturn.UseVisualStyleBackColor = false;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            // 
-            // grpReturn
-            // 
-            this.grpReturn.Controls.Add(this.getSeatFrom);
-            this.grpReturn.Controls.Add(this.getSeatTo);
-            this.grpReturn.Controls.Add(this.cboStatusRT);
-            this.grpReturn.Controls.Add(this.btnReturn);
-            this.grpReturn.Controls.Add(this.label2);
-            this.grpReturn.Controls.Add(this.label3);
-            this.grpReturn.Controls.Add(this.label4);
-            this.grpReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpReturn.Location = new System.Drawing.Point(21, 159);
-            this.grpReturn.Name = "grpReturn";
-            this.grpReturn.Size = new System.Drawing.Size(459, 204);
-            this.grpReturn.TabIndex = 36;
-            this.grpReturn.TabStop = false;
-            this.grpReturn.Text = "Tickets details:";
-            this.grpReturn.Visible = false;
-            // 
-            // getSeatFrom
-            // 
-            this.getSeatFrom.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getSeatFrom.Location = new System.Drawing.Point(177, 84);
-            this.getSeatFrom.Name = "getSeatFrom";
-            this.getSeatFrom.Size = new System.Drawing.Size(164, 32);
-            this.getSeatFrom.TabIndex = 37;
-            this.getSeatFrom.Text = "*getFromFile*";
-            // 
-            // getSeatTo
-            // 
-            this.getSeatTo.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getSeatTo.Location = new System.Drawing.Point(177, 30);
-            this.getSeatTo.Name = "getSeatTo";
-            this.getSeatTo.Size = new System.Drawing.Size(164, 32);
-            this.getSeatTo.TabIndex = 36;
-            this.getSeatTo.Text = "*getFromFile*";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(35, 83);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 29);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Seat To:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(35, 29);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(118, 29);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Seat From:";
             // 
             // cboSTID
             // 
@@ -202,35 +109,218 @@ namespace NBA_Tickets_Retail
             this.cboSTID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSTID.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cboSTID.FormattingEnabled = true;
-            this.cboSTID.Location = new System.Drawing.Point(213, 107);
+            this.cboSTID.Location = new System.Drawing.Point(174, 107);
             this.cboSTID.Margin = new System.Windows.Forms.Padding(4);
             this.cboSTID.Name = "cboSTID";
             this.cboSTID.Size = new System.Drawing.Size(149, 32);
             this.cboSTID.TabIndex = 0;
             this.cboSTID.SelectedIndexChanged += new System.EventHandler(this.cboSTID_SelectedIndexChanged);
             // 
-            // frmReturnTickets
+            // btnReturn
+            // 
+            this.btnReturn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReturn.Enabled = false;
+            this.btnReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnReturn.Location = new System.Drawing.Point(174, 587);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(113, 36);
+            this.btnReturn.TabIndex = 35;
+            this.btnReturn.Text = "RETURN";
+            this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(39, 166);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 29);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Match ID:";
+            // 
+            // txtSeat4
+            // 
+            this.txtSeat4.Enabled = false;
+            this.txtSeat4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeat4.Location = new System.Drawing.Point(174, 407);
+            this.txtSeat4.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSeat4.Name = "txtSeat4";
+            this.txtSeat4.Size = new System.Drawing.Size(113, 32);
+            this.txtSeat4.TabIndex = 50;
+            // 
+            // txtSeat3
+            // 
+            this.txtSeat3.Enabled = false;
+            this.txtSeat3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeat3.Location = new System.Drawing.Point(174, 347);
+            this.txtSeat3.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSeat3.Name = "txtSeat3";
+            this.txtSeat3.Size = new System.Drawing.Size(113, 32);
+            this.txtSeat3.TabIndex = 49;
+            // 
+            // txtSeat2
+            // 
+            this.txtSeat2.Enabled = false;
+            this.txtSeat2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeat2.Location = new System.Drawing.Point(174, 287);
+            this.txtSeat2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSeat2.Name = "txtSeat2";
+            this.txtSeat2.Size = new System.Drawing.Size(113, 32);
+            this.txtSeat2.TabIndex = 48;
+            this.txtSeat2.TextChanged += new System.EventHandler(this.txtSeat2_TextChanged);
+            // 
+            // txtSeat1
+            // 
+            this.txtSeat1.Enabled = false;
+            this.txtSeat1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeat1.Location = new System.Drawing.Point(174, 227);
+            this.txtSeat1.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSeat1.Name = "txtSeat1";
+            this.txtSeat1.Size = new System.Drawing.Size(113, 32);
+            this.txtSeat1.TabIndex = 47;
+            this.txtSeat1.TextChanged += new System.EventHandler(this.txtSeat1_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(39, 286);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 29);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Seat 2:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(39, 346);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 29);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Seat 3:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(39, 406);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 29);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "Seat 4:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(39, 226);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 29);
+            this.label5.TabIndex = 43;
+            this.label5.Text = "Seat 1:";
+            // 
+            // txtMatchID
+            // 
+            this.txtMatchID.Enabled = false;
+            this.txtMatchID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatchID.Location = new System.Drawing.Point(174, 167);
+            this.txtMatchID.Name = "txtMatchID";
+            this.txtMatchID.Size = new System.Drawing.Size(113, 32);
+            this.txtMatchID.TabIndex = 51;
+            this.txtMatchID.TextChanged += new System.EventHandler(this.txtMatchID_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(39, 526);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(123, 29);
+            this.label8.TabIndex = 52;
+            this.label8.Text = "Total Sales:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(39, 466);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(121, 29);
+            this.label9.TabIndex = 53;
+            this.label9.Text = "Sales Date:";
+            // 
+            // dtPickSalesDate
+            // 
+            this.dtPickSalesDate.CalendarFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtPickSalesDate.Enabled = false;
+            this.dtPickSalesDate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtPickSalesDate.Location = new System.Drawing.Point(174, 466);
+            this.dtPickSalesDate.Name = "dtPickSalesDate";
+            this.dtPickSalesDate.Size = new System.Drawing.Size(318, 32);
+            this.dtPickSalesDate.TabIndex = 54;
+            // 
+            // txtTotSales
+            // 
+            this.txtTotSales.Enabled = false;
+            this.txtTotSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotSales.Location = new System.Drawing.Point(174, 527);
+            this.txtTotSales.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotSales.Name = "txtTotSales";
+            this.txtTotSales.Size = new System.Drawing.Size(113, 32);
+            this.txtTotSales.TabIndex = 55;
+            // 
+            // frmReturnSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(491, 471);
+            this.ClientSize = new System.Drawing.Size(583, 673);
+            this.Controls.Add(this.txtTotSales);
+            this.Controls.Add(this.dtPickSalesDate);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtMatchID);
+            this.Controls.Add(this.txtSeat4);
+            this.Controls.Add(this.txtSeat3);
+            this.Controls.Add(this.txtSeat2);
+            this.Controls.Add(this.txtSeat1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cboSTID);
-            this.Controls.Add(this.grpReturn);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnRTback);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmReturnTickets";
+            this.Name = "frmReturnSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Tickets] - [Return Tickets]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmReturnTickets_FormClosed);
             this.Load += new System.EventHandler(this.frmReturnTickets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.grpReturn.ResumeLayout(false);
-            this.grpReturn.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,16 +330,23 @@ namespace NBA_Tickets_Retail
 
         private System.Windows.Forms.Button btnRTback;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboStatusRT;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.GroupBox grpReturn;
         private System.Windows.Forms.ComboBox cboSTID;
-        private System.Windows.Forms.Label getSeatFrom;
-        private System.Windows.Forms.Label getSeatTo;
+        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSeat4;
+        private System.Windows.Forms.TextBox txtSeat3;
+        private System.Windows.Forms.TextBox txtSeat2;
+        private System.Windows.Forms.TextBox txtSeat1;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtMatchID;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dtPickSalesDate;
+        private System.Windows.Forms.TextBox txtTotSales;
     }
 }

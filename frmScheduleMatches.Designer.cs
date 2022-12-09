@@ -51,19 +51,20 @@ namespace NBA_Tickets_Retail
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(28, 37);
+            this.label1.Location = new System.Drawing.Point(37, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 31);
+            this.label1.Size = new System.Drawing.Size(275, 39);
             this.label1.TabIndex = 3;
             this.label1.Text = "Schedule Match";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(329, 238);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(439, 293);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(157, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
@@ -73,9 +74,9 @@ namespace NBA_Tickets_Retail
             this.btnSMback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSMback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSMback.Location = new System.Drawing.Point(1, 0);
-            this.btnSMback.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnSMback.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSMback.Name = "btnSMback";
-            this.btnSMback.Size = new System.Drawing.Size(43, 21);
+            this.btnSMback.Size = new System.Drawing.Size(57, 26);
             this.btnSMback.TabIndex = 17;
             this.btnSMback.Text = "Back";
             this.btnSMback.UseVisualStyleBackColor = false;
@@ -86,10 +87,10 @@ namespace NBA_Tickets_Retail
             this.btnSchedule.BackColor = System.Drawing.SystemColors.Menu;
             this.btnSchedule.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSchedule.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSchedule.Location = new System.Drawing.Point(137, 292);
-            this.btnSchedule.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnSchedule.Location = new System.Drawing.Point(183, 359);
+            this.btnSchedule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(113, 36);
+            this.btnSchedule.Size = new System.Drawing.Size(151, 44);
             this.btnSchedule.TabIndex = 2;
             this.btnSchedule.Text = "SCHEDULE";
             this.btnSchedule.UseVisualStyleBackColor = false;
@@ -99,9 +100,10 @@ namespace NBA_Tickets_Retail
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 143);
+            this.label2.Location = new System.Drawing.Point(40, 176);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 23);
+            this.label2.Size = new System.Drawing.Size(137, 29);
             this.label2.TabIndex = 19;
             this.label2.Text = "Match Time:";
             // 
@@ -109,9 +111,10 @@ namespace NBA_Tickets_Retail
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 243);
+            this.label4.Location = new System.Drawing.Point(40, 299);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 23);
+            this.label4.Size = new System.Drawing.Size(157, 29);
             this.label4.TabIndex = 21;
             this.label4.Text = "Away Team ID:";
             // 
@@ -119,28 +122,31 @@ namespace NBA_Tickets_Retail
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 93);
+            this.label5.Location = new System.Drawing.Point(40, 114);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 23);
+            this.label5.Size = new System.Drawing.Size(109, 29);
             this.label5.TabIndex = 22;
             this.label5.Text = "Match ID:";
             // 
             // dtPickMatchTime
             // 
             this.dtPickMatchTime.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtPickMatchTime.Location = new System.Drawing.Point(151, 143);
+            this.dtPickMatchTime.Location = new System.Drawing.Point(201, 176);
+            this.dtPickMatchTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtPickMatchTime.Name = "dtPickMatchTime";
-            this.dtPickMatchTime.Size = new System.Drawing.Size(251, 27);
+            this.dtPickMatchTime.Size = new System.Drawing.Size(333, 32);
             this.dtPickMatchTime.TabIndex = 0;
-            this.dtPickMatchTime.Value = new System.DateTime(2022, 12, 8, 19, 37, 9, 0);
+            this.dtPickMatchTime.Value = new System.DateTime(2022, 12, 9, 4, 12, 40, 0);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 193);
+            this.label3.Location = new System.Drawing.Point(40, 238);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 23);
+            this.label3.Size = new System.Drawing.Size(136, 29);
             this.label3.TabIndex = 20;
             this.label3.Text = "Home Team:";
             // 
@@ -149,9 +155,10 @@ namespace NBA_Tickets_Retail
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Menu;
             this.label6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(147, 193);
+            this.label6.Location = new System.Drawing.Point(196, 238);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(180, 23);
+            this.label6.Size = new System.Drawing.Size(230, 29);
             this.label6.TabIndex = 26;
             this.label6.Text = "Golden State Warriors";
             // 
@@ -160,26 +167,29 @@ namespace NBA_Tickets_Retail
             this.cboAwayTeamID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAwayTeamID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAwayTeamID.FormattingEnabled = true;
-            this.cboAwayTeamID.Location = new System.Drawing.Point(170, 243);
+            this.cboAwayTeamID.Location = new System.Drawing.Point(227, 299);
+            this.cboAwayTeamID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboAwayTeamID.Name = "cboAwayTeamID";
-            this.cboAwayTeamID.Size = new System.Drawing.Size(105, 27);
+            this.cboAwayTeamID.Size = new System.Drawing.Size(139, 32);
             this.cboAwayTeamID.TabIndex = 1;
             // 
             // txtMatchID
             // 
             this.txtMatchID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatchID.Location = new System.Drawing.Point(151, 93);
+            this.txtMatchID.Location = new System.Drawing.Point(201, 114);
+            this.txtMatchID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMatchID.Name = "txtMatchID";
-            this.txtMatchID.Size = new System.Drawing.Size(73, 27);
-            this.txtMatchID.TabIndex = 0;
+            this.txtMatchID.ReadOnly = true;
+            this.txtMatchID.Size = new System.Drawing.Size(96, 32);
+            this.txtMatchID.TabIndex = 9;
             // 
             // frmScheduleMatch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(458, 340);
+            this.ClientSize = new System.Drawing.Size(611, 418);
             this.Controls.Add(this.txtMatchID);
             this.Controls.Add(this.cboAwayTeamID);
             this.Controls.Add(this.label6);
@@ -193,10 +203,12 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmScheduleMatch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Matches] - [Schedule Match]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmScheduleMatch_FormClosed);
+            this.Load += new System.EventHandler(this.frmScheduleMatch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

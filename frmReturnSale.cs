@@ -27,41 +27,42 @@ namespace NBA_Tickets_Retail
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            //SeatFrom and SeatTo number get from SalesTicket file
+           
             //validation    
-            if (cboStatusRT.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please choose an option for Status", "Error!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                cboStatusRT.Focus();
-                return;
-            }
-            else if (cboStatusRT.SelectedIndex == 1)
-            {
-                MessageBox.Show("Status must be 'U'!", "Error!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                cboStatusRT.Focus();
-                return;
-            }
+            
             
 
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message
-            MessageBox.Show("Tickets returned", "Information", MessageBoxButtons.OK,
+            MessageBox.Show("Sales returned", "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             //Reset UI
-            cboStatusRT.SelectedIndex = -1;
-            cboSTID.SelectedIndex = -1; 
-            grpReturn.Visible = false;
+            
+            cboSTID.SelectedIndex = -1;
+            TextBox[] textBoxes = { txtMatchID, txtSeat1, txtSeat2, txtSeat3, txtSeat4, txtTotSales };
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Enabled = false;
+            }
+            dtPickSalesDate.Enabled = false;
+            btnReturn.Enabled = false;
             cboSTID.Focus();
         }
 
         private void cboSTID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grpReturn.Visible = true;
+            //validation
+            //all txtboxes are accessible only if saleID is picked
+            TextBox[] textBoxes = { txtMatchID, txtSeat1, txtSeat2, txtSeat3, txtSeat4, txtTotSales };
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Enabled = true;
+            }
+            dtPickSalesDate.Enabled = true;
+            btnReturn.Enabled = true;
         }
 
         private void frmReturnTickets_Load(object sender, EventArgs e)
@@ -69,13 +70,27 @@ namespace NBA_Tickets_Retail
             cboSTID.Items.Add("1");
             cboSTID.Items.Add("2");
             cboSTID.Items.Add("3");
-            cboStatusRT.Items.Add("U");
-            cboStatusRT.Items.Add("O");
+            
         }
 
         private void frmReturnTickets_FormClosed(object sender, FormClosedEventArgs e)
         {
             Parent.Visible = true;
+        }
+
+        private void txtSeat1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSeat2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatchID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
