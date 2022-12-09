@@ -8,19 +8,29 @@ namespace NBA_Tickets_Retail
 {
     class Seats
     {
-        private int _SeatID;
+        private string _SeatID;
         private string _TypeCode;
         private string _Status;
+        private static int count = 0;
 
-        public Seats(int seatID, string typeCode, string status)
+        public Seats(string seatID, string typeCode, string status)
         {
             SeatID = seatID;
             TypeCode = typeCode;
             Status = status;
         }
 
-        public int SeatID { get => _SeatID; set => _SeatID = value; }
+        public string SeatID
+        {
+            get => _SeatID;
+            set { _SeatID = value; }
+        }
         public string TypeCode { get => _TypeCode; set => _TypeCode = value; }
         public string Status { get => _Status; set => _Status = value; }
+
+        public override string ToString()
+        {
+            return "SeatID: " + SeatID + "\nTypeCode: " + TypeCode + "\nStatus: " + Status;
+        }
     }
 }

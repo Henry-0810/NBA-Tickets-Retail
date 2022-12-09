@@ -109,7 +109,7 @@
             // 
             this.txtDescription.BackColor = System.Drawing.SystemColors.Window;
             this.txtDescription.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(167, 146);
+            this.txtDescription.Location = new System.Drawing.Point(167, 147);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDescription.MaxLength = 50;
             this.txtDescription.Multiline = true;

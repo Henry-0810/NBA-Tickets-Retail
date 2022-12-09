@@ -15,6 +15,7 @@ namespace NBA_Tickets_Retail
         public frmMainMenu()
         {
             InitializeComponent();
+            
         }
 
         private void addSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)

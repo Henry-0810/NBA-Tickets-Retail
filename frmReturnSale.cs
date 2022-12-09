@@ -49,6 +49,13 @@ namespace NBA_Tickets_Retail
             }
             dtPickSalesDate.Enabled = false;
             btnReturn.Enabled = false;
+            txtMatchID.Text = "";
+            txtSeat1.Text = "";
+            txtSeat2.Text = "";
+            txtSeat3.Text = "";
+            txtSeat4.Text = "";
+            dtPickSalesDate.Value = DateTime.Now;
+            txtTotSales.Text = "";
             cboSTID.Focus();
         }
 
@@ -63,6 +70,13 @@ namespace NBA_Tickets_Retail
             }
             dtPickSalesDate.Enabled = true;
             btnReturn.Enabled = true;
+            txtMatchID.Text = "1";
+            txtSeat1.Text = "1";
+            txtSeat2.Text = "2";
+            txtSeat3.Text = "3";
+            txtSeat4.Text = "4";
+            dtPickSalesDate.Value = DateTime.Now;
+            txtTotSales.Text = "100.00";
         }
 
         private void frmReturnTickets_Load(object sender, EventArgs e)
@@ -70,7 +84,6 @@ namespace NBA_Tickets_Retail
             cboSTID.Items.Add("1");
             cboSTID.Items.Add("2");
             cboSTID.Items.Add("3");
-            
         }
 
         private void frmReturnTickets_FormClosed(object sender, FormClosedEventArgs e)
@@ -78,19 +91,6 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
 
-        private void txtSeat1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSeat2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMatchID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

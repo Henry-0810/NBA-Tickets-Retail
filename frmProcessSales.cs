@@ -14,6 +14,7 @@ namespace NBA_Tickets_Retail
     public partial class frmProcessSales : Form
     {
         private static new Form Parent;
+        Sales sale;
         public frmProcessSales(Form parent)
         {
             InitializeComponent();
@@ -76,7 +77,9 @@ namespace NBA_Tickets_Retail
                 }
 
             }
-
+            //save to class
+            //sale = new Sales(Convert.ToInt32(txtSeat1.Text), Convert.ToInt32(txtSeat2.Text),
+                //Convert.ToInt32(txtSeat3.Text), Convert.ToInt32(txtSeat4.Text), 1);
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
@@ -100,7 +103,6 @@ namespace NBA_Tickets_Retail
         private void frmProcessSales_Load(object sender, EventArgs e)
         {
             cboMatchID.Items.Add(1);
-            cboMatchID.Items.Add(2);
             cboNumSeats.Items.AddRange(new object[] { 1, 2, 3, 4 });
         }
 

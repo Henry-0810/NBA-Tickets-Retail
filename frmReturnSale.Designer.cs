@@ -150,6 +150,7 @@ namespace NBA_Tickets_Retail
             this.txtSeat4.Location = new System.Drawing.Point(174, 407);
             this.txtSeat4.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeat4.Name = "txtSeat4";
+            this.txtSeat4.ReadOnly = true;
             this.txtSeat4.Size = new System.Drawing.Size(113, 32);
             this.txtSeat4.TabIndex = 50;
             // 
@@ -160,6 +161,7 @@ namespace NBA_Tickets_Retail
             this.txtSeat3.Location = new System.Drawing.Point(174, 347);
             this.txtSeat3.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeat3.Name = "txtSeat3";
+            this.txtSeat3.ReadOnly = true;
             this.txtSeat3.Size = new System.Drawing.Size(113, 32);
             this.txtSeat3.TabIndex = 49;
             // 
@@ -170,9 +172,9 @@ namespace NBA_Tickets_Retail
             this.txtSeat2.Location = new System.Drawing.Point(174, 287);
             this.txtSeat2.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeat2.Name = "txtSeat2";
+            this.txtSeat2.ReadOnly = true;
             this.txtSeat2.Size = new System.Drawing.Size(113, 32);
             this.txtSeat2.TabIndex = 48;
-            this.txtSeat2.TextChanged += new System.EventHandler(this.txtSeat2_TextChanged);
             // 
             // txtSeat1
             // 
@@ -181,9 +183,9 @@ namespace NBA_Tickets_Retail
             this.txtSeat1.Location = new System.Drawing.Point(174, 227);
             this.txtSeat1.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeat1.Name = "txtSeat1";
+            this.txtSeat1.ReadOnly = true;
             this.txtSeat1.Size = new System.Drawing.Size(113, 32);
             this.txtSeat1.TabIndex = 47;
-            this.txtSeat1.TextChanged += new System.EventHandler(this.txtSeat1_TextChanged);
             // 
             // label7
             // 
@@ -239,9 +241,9 @@ namespace NBA_Tickets_Retail
             this.txtMatchID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatchID.Location = new System.Drawing.Point(174, 167);
             this.txtMatchID.Name = "txtMatchID";
+            this.txtMatchID.ReadOnly = true;
             this.txtMatchID.Size = new System.Drawing.Size(113, 32);
             this.txtMatchID.TabIndex = 51;
-            this.txtMatchID.TextChanged += new System.EventHandler(this.txtMatchID_TextChanged);
             // 
             // label8
             // 
@@ -284,6 +286,7 @@ namespace NBA_Tickets_Retail
             this.txtTotSales.Location = new System.Drawing.Point(174, 527);
             this.txtTotSales.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotSales.Name = "txtTotSales";
+            this.txtTotSales.ReadOnly = true;
             this.txtTotSales.Size = new System.Drawing.Size(113, 32);
             this.txtTotSales.TabIndex = 55;
             // 
