@@ -1,4 +1,7 @@
 ﻿
+using Oracle.ManagedDataAccess.Client;
+
+
 namespace NBA_Tickets_Retail
 {
     class Seats
@@ -8,9 +11,15 @@ namespace NBA_Tickets_Retail
         private string _Status;
         private static int count = 0;
 
-        public Seats(string seatID, string typeCode, string status)
+        public Seats()
         {
-            SeatID = seatID;
+            SeatID = "0";
+            TypeCode = "None";
+            Status = "U";
+        }
+        public Seats(string typeCode, string status)
+        {
+            SeatID = typeCode+"-"+(count++.ToString());
             TypeCode = typeCode;
             Status = status;
         }
@@ -26,6 +35,24 @@ namespace NBA_Tickets_Retail
         public override string ToString()
         {
             return "SeatID: " + SeatID + "\nTypeCode: " + TypeCode + "\nStatus: " + Status;
+        }
+
+        public void addSeat()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "INSERT INTO Seats Values ('" +
+                this.SeatID + "','" + this.TypeCode + "','" + this.Status
+                + "')";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void emptySeat()
+        {
+            
         }
     }
 }

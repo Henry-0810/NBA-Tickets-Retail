@@ -1,11 +1,10 @@
-﻿
-
-using Oracle.ManagedDataAccess.Client;
+﻿using Oracle.ManagedDataAccess.Client;
 
 namespace NBA_Tickets_Retail
 {
     class SeatType
     {
+        private Seats seats;
         private string _TypeCode;
         private string _description;
         private double _price;
@@ -38,6 +37,8 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+            seats = new Seats(this.TypeCode.ToString(), "U");
+            seats.addSeat();
         }
     }
 }
