@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using Oracle.ManagedDataAccess.Client;
 
 namespace NBA_Tickets_Retail
 {
@@ -26,6 +24,20 @@ namespace NBA_Tickets_Retail
         public override string ToString()
         {
             return "Type Code: " + TypeCode + "\nDescription: " + Description + "\nPrice: " + Price;
+        }
+
+        public void addSeatType()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "INSERT INTO SeatType Values ('" +
+                this.TypeCode + "','" +
+                this.Description + "'," +
+                this.Price + ")";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

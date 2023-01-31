@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
+
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -71,6 +66,7 @@ namespace NBA_Tickets_Retail
             //save to class
             //create 100 object in next semester
             seatType = new SeatType(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType.addSeatType();
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
@@ -96,5 +92,7 @@ namespace NBA_Tickets_Retail
         {
             Parent.Visible = true;
         }
+
+      
     }
 }
