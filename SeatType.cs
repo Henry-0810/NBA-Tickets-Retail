@@ -37,8 +37,20 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
-            seats = new Seats(this.TypeCode.ToString(), "U");
-            seats.addSeat();
+            for(int i = 1; i <= 100; i++)
+            {
+                seats = new Seats(this.TypeCode.ToString(), "U");
+                seats.addSeat();
+            }
+            
+        }
+
+        public void updateSeatType()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT Type_Code FROM SeatTpe";
+
         }
     }
 }

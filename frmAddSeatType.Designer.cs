@@ -51,7 +51,7 @@
             this.label1.Location = new System.Drawing.Point(28, 100);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 29);
+            this.label1.Size = new System.Drawing.Size(94, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Type Code:";
             // 
@@ -64,7 +64,7 @@
             this.label3.Location = new System.Drawing.Point(28, 231);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 29);
+            this.label3.Size = new System.Drawing.Size(53, 23);
             this.label3.TabIndex = 1;
             this.label3.Text = "Price:";
             // 
@@ -77,7 +77,7 @@
             this.label2.Location = new System.Drawing.Point(28, 146);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 29);
+            this.label2.Size = new System.Drawing.Size(104, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Description:";
             // 
@@ -89,7 +89,7 @@
             this.txtTypeCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTypeCode.MaxLength = 8;
             this.txtTypeCode.Name = "txtTypeCode";
-            this.txtTypeCode.Size = new System.Drawing.Size(114, 32);
+            this.txtTypeCode.Size = new System.Drawing.Size(114, 27);
             this.txtTypeCode.TabIndex = 0;
             // 
             // txtPrice
@@ -98,9 +98,9 @@
             this.txtPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(167, 231);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtPrice.MaxLength = 6;
+            this.txtPrice.MaxLength = 7;
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(60, 32);
+            this.txtPrice.Size = new System.Drawing.Size(65, 27);
             this.txtPrice.TabIndex = 2;
             this.txtPrice.Text = "0.00";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -150,7 +150,7 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(26, 43);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(255, 39);
+            this.label6.Size = new System.Drawing.Size(206, 31);
             this.label6.TabIndex = 16;
             this.label6.Text = "Add Seat Type";
             // 
@@ -169,7 +169,7 @@
             // 
             // frmAddSeatType
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;

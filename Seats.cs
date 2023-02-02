@@ -9,7 +9,7 @@ namespace NBA_Tickets_Retail
         private string _SeatID;
         private string _TypeCode;
         private string _Status;
-        private static int count = 0;
+        private static int count = 1;
 
         public Seats()
         {
@@ -19,7 +19,7 @@ namespace NBA_Tickets_Retail
         }
         public Seats(string typeCode, string status)
         {
-            SeatID = typeCode+"-"+(count++.ToString());
+            SeatID = typeCode + " - " + (count++.ToString());
             TypeCode = typeCode;
             Status = status;
         }
@@ -41,9 +41,9 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO Seats Values ('" +
-                this.SeatID + "','" + this.TypeCode + "','" + this.Status
-                + "')";
+            string sqlQuery = "INSERT INTO Seats (Seat_ID, Status, Type_Code) SELECT '" +
+                this.SeatID + "','" + this.Status + "'," + "Type_Code FROM SeatType WHERE Type_Code='" +
+                this.TypeCode + "'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -52,7 +52,7 @@ namespace NBA_Tickets_Retail
 
         public void emptySeat()
         {
-            
+
         }
     }
 }

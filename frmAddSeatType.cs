@@ -8,7 +8,6 @@ namespace NBA_Tickets_Retail
     public partial class frmAddSeatType : Form
     {
         SeatType seatType;
-        Seats seats;
         private static new Form Parent;
         public frmAddSeatType(Form parent)
         {
@@ -68,7 +67,6 @@ namespace NBA_Tickets_Retail
             //create 100 object in next semester
             seatType = new SeatType(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             seatType.addSeatType();
-            
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
