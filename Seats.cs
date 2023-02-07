@@ -50,7 +50,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public void emptySeat()
+        public void changeSeatStatus()
         {
 
         }

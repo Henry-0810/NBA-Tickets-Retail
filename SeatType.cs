@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using System.Collections.Generic;
 
 namespace NBA_Tickets_Retail
 {
@@ -45,12 +46,24 @@ namespace NBA_Tickets_Retail
             
         }
 
-        public void updateSeatType()
+        public string[] retrieveSeatType()
         {
+            List<string> typeCodeName = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT Type_Code FROM SeatTpe";
+            string sqlQuery = "SELECT Type_Code FROM SeatType";
 
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                typeCodeName.Add(dr.GetString(0));
+            }
+            dr.Close();
+            string[] typeCodeArr = typeCodeName.ToArray();
+            return typeCodeArr;
         }
     }
 }

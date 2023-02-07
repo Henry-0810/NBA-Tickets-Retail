@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -18,7 +20,19 @@ namespace NBA_Tickets_Retail
         private void frmUpdateSeatType_Load(object sender, EventArgs e)
         {
             //Load Seat types
-            cboSeatTypes.Items.Add("FR - Front Row");
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT Type_Code FROM SeatType";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                cboSeatTypes.Items.Add(dr.GetString(0));
+            }
+            dr.Close();
         }
 
         private void btnUSTback_Click(object sender, EventArgs e)
@@ -26,18 +40,30 @@ namespace NBA_Tickets_Retail
             this.Close();
             Parent.Visible = true;
         }
-
+          
 
 
         private void cboSeatTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtDescription.Text = "Front Row block 1";
-            txtPrice.Text = "85.00";
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT Descriptions, Price FROM SeatType WHERE Type_Code = '" + cboSeatTypes.SelectedItem.ToString() + "'";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                txtDescription.Text = dr["Descriptions"].ToString();
+                txtPrice.Text = dr["Price"].ToString();
+            }
+            dr.Close();
             grpType.Visible = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
-        {
+        { 
             //check validation
             if (txtDescription.Text.Equals(""))
             {
