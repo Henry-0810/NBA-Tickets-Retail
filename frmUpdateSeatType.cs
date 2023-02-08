@@ -45,21 +45,24 @@ namespace NBA_Tickets_Retail
 
         private void cboSeatTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = "SELECT Descriptions, Price FROM SeatType WHERE Type_Code = '" + cboSeatTypes.SelectedItem.ToString() + "'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read())
+            if(cboSeatTypes.SelectedIndex != -1)
             {
-                txtDescription.Text = dr["Descriptions"].ToString();
-                txtPrice.Text = dr["Price"].ToString();
+                OracleConnection conn = Program.getOracleConnection();
+
+                string sqlQuery = "SELECT Descriptions, Price FROM SeatType WHERE Type_Code = '" + cboSeatTypes.SelectedItem.ToString() + "'";
+
+                OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    txtDescription.Text = dr["Descriptions"].ToString();
+                    txtPrice.Text = dr["Price"].ToString();
+                }
+                dr.Close();
+                grpType.Visible = true;
             }
-            dr.Close();
-            grpType.Visible = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -81,8 +84,9 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            seatType = new SeatType("FR - Front Row", txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType = new SeatType(cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
+            seatType.updateSeatType();
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message

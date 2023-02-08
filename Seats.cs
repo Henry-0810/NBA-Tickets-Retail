@@ -9,7 +9,7 @@ namespace NBA_Tickets_Retail
         private string _SeatID;
         private string _TypeCode;
         private string _Status;
-        private static int count = 1;
+        private static int count = 0;
 
         public Seats()
         {
@@ -19,7 +19,16 @@ namespace NBA_Tickets_Retail
         }
         public Seats(string typeCode, string status)
         {
-            SeatID = typeCode + " - " + (count++.ToString());
+            SeatID = typeCode + " - ";
+            if(count == 100)
+            {
+                count = 1;
+                SeatID += count;
+            }
+            else
+            {
+                SeatID += (++count).ToString();
+            }
             TypeCode = typeCode;
             Status = status;
         }

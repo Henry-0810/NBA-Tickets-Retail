@@ -9,7 +9,12 @@ namespace NBA_Tickets_Retail
         private string _TypeCode;
         private string _description;
         private double _price;
-
+        //My seat types in database
+        //LLS - Lower-Level Sideline, ideal angle for game action - 250
+        //CS - Courtside, expensive but nearest to the players - 800
+        //CL - Club-Level seats, exclusive lounges, bars - 950
+        //UPS - Upper-Level Sideline, budget but elegant - 150
+        //BTB - Behind the basket, best seats for families - 200
         public SeatType(string typeCode, string description, double price)
         {
             TypeCode = typeCode;
@@ -46,24 +51,17 @@ namespace NBA_Tickets_Retail
             
         }
 
-        public string[] retrieveSeatType()
+        public void updateSeatType()
         {
-            List<string> typeCodeName = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT Type_Code FROM SeatType";
+            string sqlQuery = "UPDATE SeatType SET Descriptions = '" +
+                this.Description + "',Price = " +
+                this.Price + " WHERE Type_Code = '" + this.TypeCode +"'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                typeCodeName.Add(dr.GetString(0));
-            }
-            dr.Close();
-            string[] typeCodeArr = typeCodeName.ToArray();
-            return typeCodeArr;
+            cmd.ExecuteNonQuery();
         }
     }
 }
