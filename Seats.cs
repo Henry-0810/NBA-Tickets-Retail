@@ -23,7 +23,7 @@ namespace NBA_Tickets_Retail
             if(count == 100)
             {
                 count = 1;
-                SeatID += count;
+                SeatID += count.ToString();
             }
             else
             {
@@ -50,8 +50,8 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO Seats (Seat_ID, Status, Type_Code) SELECT '" +
-                this.SeatID + "','" + this.Status + "'," + "Type_Code FROM SeatType WHERE Type_Code='" +
+            string sqlQuery = "INSERT INTO Seats (Seat_ID, Type_Code) SELECT '" +
+                this.SeatID + "'," + "Type_Code FROM SeatType WHERE Type_Code='" +
                 this.TypeCode + "'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -59,9 +59,9 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public void changeSeatStatus()
+        public void updateSeatStatus()
         {
-
+        
         }
     }
 }

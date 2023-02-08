@@ -1,8 +1,8 @@
 ﻿using System;
 
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
 using System.Data;
+using Oracle.ManagedDataAccess.Client;
 
 namespace NBA_Tickets_Retail
 {

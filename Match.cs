@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 
 
 namespace NBA_Tickets_Retail
@@ -9,10 +10,11 @@ namespace NBA_Tickets_Retail
         private DateTime _matchTime;
         private String _homeTeam;
         private int _awayTeamID;
+        private static int count = 0;
 
-        public Match(int matchID, DateTime matchTime, int awayTeamID)
+        public Match(DateTime matchTime, int awayTeamID)
         {
-            MatchID = matchID;
+            MatchID = ++count;
             MatchTime = matchTime;
             HomeTeam = "";
             AwayTeamID = awayTeamID;
@@ -35,6 +37,19 @@ namespace NBA_Tickets_Retail
         {
             return "MatchID: " + MatchID + "\nMatch Time " + MatchTime + "\nHome Team: " + 
                 HomeTeam + "\nAway Team: " + AwayTeamID ;
+        }
+
+        public void addMatches()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "INSERT INTO Matches Values (" + this.MatchID +
+                ",'" + this.MatchTime + "', Team_Name FROM Teams WHERE Team_ID = "
+                + this._awayTeamID;
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

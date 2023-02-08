@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NBA_Tickets_Retail
+﻿namespace NBA_Tickets_Retail
 {
     class AwayTeam
     {
