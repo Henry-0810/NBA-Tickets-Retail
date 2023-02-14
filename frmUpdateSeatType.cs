@@ -8,7 +8,7 @@ namespace NBA_Tickets_Retail
     public partial class frmUpdateSeatType : Form
     {
         private static new Form Parent;
-        SeatType seatType;
+        SeatTypes seatType;
         public frmUpdateSeatType(Form parent)
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace NBA_Tickets_Retail
             //Load Seat types
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT Type_Code FROM SeatType";
+            string sqlQuery = "SELECT Type_Code FROM SeatTypes";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -84,7 +84,7 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            seatType = new SeatType(cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType = new SeatTypes(cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
             seatType.updateSeatType();
             //YOU ARE NOT IMPLEMENTING THIS!!!

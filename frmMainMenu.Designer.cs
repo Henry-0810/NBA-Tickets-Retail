@@ -42,6 +42,7 @@
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainMenu = new System.Windows.Forms.MenuStrip();
+            this.addTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picMainMenu)).BeginInit();
             this.mnuMainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +87,8 @@
             // matchesToolStripMenuItem
             // 
             this.matchesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scheduleMatchToolStripMenuItem});
+            this.scheduleMatchToolStripMenuItem,
+            this.addTeamsToolStripMenuItem});
             this.matchesToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
             this.matchesToolStripMenuItem.Size = new System.Drawing.Size(63, 21);
@@ -95,7 +97,7 @@
             // scheduleMatchToolStripMenuItem
             // 
             this.scheduleMatchToolStripMenuItem.Name = "scheduleMatchToolStripMenuItem";
-            this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scheduleMatchToolStripMenuItem.Text = "Schedule Match";
             this.scheduleMatchToolStripMenuItem.Click += new System.EventHandler(this.scheduleMatchToolStripMenuItem_Click);
             // 
@@ -163,6 +165,13 @@
             this.mnuMainMenu.TabIndex = 1;
             this.mnuMainMenu.Text = "menuStrip1";
             // 
+            // addTeamsToolStripMenuItem
+            // 
+            this.addTeamsToolStripMenuItem.Name = "addTeamsToolStripMenuItem";
+            this.addTeamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addTeamsToolStripMenuItem.Text = "Add Teams";
+            this.addTeamsToolStripMenuItem.Click += new System.EventHandler(this.addTeamsToolStripMenuItem_Click);
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +208,7 @@
         private System.Windows.Forms.ToolStripMenuItem returnTicketsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seatsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTeamsToolStripMenuItem;
     }
 }
 

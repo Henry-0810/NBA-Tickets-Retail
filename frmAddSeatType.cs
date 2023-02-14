@@ -7,7 +7,7 @@ namespace NBA_Tickets_Retail
 {
     public partial class frmAddSeatType : Form
     {
-        SeatType seatType;
+        SeatTypes seatType;
         private static new Form Parent;
         public frmAddSeatType(Form parent)
         {
@@ -65,15 +65,22 @@ namespace NBA_Tickets_Retail
             
             //save to class
             //create 100 object in next semester
-            seatType = new SeatType(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
-            seatType.addSeatType();
-            //Save data in database
-            //YOU ARE NOT IMPLEMENTING THIS!!!
+            seatType = new SeatTypes(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            if (SeatTypes.fullCapacity())
+            {
+                MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                seatType.addSeatType();
+                //Save data in database
+                //YOU ARE NOT IMPLEMENTING THIS!!!
 
-            //Display confirmation message
-            MessageBox.Show("Seat Type has Been Created\n" + seatType.ToString() + 
-                "\nSeatID 1-100 has been assigned to " + seatType.TypeCode, "Information", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                //Display confirmation message
+                MessageBox.Show("Seat Type has Been Created\n" + seatType.ToString() +
+                    "\nSeatID 1-100 has been assigned to " + seatType.TypeCode, "Information", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
 
             //Reset UI
             txtTypeCode.Clear();

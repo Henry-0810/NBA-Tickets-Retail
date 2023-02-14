@@ -31,7 +31,10 @@ namespace NBA_Tickets_Retail
             get => _homeTeam;
             set { _homeTeam = "Golden State Warriros"; }
         }
-        public int AwayTeamID { get => _awayTeamID; set => _awayTeamID = value; }
+        public int AwayTeamID { 
+            get => _awayTeamID; 
+            set => _awayTeamID = value; 
+        }
 
         public override string ToString()
         {
@@ -45,7 +48,7 @@ namespace NBA_Tickets_Retail
 
             string sqlQuery = "INSERT INTO Matches Values (" + this.MatchID +
                 ",'" + this.MatchTime + "', Team_Name FROM Teams WHERE Team_ID = "
-                + this._awayTeamID;
+                + this.AwayTeamID;
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 

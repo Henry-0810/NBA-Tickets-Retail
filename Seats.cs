@@ -51,7 +51,7 @@ namespace NBA_Tickets_Retail
             OracleConnection conn = Program.getOracleConnection();
 
             string sqlQuery = "INSERT INTO Seats (Seat_ID, Type_Code) SELECT '" +
-                this.SeatID + "'," + "Type_Code FROM SeatType WHERE Type_Code='" +
+                this.SeatID + "'," + "Type_Code FROM SeatTypes WHERE Type_Code='" +
                 this.TypeCode + "'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);

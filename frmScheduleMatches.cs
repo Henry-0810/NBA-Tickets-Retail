@@ -43,7 +43,7 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            match = new Match(Convert.ToInt32(txtMatchID.Text), dtPickMatchTime.Value, 1);
+            match = new Match( dtPickMatchTime.Value, 1);
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 

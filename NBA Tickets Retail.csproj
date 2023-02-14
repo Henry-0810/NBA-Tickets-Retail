@@ -136,7 +136,7 @@
     <Compile Include="ReturnSales.cs" />
     <Compile Include="Sales.cs" />
     <Compile Include="Seats.cs" />
-    <Compile Include="SeatType.cs" />
+    <Compile Include="SeatTypes.cs" />
     <EmbeddedResource Include="frmAddSeatType.resx">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </EmbeddedResource>

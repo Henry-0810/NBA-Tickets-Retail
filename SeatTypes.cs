@@ -3,7 +3,7 @@
 
 namespace NBA_Tickets_Retail
 {
-    class SeatType
+    class SeatTypes
     {
         private Seats seats;
         private string _TypeCode;
@@ -15,7 +15,7 @@ namespace NBA_Tickets_Retail
         //CL - Club-Level seats, exclusive lounges, bars - 950
         //UPS - Upper-Level Sideline, budget but elegant - 150
         //BTB - Behind the basket, best seats for families - 200
-        public SeatType(string typeCode, string description, double price)
+        public SeatTypes(string typeCode, string description, double price)
         {
             TypeCode = typeCode;
             Description = description;
@@ -35,7 +35,7 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO SeatType Values ('" +
+            string sqlQuery = "INSERT INTO SeatTypes (Type_Code, Description, Price) Values ('" +
                 this.TypeCode + "','" +
                 this.Description + "'," +
                 this.Price + ")";
@@ -43,6 +43,7 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+
             for(int i = 1; i <= 100; i++)
             {
                 seats = new Seats(this.TypeCode.ToString(), "U");
@@ -55,13 +56,38 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "UPDATE SeatType SET Descriptions = '" +
+            string sqlQuery = "UPDATE SeatTypes SET Description = '" +
                 this.Description + "',Price = " +
                 this.Price + " WHERE Type_Code = '" + this.TypeCode +"'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public static bool fullCapacity()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT SUM(Num_Seats) FROM SeatTypes";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                return false;
+            }
+            else
+            {
+                if(dr.GetInt32(0) <= 200)
+                {
+                    return false;
+                }
+                else { return true; }
+            }
         }
     }
 }

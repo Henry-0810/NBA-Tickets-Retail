@@ -63,5 +63,10 @@ namespace NBA_Tickets_Retail
             frmPopulaityAnalysis frmPopulaityAnalysis = new frmPopulaityAnalysis(this);
             frmPopulaityAnalysis.Show();
         }
+
+        private void addTeamsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
