@@ -43,8 +43,8 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
-
-            for(int i = 1; i <= 100; i++)
+            //change from 100 to 99
+            for(int i = 1; i <= 99; i++)
             {
                 seats = new Seats(this.TypeCode.ToString(), "U");
                 seats.addSeat();
@@ -82,7 +82,7 @@ namespace NBA_Tickets_Retail
             }
             else
             {
-                if(dr.GetInt32(0) <= 200)
+                if(dr.GetInt32(0) <= 500)
                 {
                     return false;
                 }
