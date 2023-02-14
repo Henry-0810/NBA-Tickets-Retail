@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -43,7 +44,7 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            match = new Match( dtPickMatchTime.Value, 1);
+            match = new Match( dtPickMatchTime.Value, 1.ToString());
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
@@ -64,9 +65,31 @@ namespace NBA_Tickets_Retail
 
         private void frmScheduleMatch_Load(object sender, EventArgs e)
         {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                if (dr.IsDBNull(0))
+                {
+                    txtMatchID.Text = 1.ToString();
+                }
+                else
+                {
+                    txtMatchID.Text = (Convert.ToInt32(dr.GetInt32(0)) + 1).ToString();
+                }
+            }
+
+            dr.Close();
             cboAwayTeamID.Items.Add(1);
-            txtMatchID.Text = (++count).ToString();
         }
+
+   
     }
 
 }

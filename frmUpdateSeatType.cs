@@ -49,7 +49,7 @@ namespace NBA_Tickets_Retail
             {
                 OracleConnection conn = Program.getOracleConnection();
 
-                string sqlQuery = "SELECT Descriptions, Price FROM SeatType WHERE Type_Code = '" + cboSeatTypes.SelectedItem.ToString() + "'";
+                string sqlQuery = "SELECT Description, Price FROM SeatTypes WHERE Type_Code = '" + cboSeatTypes.SelectedItem.ToString() + "'";
 
                 OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -57,7 +57,7 @@ namespace NBA_Tickets_Retail
 
                 if (dr.Read())
                 {
-                    txtDescription.Text = dr["Descriptions"].ToString();
+                    txtDescription.Text = dr["Description"].ToString();
                     txtPrice.Text = dr["Price"].ToString();
                 }
                 dr.Close();

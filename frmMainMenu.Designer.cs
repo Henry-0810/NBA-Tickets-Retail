@@ -35,6 +35,7 @@
             this.updateSeatTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.matchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleMatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +43,6 @@
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainMenu = new System.Windows.Forms.MenuStrip();
-            this.addTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picMainMenu)).BeginInit();
             this.mnuMainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -73,22 +73,22 @@
             // addSeatTypeToolStripMenuItem
             // 
             this.addSeatTypeToolStripMenuItem.Name = "addSeatTypeToolStripMenuItem";
-            this.addSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.addSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addSeatTypeToolStripMenuItem.Text = "Add Seat Type";
             this.addSeatTypeToolStripMenuItem.Click += new System.EventHandler(this.addSeatTypeToolStripMenuItem_Click);
             // 
             // updateSeatTypeToolStripMenuItem
             // 
             this.updateSeatTypeToolStripMenuItem.Name = "updateSeatTypeToolStripMenuItem";
-            this.updateSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.updateSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateSeatTypeToolStripMenuItem.Text = "Update Seat Type";
             this.updateSeatTypeToolStripMenuItem.Click += new System.EventHandler(this.updateSeatTypeToolStripMenuItem_Click);
             // 
             // matchesToolStripMenuItem
             // 
             this.matchesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scheduleMatchToolStripMenuItem,
-            this.addTeamsToolStripMenuItem});
+            this.addTeamsToolStripMenuItem,
+            this.scheduleMatchToolStripMenuItem});
             this.matchesToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
             this.matchesToolStripMenuItem.Size = new System.Drawing.Size(63, 21);
@@ -100,6 +100,13 @@
             this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scheduleMatchToolStripMenuItem.Text = "Schedule Match";
             this.scheduleMatchToolStripMenuItem.Click += new System.EventHandler(this.scheduleMatchToolStripMenuItem_Click);
+            // 
+            // addTeamsToolStripMenuItem
+            // 
+            this.addTeamsToolStripMenuItem.Name = "addTeamsToolStripMenuItem";
+            this.addTeamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addTeamsToolStripMenuItem.Text = "Add Teams";
+            this.addTeamsToolStripMenuItem.Click += new System.EventHandler(this.addTeamsToolStripMenuItem_Click);
             // 
             // ticketsToolStripMenuItem
             // 
@@ -114,14 +121,14 @@
             // processSalesToolStripMenuItem
             // 
             this.processSalesToolStripMenuItem.Name = "processSalesToolStripMenuItem";
-            this.processSalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.processSalesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.processSalesToolStripMenuItem.Text = "Process Sales";
             this.processSalesToolStripMenuItem.Click += new System.EventHandler(this.processSalesToolStripMenuItem_Click);
             // 
             // returnTicketsToolStripMenuItem
             // 
             this.returnTicketsToolStripMenuItem.Name = "returnTicketsToolStripMenuItem";
-            this.returnTicketsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.returnTicketsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.returnTicketsToolStripMenuItem.Text = "Return Sale";
             this.returnTicketsToolStripMenuItem.Click += new System.EventHandler(this.returnTicketsToolStripMenuItem_Click);
             // 
@@ -164,13 +171,6 @@
             this.mnuMainMenu.Size = new System.Drawing.Size(706, 25);
             this.mnuMainMenu.TabIndex = 1;
             this.mnuMainMenu.Text = "menuStrip1";
-            // 
-            // addTeamsToolStripMenuItem
-            // 
-            this.addTeamsToolStripMenuItem.Name = "addTeamsToolStripMenuItem";
-            this.addTeamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addTeamsToolStripMenuItem.Text = "Add Teams";
-            this.addTeamsToolStripMenuItem.Click += new System.EventHandler(this.addTeamsToolStripMenuItem_Click);
             // 
             // frmMainMenu
             // 

@@ -66,7 +66,9 @@ namespace NBA_Tickets_Retail
 
         private void addTeamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmAddTeams frmAddTeams = new frmAddTeams(this);
+            frmAddTeams.Show();
         }
     }
 }

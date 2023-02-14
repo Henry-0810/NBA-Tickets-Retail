@@ -8,11 +8,11 @@ namespace NBA_Tickets_Retail
     {
         private int _MatchID;
         private DateTime _matchTime;
-        private String _homeTeam;
-        private int _awayTeamID;
+        private string _homeTeam;
+        private string _awayTeamID;
         private static int count = 0;
 
-        public Match(DateTime matchTime, int awayTeamID)
+        public Match(DateTime matchTime, string awayTeamID)
         {
             MatchID = ++count;
             MatchTime = matchTime;
@@ -31,7 +31,7 @@ namespace NBA_Tickets_Retail
             get => _homeTeam;
             set { _homeTeam = "Golden State Warriros"; }
         }
-        public int AwayTeamID { 
+        public string AwayTeamID { 
             get => _awayTeamID; 
             set => _awayTeamID = value; 
         }
@@ -47,8 +47,7 @@ namespace NBA_Tickets_Retail
             OracleConnection conn = Program.getOracleConnection();
 
             string sqlQuery = "INSERT INTO Matches Values (" + this.MatchID +
-                ",'" + this.MatchTime + "', Team_Name FROM Teams WHERE Team_ID = "
-                + this.AwayTeamID;
+                ",'" + this.MatchTime + "','" + this.AwayTeamID + "')";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
