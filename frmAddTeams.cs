@@ -3,8 +3,10 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
+    
     public partial class frmAddTeams : Form
     {
+        AwayTeam teams;
         private static new Form Parent;
         public frmAddTeams(Form parent)
         {
@@ -35,29 +37,37 @@ namespace NBA_Tickets_Retail
             TextBox[] textBoxes = { txtTeamID, txtTeamName };
             Label[] labels = { lblTeamID, lblTeamName };
             //validation
-            if (txtTeamID.Text == null || txtTeamID.Text.Equals(""))
-            {
-                MessageBox.Show("Team ID is blank!!!", "Error!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtTeamID.Focus();
-                return;
-            }
             for(int j = 0; j < textBoxes.Length; j++)
             {
+                string txt = labels[j].Text.ToString().Remove(labels[j].Text.Length - 2);
+                if(textBoxes[j].Text == null || textBoxes[j].Text.Equals(""))
+                {
+                    MessageBox.Show(txt + " is blank!!!", "Error!", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                    textBoxes[j].Focus();
+                    return;
+                }
                 for (int i = 0; i < textBoxes[j].Text.Length; i++)
                 {
                     if (char.IsDigit(textBoxes[j].Text[i]))
                     {
-                        string txt = labels[j].Text.ToString().Remove(labels[j].Text.Length-2);
                         MessageBox.Show(txt + " can only contain letters!!!", "Error!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                            MessageBoxIcon.Error);
                         textBoxes[j].Focus();
                         return;
                     }
                 }
             }
+            //save to class
+            teams = new AwayTeam(txtTeamID.Text.ToString(), txtTeamName.Text.ToString());
+
+            //confirmation message
+            MessageBox.Show("Team: " + teams.TeamName + "added to database","Successfully added", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            return;
             
-       
+
+
         }
     }
 }

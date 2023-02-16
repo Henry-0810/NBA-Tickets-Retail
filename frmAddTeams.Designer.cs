@@ -142,8 +142,11 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.btnViewTeams);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnATback);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAddTeams";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Matches] - [Add Teams]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddTeams_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

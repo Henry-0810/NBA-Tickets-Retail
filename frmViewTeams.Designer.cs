@@ -49,8 +49,11 @@ namespace NBA_Tickets_Retail
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 343);
             this.Controls.Add(this.dgvTeamList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmViewTeams";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Team List";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewTeams_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).EndInit();
