@@ -1,67 +1,66 @@
-﻿
-using Oracle.ManagedDataAccess.Client;
+﻿using Oracle.ManagedDataAccess.Client;
 
 
 namespace NBA_Tickets_Retail
 {
     class Seats
     {
-        private string _SeatID;
+        private MatchSeatStatus seats;
+        private int _seatNum;
         private string _TypeCode;
-        private string _Status;
-        private static int count = 0;
-
-        public Seats()
+       
+        
+        public Seats(int seatNum, string typeCode)
         {
-            SeatID = "0";
-            TypeCode = "None";
-            Status = "U";
-        }
-        public Seats(string typeCode, string status)
-        {
-            SeatID = typeCode + " - ";
-            if(count == 100)
-            {
-                count = 1;
-                SeatID += count.ToString();
-            }
-            else
-            {
-                SeatID += (++count).ToString();
-            }
+            SeatNum = seatNum;
             TypeCode = typeCode;
-            Status = status;
+            
         }
 
-        public string SeatID
-        {
-            get => _SeatID;
-            set { _SeatID = value; }
-        }
+        public int SeatNum { get => _seatNum; set => _seatNum = value; }
         public string TypeCode { get => _TypeCode; set => _TypeCode = value; }
-        public string Status { get => _Status; set => _Status = value; }
+      
 
         public override string ToString()
         {
-            return "SeatID: " + SeatID + "\nTypeCode: " + TypeCode + "\nStatus: " + Status;
+            return "Type Code: " + TypeCode;
         }
 
         public void addSeat()
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO Seats (Seat_ID, Type_Code) SELECT '" +
-                this.SeatID + "'," + "Type_Code FROM SeatTypes WHERE Type_Code='" +
-                this.TypeCode + "'";
+            string sqlQuery = "INSERT INTO Seats (Type_Code) Values ('" +
+                this.TypeCode + "')";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
         }
 
-        public void updateSeatStatus()
+        public static bool fullCapacity()
         {
-        
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT MAX(Seat_Num) FROM Seats";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                return false;
+            }
+            else
+            {
+                if(dr.GetInt32(0) <= 500)
+                {
+                    return false;
+                }
+                else { return true; }
+            }
         }
     }
 }

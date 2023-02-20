@@ -7,7 +7,8 @@ namespace NBA_Tickets_Retail
 {
     public partial class frmAddSeatType : Form
     {
-        SeatTypes seatType;
+        private Seats seat;
+        private SeatTypes seatType;
         private static new Form Parent;
         public frmAddSeatType(Form parent)
         {
@@ -62,25 +63,26 @@ namespace NBA_Tickets_Retail
                     return;
                 }
             }
-            
+
             //save to class
             //create 100 object in next semester
-            seatType = new SeatTypes(Convert.ToInt32(txtNumSeats),txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
-            if (SeatTypes.fullCapacity())
+            seatType = new SeatTypes(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType.addSeatType();
+            for(int i = 1; i <= Convert.ToInt32(txtNumSeats.Text); i++)
             {
-                MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                seat = new Seats(i, txtTypeCode.Text);
+                if (Seats.fullCapacity())
+                {
+                    MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    seat.addSeat();
+                }
             }
-            else
-            {
-                seatType.addSeatType();
-                //Save data in database
-                //YOU ARE NOT IMPLEMENTING THIS!!!
-
-                //Display confirmation message
-                MessageBox.Show("Seat Type has Been Created\n" + seatType.ToString() +
-                    "\nSeatID 1-100 has been assigned to " + seatType.TypeCode, "Information", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
+            //Display confirmation message
+            MessageBox.Show("Seat Type has Been Created\n" + seatType.ToString() + "\nNumber of Seats: " + txtNumSeats.Text, "Information", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
             //Reset UI
             txtTypeCode.Clear();

@@ -1,12 +1,11 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿
 
+using Oracle.ManagedDataAccess.Client;
 
 namespace NBA_Tickets_Retail
 {
     class SeatTypes
     {
-        private Seats seats;
-        private int _seatNum;
         private string _TypeCode;
         private string _description;
         private double _price;
@@ -16,20 +15,16 @@ namespace NBA_Tickets_Retail
         //CL - Club-Level seats, exclusive lounges, bars - 950
         //UPS - Upper-Level Sideline, budget but elegant - 150
         //BTB - Behind the basket, best seats for families - 200
-        public SeatTypes(int seatNum, string typeCode, string description, double price)
+
+        public SeatTypes( string typeCode, string description, double price)
         {
-            SeatNum = seatNum;
             TypeCode = typeCode;
             Description = description;
             Price = price;
         }
-
-        public int SeatNum { get => _seatNum; set => _price = _seatNum; }
         public string TypeCode { get => _TypeCode; set => _TypeCode = value; }
         public string Description { get => _description; set => _description = value; }
         public double Price { get => _price; set => _price = value; }
-
-        
 
         public override string ToString()
         {
@@ -49,43 +44,17 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
         }
-
         public void updateSeatType()
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "UPDATE SeatTypes SET Description = '" +
+            string sqlQuery = "UPDATE Seats SET Description = '" +
                 this.Description + "',Price = " +
-                this.Price + " WHERE Type_Code = '" + this.TypeCode +"'";
+                this.Price + " WHERE Type_Code = '" + this.TypeCode + "'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
-        }
-
-        public static bool fullCapacity()
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = "SELECT SUM(Num_Seats) FROM SeatTypes";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            dr.Read();
-
-            if (dr.IsDBNull(0))
-            {
-                return false;
-            }
-            else
-            {
-                if(dr.GetInt32(0) <= 500)
-                {
-                    return false;
-                }
-                else { return true; }
-            }
         }
     }
 }

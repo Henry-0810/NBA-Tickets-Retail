@@ -8,7 +8,7 @@ namespace NBA_Tickets_Retail
     public partial class frmUpdateSeatType : Form
     {
         private static new Form Parent;
-        SeatTypes seatType;
+        private SeatTypes seatType;
         public frmUpdateSeatType(Form parent)
         {
             InitializeComponent();
@@ -84,7 +84,7 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            seatType = new SeatTypes(1,cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType = new SeatTypes(cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
             seatType.updateSeatType();
             //YOU ARE NOT IMPLEMENTING THIS!!!
