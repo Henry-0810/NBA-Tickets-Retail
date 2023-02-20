@@ -1,9 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
     public partial class frmViewTeams : Form
     {
+        private static List<AwayTeam> allTeams;
         private static new Form Parent;
         public frmViewTeams(Form parent)
         {
@@ -14,6 +16,15 @@ namespace NBA_Tickets_Retail
         private void frmViewTeams_FormClosed(object sender, FormClosedEventArgs e)
         {
             Parent.Visible = true;
+        }
+
+        private void frmViewTeams_Load(object sender, System.EventArgs e)
+        {
+            AwayTeam.viewAllTeams(ref allTeams);
+            foreach(AwayTeam team in allTeams)
+            {
+                dgvTeamList.Rows.Add(team.AwayTeamID, team.TeamName);
+            }
         }
     }
 }

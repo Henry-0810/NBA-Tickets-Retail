@@ -60,13 +60,14 @@ namespace NBA_Tickets_Retail
             }
             //save to class
             teams = new AwayTeam(txtTeamID.Text.ToString(), txtTeamName.Text.ToString());
-
-            //confirmation message
-            MessageBox.Show("Team: " + teams.TeamName + "added to database","Successfully added", MessageBoxButtons.OK,
+            teams.addTeam();
+            //confirmation message 
+            MessageBox.Show("Team: " + teams.TeamName + " added to database","Successfully added", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-            return;
-            
 
+            txtTeamID.Text = "";
+            txtTeamName.Text = "";
+            txtTeamID.Focus();
 
         }
     }

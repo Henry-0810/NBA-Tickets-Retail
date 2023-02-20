@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using System.Collections.Generic;
 
 namespace NBA_Tickets_Retail
 {
@@ -31,6 +32,28 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public static void viewAllTeams(ref List<AwayTeam> allTeams)
+        {
+            allTeams = new List<AwayTeam>();
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT * FROM Teams";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                string team_ID = dr.GetString(0);
+                string team_Name = dr.GetString(1);
+
+                allTeams.Add(new AwayTeam(team_ID, team_Name));
+            }
+
+            dr.Close();
         }
     }
 }

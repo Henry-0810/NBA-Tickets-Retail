@@ -17,40 +17,29 @@ namespace NBA_Tickets_Retail
 
      
         private void btnSubmit_Click(object sender, EventArgs e)
-        {   
+        {
             //check all fields entered
             //type code
-            if(txtTypeCode.Text.Equals(""))
+            TextBox[] textBoxes = { txtTypeCode, txtDescription, txtPrice, txtNumSeats };
+            Label[] labels = { lblTypeCode, lblDesc, lblPrice, lblNumSeats };
+            for (int i = 0; i < textBoxes.Length; i++)
             {
-                MessageBox.Show("Type Code must be Entered", "Error!", MessageBoxButtons.OK,
+                if (textBoxes[i].Text.Equals(""))
+                {
+                    string txt = labels[i].Text.ToString().Remove(labels[i].Text.Length - 1);
+                    MessageBox.Show(txt + " must be Entered", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                txtTypeCode.Focus();
-                return;
+                    txtTypeCode.Focus();
+                    return;
+                }
             }
 
-            //description
-            if(txtDescription.Text.Equals(""))
-            {
-                MessageBox.Show("Description must be Entered", "Error!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtDescription.Focus();
-                return;
-            }
-
-            //price
-            if (txtPrice.Text.Equals(""))
-            {
-                MessageBox.Show("Price is blank!", "Error!", MessageBoxButtons.OK,
-            MessageBoxIcon.Error);
-                txtPrice.Focus();
-                return;
-            }
             double price;
             string strPrice = txtPrice.Text;
             bool valid = double.TryParse(strPrice, out price);
             if (!valid)
             {
-                MessageBox.Show("Price must be an integer", "Error!", MessageBoxButtons.OK,
+                MessageBox.Show("Price must be decimal", "Error!", MessageBoxButtons.OK,
             MessageBoxIcon.Error);
                 txtPrice.Focus();
                 return;
@@ -62,10 +51,21 @@ namespace NBA_Tickets_Retail
                 txtPrice.Focus();
                 return;
             }
+            //check NumSeats is Integer
+            foreach(char ch in txtNumSeats.Text)
+            {
+                if (!char.IsDigit(ch))
+                {
+                    MessageBox.Show(labels[3].Text + " must be integer!", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                    txtNumSeats.Focus();
+                    return;
+                }
+            }
             
             //save to class
             //create 100 object in next semester
-            seatType = new SeatTypes(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType = new SeatTypes(Convert.ToInt32(txtNumSeats),txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             if (SeatTypes.fullCapacity())
             {
                 MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -86,6 +86,7 @@ namespace NBA_Tickets_Retail
             txtTypeCode.Clear();
             txtDescription.Clear(); 
             txtPrice.Text = "0.00";
+            txtNumSeats.Text = "";
             txtTypeCode.Focus();
         }
 

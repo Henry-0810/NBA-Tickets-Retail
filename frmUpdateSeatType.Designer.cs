@@ -40,7 +40,6 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpType.SuspendLayout();
             this.SuspendLayout();
@@ -180,12 +179,6 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // directorySearcher1
-            // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            // 
             // frmUpdateSeatType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +219,5 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
     }
 }
