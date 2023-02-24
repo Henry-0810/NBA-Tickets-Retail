@@ -7,8 +7,7 @@ namespace NBA_Tickets_Retail
    
     public partial class frmScheduleMatch : Form
     {
-        Match match;
-        private static int count = 0;
+        private Match match;
         private static new Form Parent;
         public frmScheduleMatch(Form parent)
         {
@@ -44,7 +43,8 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            match = new Match( dtPickMatchTime.Value, 1.ToString());
+            match = new Match(dtPickMatchTime.Value, cboAwayTeamID.SelectedItem.ToString());
+            match.addMatches();
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
@@ -65,28 +65,25 @@ namespace NBA_Tickets_Retail
 
         private void frmScheduleMatch_Load(object sender, EventArgs e)
         {
+            
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";
+            string sqlQuery = "SELECT Team_ID FROM Teams";
 
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleCommand cmd = new OracleCommand(sqlQuery,conn);
 
             OracleDataReader dr = cmd.ExecuteReader();
 
-            if (dr.Read())
+            while (dr.Read())
             {
-                if (dr.IsDBNull(0))
+                if (!dr.IsDBNull(0))
                 {
-                    txtMatchID.Text = 1.ToString();
-                }
-                else
-                {
-                    txtMatchID.Text = (Convert.ToInt32(dr.GetInt32(0)) + 1).ToString();
+                    string team_ID = dr.GetString(0);
+                    cboAwayTeamID.Items.Add(team_ID);
                 }
             }
 
             dr.Close();
-            cboAwayTeamID.Items.Add(1);
         }
 
    

@@ -14,7 +14,6 @@ namespace NBA_Tickets_Retail
         {
             SeatNum = seatNum;
             TypeCode = typeCode;
-            
         }
 
         public int SeatNum { get => _seatNum; set => _seatNum = value; }
@@ -30,8 +29,7 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO Seats (Type_Code) Values ('" +
-                this.TypeCode + "')";
+            string sqlQuery = "INSERT INTO Seats Values (" + this.SeatNum +  ",'" + this.TypeCode + "')";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -55,12 +53,31 @@ namespace NBA_Tickets_Retail
             }
             else
             {
-                if(dr.GetInt32(0) <= 500)
+                if(dr.GetInt32(0)+1 <= 500)
                 {
                     return false;
                 }
                 else { return true; }
             }
+        }
+
+        public static int getCurrentSeatNum()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT MAX(Seat_Num) FROM Seats";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+            if (dr.IsDBNull(0))
+            {
+                return 0;
+            }
+            int currSeats = dr.GetInt32(0);
+            dr.Close();
+            return currSeats;
         }
     }
 }

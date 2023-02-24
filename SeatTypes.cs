@@ -48,7 +48,7 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "UPDATE Seats SET Description = '" +
+            string sqlQuery = "UPDATE SeatTypes SET Description = '" +
                 this.Description + "',Price = " +
                 this.Price + " WHERE Type_Code = '" + this.TypeCode + "'";
 

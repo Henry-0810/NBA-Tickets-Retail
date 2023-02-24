@@ -26,7 +26,7 @@ namespace NBA_Tickets_Retail
             for (int i = 0; i < textBoxes.Length; i++)
             {
                 if (textBoxes[i].Text.Equals(""))
-                {
+                {   
                     string txt = labels[i].Text.ToString().Remove(labels[i].Text.Length - 1);
                     MessageBox.Show(txt + " must be Entered", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -68,12 +68,16 @@ namespace NBA_Tickets_Retail
             //create 100 object in next semester
             seatType = new SeatTypes(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             seatType.addSeatType();
-            for(int i = 1; i <= Convert.ToInt32(txtNumSeats.Text); i++)
+            int getCurrSeatNum = Seats.getCurrentSeatNum();
+            for(int i = getCurrSeatNum; i < Convert.ToInt32(txtNumSeats.Text)+getCurrSeatNum; i++)
             {
-                seat = new Seats(i, txtTypeCode.Text);
+                seat = new Seats(i+1, txtTypeCode.Text);
                 if (Seats.fullCapacity())
                 {
                     MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    Parent.Visible = true;
+                    return;
                 }
                 else
                 {
@@ -102,7 +106,5 @@ namespace NBA_Tickets_Retail
         {
             Parent.Visible = true;
         }
-
-      
     }
 }
