@@ -1,15 +1,13 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-
+using System.Collections.Generic;
 
 namespace NBA_Tickets_Retail
 {
     class Seats
     {
-        private MatchSeatStatus seats;
         private int _seatNum;
         private string _TypeCode;
        
-        
         public Seats(int seatNum, string typeCode)
         {
             SeatNum = seatNum;
@@ -29,7 +27,7 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO Seats Values (" + this.SeatNum +  ",'" + this.TypeCode + "')";
+            string sqlQuery = $"INSERT INTO Seats Values ({this.SeatNum},'{this.TypeCode}')";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 

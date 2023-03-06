@@ -1,31 +1,36 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
-
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
     class Match
     {
-        private int _MatchID;
-        private DateTime _matchTime;
+        private OracleConnection conn = Program.getOracleConnection();
+        private OracleCommand cmd;
+        private OracleDataReader dr;
+        private MatchSeatStatus matchSeatStatus;
+        private string _MatchID;
+        private string _matchTime;
         private string _homeTeam;
         private string _awayTeamID;
-        private static int count = 0;
 
-        public Match(DateTime matchTime, string awayTeamID)
+        public Match(string matchTime, string awayTeamID)
         {
-            MatchID = ++count;
+            int Count = getPreviousMatchID() + 1;
+            MatchID = "M" + Count.ToString();
             MatchTime = matchTime;
             HomeTeam = "";
             AwayTeamID = awayTeamID;
         }
 
-        public int MatchID
+        public string MatchID
         {
             get => _MatchID;
             set => _MatchID = value;
         }
-        public DateTime MatchTime { get => _matchTime; set => _matchTime = value; }
+        public string MatchTime { get => _matchTime; set => _matchTime = value; }
         public string HomeTeam
         {
             get => _homeTeam;
@@ -44,14 +49,63 @@ namespace NBA_Tickets_Retail
 
         public void addMatches()
         {
-            OracleConnection conn = Program.getOracleConnection();
+            string sqlQuery = $"INSERT INTO Matches Values ('{this.MatchID}'," +
+                $"TO_DATE('{this.MatchTime}','YYYY-MM-DD'),'{this.AwayTeamID}')";
 
-            string sqlQuery = "INSERT INTO Matches Values (" + this.MatchID +
-                ",'" + this.MatchTime + "','" + this.AwayTeamID + "')";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+
+            for(int i = 1; i <= 500; i++)
+            {
+                matchSeatStatus = new MatchSeatStatus("M" + getPreviousMatchID().ToString(), i);
+                matchSeatStatus.addMatchSeatStatus();
+            }
+        }
+
+        public int getPreviousMatchID()
+        {
+            string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";
+
+            cmd = new OracleCommand(sqlQuery, conn);
+
+            dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                if (!dr.IsDBNull(0) && Int32.TryParse(dr.GetString(0).Substring(1),out int value))
+                {
+                    return Convert.ToInt32(dr.GetString(0).Substring(1));
+                }
+                else
+                {
+                    MessageBox.Show("No match ID found, have set match ID as 1", "Getting Match ID",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            dr.Close();
+            return 0;
+        }
+
+        public static void showMatchID(ref List<string> allMatchID)
+        {
+            allMatchID = new List<string>();
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlMatchID = "SELECT Match_ID FROM Matches";
+
+            OracleCommand cmd = new OracleCommand(sqlMatchID, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read() && !dr.IsDBNull(0))
+            {
+                    string matchID = dr.GetString(0);
+
+                    allMatchID.Add(matchID);
+            }
+
+            dr.Close();
         }
     }
 }

@@ -6,62 +6,38 @@ namespace NBA_Tickets_Retail
 {
     class MatchSeatStatus
     {
-        private string _SeatID;
-        private string _TypeCode;
+        private OracleConnection conn = Program.getOracleConnection();
+        private OracleCommand cmd;
+        private string _MSS_ID;
+        private string _Match_ID;
+        private int _Seat_Num;
         private string _Status;
-        private static int count = 0;
 
-        public MatchSeatStatus()
+        public MatchSeatStatus(string match_ID, int seat_Num)
         {
-            SeatID = "0";
-            TypeCode = "None";
-            Status = "U";
-        }
-        public MatchSeatStatus(string typeCode, string status)
-        {
-            SeatID = typeCode + " - ";
-            if(count == 100)
-            {
-                count = 1;
-                SeatID += count.ToString();
-            }
-            else
-            {
-                SeatID += (++count).ToString();
-            }
-            TypeCode = typeCode;
-            Status = status;
+            _MSS_ID = $"{match_ID}-{seat_Num}";
+            _Match_ID = match_ID;
+            _Seat_Num = seat_Num;
+            _Status = "U";
         }
 
-        public string SeatID
-        {
-            get => _SeatID;
-            set { _SeatID = value; }
-        }
-        public string TypeCode { get => _TypeCode; set => _TypeCode = value; }
+        public string MSS_ID { get => _MSS_ID; set => _MSS_ID = value; }
+        public string Match_ID { get => _Match_ID; set => _Match_ID = value; }
+        public int Seat_Num { get => _Seat_Num; set => _Seat_Num = value; }
         public string Status { get => _Status; set => _Status = value; }
 
-        public override string ToString()
+        public void addMatchSeatStatus()
         {
-            return "SeatID: " + SeatID + "\nTypeCode: " + TypeCode + "\nStatus: " + Status;
-        }
+            string sqlQuery = "INSERT INTO MatchSeatStatus (MSS_ID, Match_ID, Seat_Num) VALUES ('" + this.MSS_ID + "','" + this.Match_ID +
+                "'," + this.Seat_Num + ")";
 
-        public void addSeat()
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = "INSERT INTO Seats (Seat_ID, Type_Code) SELECT '" +
-                this.SeatID + "'," + "Type_Code FROM SeatTypes WHERE Type_Code='" +
-                this.TypeCode + "'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
         }
-
         public void updateSeatStatus()
         {
-        
+            
         }
     }
 }

@@ -9,6 +9,9 @@ namespace NBA_Tickets_Retail
     {
         private Match match;
         private static new Form Parent;
+        private OracleConnection conn = Program.getOracleConnection();
+        private OracleCommand cmd;
+        private OracleDataReader dr;
         public frmScheduleMatch(Form parent)
         {
             InitializeComponent();
@@ -43,7 +46,8 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            match = new Match(dtPickMatchTime.Value, cboAwayTeamID.SelectedItem.ToString());
+            match = new Match(dtPickMatchTime.Value.ToString("yyyy-MMM-dd").Substring(0, 11), 
+                cboAwayTeamID.SelectedItem.ToString());
             match.addMatches();
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
@@ -65,14 +69,15 @@ namespace NBA_Tickets_Retail
 
         private void frmScheduleMatch_Load(object sender, EventArgs e)
         {
-            
-            OracleConnection conn = Program.getOracleConnection();
+            dtPickMatchTime.Value = DateTime.Now;
+            dtPickMatchTime.Format = DateTimePickerFormat.Custom;
+            dtPickMatchTime.CustomFormat = "yyyy-MM-dd";
 
             string sqlQuery = "SELECT Team_ID FROM Teams";
 
-            OracleCommand cmd = new OracleCommand(sqlQuery,conn);
+            cmd = new OracleCommand(sqlQuery,conn);
 
-            OracleDataReader dr = cmd.ExecuteReader();
+            dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
