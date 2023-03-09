@@ -18,7 +18,7 @@ namespace NBA_Tickets_Retail
         {
             CustName = custName;
             CustMail = custMail;
-            SalesID = $"S{count++}";
+            SalesID = $"S{++count}";
             Seats = seats;
             SalesDate = salesDate;
             TotalSales = totalSales;
@@ -53,8 +53,8 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO Sales VALUES (@SalesID, @CustName, @CustMail, @Seat1, @Seat2, @Seat3," +
-                "@Seat4, @SalesDate, @TotSales, @MatchID)";
+            string sqlQuery = "INSERT INTO Sales VALUES ('@SalesID', '@CustName', '@CustMail', @Seat1, @Seat2, @Seat3," +
+                "@Seat4, '@SalesDate', @TotSales, '@MatchID')";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 

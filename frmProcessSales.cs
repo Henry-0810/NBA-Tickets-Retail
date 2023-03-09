@@ -13,7 +13,6 @@ namespace NBA_Tickets_Retail
         private static List<double> ChosenSeatNumPrice = new List<double>();
         private static new Form Parent;
         private Sales sale;
-        private double TotalSales = 0;
         private List<int> seatNums = new List<int>();
         public frmProcessSales(Form parent)
         {
@@ -111,7 +110,7 @@ namespace NBA_Tickets_Retail
             //save to class
             for(int i = 0; i < seatTxtBox.Length; i++)
             {
-                if(seatTxtBox[i].Text == null)
+                if(seatTxtBox[i].Text == null || seatTxtBox[i].Text.Equals(""))
                 {
                     seatNums.Add(0);
                 }
