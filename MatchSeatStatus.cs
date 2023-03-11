@@ -28,16 +28,20 @@ namespace NBA_Tickets_Retail
 
         public void addMatchSeatStatus()
         {
-            string sqlQuery = "INSERT INTO MatchSeatStatus (MSS_ID, Match_ID, Seat_Num) VALUES ('" + this.MSS_ID + "','" + this.Match_ID +
-                "'," + this.Seat_Num + ")";
+            string sqlQuery = $"INSERT INTO MatchSeatStatus (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.Match_ID}'" +
+                $",{this.Seat_Num})";
 
             cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
         }
-        public void updateSeatStatus()
+        public void updateSeatStatus(string MatchID, int seatNum)
         {
-            
+            string sqlQuery = $"UPDATE MatchSeatStatus SET Status = 'O' WHERE MSS_ID = '{MatchID}-{seatNum}'";
+
+            cmd = new OracleCommand(sqlQuery, conn);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

@@ -1,10 +1,14 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
     class Sales
     {
+        private OracleConnection conn = Program.getOracleConnection();
+        private OracleCommand cmd;
+        private OracleDataReader dr;
         private string _CustName;
         private string _CustMail;
         private string _salesID;
@@ -12,13 +16,12 @@ namespace NBA_Tickets_Retail
         private DateTime _salesDate;
         private double _totalSales;
         private string _matchID;
-        private static int count = 0;
 
         public Sales(string custName, string custMail, int[] seats, DateTime salesDate, double totalSales, string matchID)
         {
             CustName = custName;
             CustMail = custMail;
-            SalesID = $"S{++count}";
+            SalesID = $"S{(getPreviousSalesID() + 1)}";
             Seats = seats;
             SalesDate = salesDate;
             TotalSales = totalSales;
@@ -39,44 +42,45 @@ namespace NBA_Tickets_Retail
                 "\nMatch ID: " + MatchID + "\nSeat Numbers: ";
             for(int i = 0; i < Seats.Length; i++)
             {
-                if(i == Seats.Length-1)
+                if (i == Seats.Length - 1)
                 {
                     output += Seats[i];
                 }
-                output += Seats[i] + ",";
+                else
+                {
+                    output += Seats[i] + ",";
+                }
             }
-            output += "\nSales Date: " + SalesDate + "\nTotal Sales" + TotalSales;
+            output += "\nSales Date: " + SalesDate + "\nTotal Sales: " + TotalSales;
             return output;
         }
 
         public void addSales(int numPurchasedSeats)
-        {
-            OracleConnection conn = Program.getOracleConnection();
+        { 
+            string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Seat_1, Seat_2, Seat_3, Seat_4, Sales_Date, Total_Sales, Match_ID) " +
+                "VALUES (:SalesID, :CustName, :CustMail, :Seat1, :Seat2, :Seat3, :Seat4, TO_DATE(TO_CHAR(:SalesDate, 'MM/DD/YYYY HH24:MI:SS'), 'MM/DD/YYYY HH24:MI:SS'), :TotSales, :MatchID)";
 
-            string sqlQuery = "INSERT INTO Sales VALUES ('@SalesID', '@CustName', '@CustMail', @Seat1, @Seat2, @Seat3," +
-                "@Seat4, '@SalesDate', @TotSales, '@MatchID')";
+            cmd = new OracleCommand(sqlQuery, conn);
 
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            cmd.Parameters.Add(new OracleParameter("@SalesID", this.SalesID));
-            cmd.Parameters.Add(new OracleParameter("@CustName", this.CustName));
-            cmd.Parameters.Add(new OracleParameter("@CustMail", this.CustMail));
+            cmd.Parameters.Add(new OracleParameter(":SalesID", this.SalesID));
+            cmd.Parameters.Add(new OracleParameter(":CustName", this.CustName));
+            cmd.Parameters.Add(new OracleParameter(":CustMail", this.CustMail));
 
             for (int i = 1; i <= 4; i++)
             {
                 if (i <= numPurchasedSeats)
                 {
-                    cmd.Parameters.Add(new OracleParameter($"@Seat{i}", this.Seats[i - 1]));
+                    cmd.Parameters.Add(new OracleParameter($":Seat{i}", this.Seats[i - 1]));
                 }
                 else
                 {
-                    cmd.Parameters.Add(new OracleParameter($"@Seat{i}", DBNull.Value));
+                    cmd.Parameters.Add(new OracleParameter($":Seat{i}", DBNull.Value));
                 }
             }
 
-            cmd.Parameters.Add(new OracleParameter("@SalesDate", this.SalesDate));
-            cmd.Parameters.Add(new OracleParameter("@TotSales", this.TotalSales));
-            cmd.Parameters.Add(new OracleParameter("@MatchID", this.MatchID));
+            cmd.Parameters.Add(new OracleParameter(":SalesDate", OracleDbType.TimeStamp)).Value = this.SalesDate;
+            cmd.Parameters.Add(new OracleParameter(":TotSales", this.TotalSales));
+            cmd.Parameters.Add(new OracleParameter(":MatchID", this.MatchID));
 
             cmd.ExecuteNonQuery();
         }
@@ -99,6 +103,30 @@ namespace NBA_Tickets_Retail
             if (dr.Read() && !dr.IsDBNull(0))
             {
                 return dr.GetDouble(0);
+            }
+            dr.Close();
+            return 0;
+        }
+
+        public int getPreviousSalesID()
+        {
+            string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales";
+
+            cmd = new OracleCommand(sqlQuery, conn);
+
+            dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                if (!dr.IsDBNull(0) && Int32.TryParse(dr.GetString(0).Substring(1), out int value))
+                {
+                    return Convert.ToInt32(dr.GetString(0).Substring(1));
+                }
+                else
+                {
+                    MessageBox.Show("No sales ID found, have set sales ID as 1", "Getting Sales ID",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             dr.Close();
             return 0;

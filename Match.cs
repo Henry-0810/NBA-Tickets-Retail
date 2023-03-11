@@ -18,8 +18,7 @@ namespace NBA_Tickets_Retail
 
         public Match(string matchTime, string awayTeamID)
         {
-            int Count = getPreviousMatchID() + 1;
-            MatchID = "M" + Count.ToString();
+            MatchID = $"M{(getPreviousMatchID() + 1)}";
             MatchTime = matchTime;
             HomeTeam = "";
             AwayTeamID = awayTeamID;
