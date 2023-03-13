@@ -8,6 +8,7 @@ namespace NBA_Tickets_Retail
     {
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
+        private OracleDataReader dr;
         private string _MSS_ID;
         private string _Match_ID;
         private int _Seat_Num;
@@ -35,13 +36,36 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
         }
-        public void updateSeatStatus(string MatchID, int seatNum)
+
+        public static void updateSeatStatus(string MatchID, int seatNum)
         {
+            OracleConnection conn = Program.getOracleConnection();
+
             string sqlQuery = $"UPDATE MatchSeatStatus SET Status = 'O' WHERE MSS_ID = '{MatchID}-{seatNum}'";
 
-            cmd = new OracleCommand(sqlQuery, conn);
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public static bool checkSeatAvailability(string MatchID, int seatNum)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = $"SELECT Status FROM MatchSeatStatus WHERE MSS_ID = '{MatchID}-{seatNum}'";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            if(dr.Read() && !dr.IsDBNull(0))
+            {
+                string status = dr.GetString(0);
+                if (status.Equals("U")) return true;
+                else return false;
+            }
+            dr.Close();
+            return false;
         }
     }
 }

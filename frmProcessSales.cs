@@ -126,9 +126,25 @@ namespace NBA_Tickets_Retail
             }
             double[] prices = ChosenSeatNumPrice.ToArray();
             double totSales = prices.Sum();
+            //check seats availability
+            for(int i = 0; i < seats.Length; i++)
+            {
+                if (!MatchSeatStatus.checkSeatAvailability(cboMatchID.SelectedIndex.ToString(), seats[i]))
+                {
+                    MessageBox.Show($"Seat Number - {seats[i]} is occupied, please choose another seat", "Seat occupied",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    seatTxtBox[i].Focus();
+                    return;
+                }
+            }
+            //if availability validation done, only create object
             sale = new Sales(txtName.Text,txtEmail.Text,seats,DateTime.Now,totSales,
                 cboMatchID.SelectedItem.ToString());
             sale.addSales(Convert.ToInt32(cboNumSeats.SelectedItem.ToString()));
+            for(int i = 0; i < seats.Length; i++)
+            {
+                MatchSeatStatus.updateSeatStatus(sale.MatchID, sale.Seats[i]);
+            }
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
@@ -188,6 +204,7 @@ namespace NBA_Tickets_Retail
                 textBoxes[i].Enabled = true;
             }
         }
+
         public bool IsValid(string emailaddress)
         {
             try

@@ -35,10 +35,8 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "INSERT INTO SeatTypes (Type_Code, Description, Price) Values ('" +
-                this.TypeCode + "','" +
-                this.Description + "'," +
-                this.Price + ")";
+            string sqlQuery = $"INSERT INTO SeatTypes (Type_Code, Description, Price) Values ('{this.TypeCode}'," +
+                $"'{this.Description}',{this.Price})";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -48,9 +46,8 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "UPDATE SeatTypes SET Description = '" +
-                this.Description + "',Price = " +
-                this.Price + " WHERE Type_Code = '" + this.TypeCode + "'";
+            string sqlQuery = $"UPDATE SeatTypes SET Description = '{this.Description}',Price = {this.Price} " +
+                $"WHERE Type_Code = '{this.TypeCode}'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
