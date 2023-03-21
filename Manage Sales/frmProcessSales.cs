@@ -13,7 +13,7 @@ namespace NBA_Tickets_Retail
         private static List<string> allSeatTypes;
         private static List<double> ChosenSeatNumPrice = new List<double>();
         private static new Form Parent;
-        private Sale sale = null;
+        private Sale sale;
         private List<int> seatNums = new List<int>();
         public frmProcessSales(Form parent)
         {
@@ -61,6 +61,7 @@ namespace NBA_Tickets_Retail
                     }       
                 }
             }
+            /*
             //validation
             TextBox[] seatTxtBox = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
             for (int i = 0; i < cboSeatType.SelectedIndex + 1; i++)
@@ -130,7 +131,7 @@ namespace NBA_Tickets_Retail
             //check seats availability
             for(int i = 0; i < seats.Length; i++)
             {
-                if (MatchSeat.CheckSeatAvailability(cboMatchID.SelectedItem.ToString(), seats[i]) == false)
+                if (MatchSeat.CheckSeatAvailability(cboMatches.SelectedItem.ToString(), seats[i]) == false)
                 {
                     if(seats[i] == 0)
                     {
@@ -145,11 +146,11 @@ namespace NBA_Tickets_Retail
                 {
                     //if availability validation done, only create object
                     sale = new Sale(txtName.Text, txtEmail.Text, seats, DateTime.Now, totSales,
-                        cboMatchID.SelectedItem.ToString());
+                        cboMatches.SelectedItem.ToString());
                     sale.AddSales(Convert.ToInt32(cboSeatType.SelectedItem.ToString()));
                     MatchSeat.UpdateSeatStatus(sale.MatchID, sale.Seats[i]);
                 }
-            }
+            }*/
             //Display confirmation message
             MessageBox.Show("Sales processed\n" + sale.ToString(), "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -159,16 +160,12 @@ namespace NBA_Tickets_Retail
             {
                 txtbox.Clear();
             }
-            cboMatchID.SelectedIndex = -1;
+            cboMatches.SelectedIndex = -1;
             cboSeatType.SelectedIndex = -1;
             cboSeatType.Enabled = false;
-            foreach (TextBox text in seatTxtBox)
-            {
-                text.Clear();
-                text.Enabled = false;
-            }
+            numberOfSeats.Value = 1;
             btnProcess.Enabled = false;
-            cboMatchID.Focus();
+            cboMatches.Focus();
         }
 
         private void FrmProcessSales_Load(object sender, EventArgs e)
@@ -176,7 +173,7 @@ namespace NBA_Tickets_Retail
             Match.ShowMatchID(ref allMatchID);
             foreach (string matchID in allMatchID)
             {
-                cboMatchID.Items.Add(matchID);
+                cboMatches.Items.Add(matchID);
             }
             SeatType.getAllSeatTypes(ref allSeatTypes);
             foreach(string seatType in allSeatTypes)
@@ -185,7 +182,7 @@ namespace NBA_Tickets_Retail
             }
         }
 
-        private void CboMatchID_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboMatches_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboSeatType.Enabled = true;
         }
@@ -195,21 +192,15 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
 
-        private void CboNumSeats_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboSeatTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBox[] textBoxes = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
-            int idx = cboSeatType.SelectedIndex + 1;
-            foreach (TextBox text in textBoxes)
-            {
-                text.Enabled = false;
-            }
+            numberOfSeats.Enabled = true;
+            numberOfSeats.Value = 1;
+            numberOfSeats.Maximum = Sale.getAvailableSeats(cboSeatType.SelectedItem.ToString(),cboMatches.SelectedItem.ToString().Substring(0,2));
             btnProcess.Enabled = true;
-            for(int i = 0; i < idx; i++)
-            {
-                textBoxes[i].Enabled = true;
-            }
+            lblSeatType.Text = $"Seat Type - {cboSeatType.SelectedItem}";
         }
-
+           
         public bool IsValid(string emailaddress)
         {
             try

@@ -19,7 +19,7 @@ namespace NBA_Tickets_Retail
 
         public override string ToString()
         {
-            return "Team ID: " + AwayTeamID + "\nTeam Name: " + TeamName;
+            return AwayTeamID + " - " + TeamName;
         }
 
         public void addTeam()
@@ -39,7 +39,7 @@ namespace NBA_Tickets_Retail
             allTeams = new List<AwayTeam>();
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT * FROM Teams";
+            string sqlQuery = "SELECT * FROM Teams ORDER BY Team_Name";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 

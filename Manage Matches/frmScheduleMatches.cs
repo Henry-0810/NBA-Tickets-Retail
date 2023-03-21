@@ -1,5 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -9,6 +11,7 @@ namespace NBA_Tickets_Retail
     {
         private Match match;
         private static new Form Parent;
+        private static List<AwayTeam> allTeams;
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
         private OracleDataReader dr;
@@ -37,28 +40,28 @@ namespace NBA_Tickets_Retail
             }
 
             //Away Team
-            if(cboAwayTeamID.SelectedIndex == -1)
+            if(cboAwayTeam.SelectedIndex == -1)
             {
                 MessageBox.Show("Away Team ID is blank!", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                cboAwayTeamID.Focus();
+                cboAwayTeam.Focus();
                 return;
             }
 
             //save to class
-            match = new Match(dtPickMatchTime.Value.ToString("yyyy-MMM-dd").Substring(0, 11), 
-                cboAwayTeamID.SelectedItem.ToString());
+            match = new Match(dtPickMatchTime.Value.ToString("yyyy-MMM-dd").Substring(0, 11), txtMatchTime.Text.ToString() ,cboAwayTeam.SelectedItem.ToString().Substring(0,3));
             match.AddMatches();
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message
-            MessageBox.Show("Match has Been Created\n" + match.ToString(), "Information", MessageBoxButtons.OK,
+            MessageBox.Show($"Match has Been Created\n{match}\nAway Team: {cboAwayTeam.SelectedItem.ToString().Substring(6)}", "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             //Reset UI
             dtPickMatchTime.Value = DateTime.Now;
-            cboAwayTeamID.SelectedIndex = -1;
+            txtMatchTime.Clear();
+            cboAwayTeam.SelectedIndex = -1;
             dtPickMatchTime.Focus();
         }
 
@@ -73,25 +76,23 @@ namespace NBA_Tickets_Retail
             dtPickMatchTime.Format = DateTimePickerFormat.Custom;
             dtPickMatchTime.CustomFormat = "yyyy-MM-dd";
 
-            string sqlQuery = "SELECT Team_ID FROM Teams";
-
-            cmd = new OracleCommand(sqlQuery,conn);
-
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            AwayTeam.viewAllTeams(ref allTeams);
+            foreach(AwayTeam awayTeam in allTeams)
             {
-                if (!dr.IsDBNull(0))
-                {
-                    string team_ID = dr.GetString(0);
-                    cboAwayTeamID.Items.Add(team_ID);
-                }
+                cboAwayTeam.Items.Add(awayTeam.ToString());
             }
-
-            dr.Close();
         }
 
-   
+        private void txtMatchTime_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string input = txtMatchTime.Text;
+            DateTime parsedTime;
+            if (!DateTime.TryParseExact(input, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedTime))
+            {
+                MessageBox.Show("Invalid time format. Please enter a valid time in the format 'HH:mm'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
     }
 
 }

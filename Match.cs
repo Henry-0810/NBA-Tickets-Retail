@@ -12,13 +12,15 @@ namespace NBA_Tickets_Retail
         private OracleDataReader dr;
         private MatchSeat matchSeatStatus;
         private string _MatchID;
+        private string _matchDate;
         private string _matchTime;
         private string _homeTeam;
         private string _awayTeamID;
 
-        public Match(string matchTime, string awayTeamID)
+        public Match(string matchDate, string matchTime, string awayTeamID)
         {
             MatchID = $"M{(GetPreviousMatchID() + 1)}";
+            MatchDate = matchDate;
             MatchTime = matchTime;
             HomeTeam = "";
             AwayTeamID = awayTeamID;
@@ -39,17 +41,18 @@ namespace NBA_Tickets_Retail
             get => _awayTeamID; 
             set => _awayTeamID = value; 
         }
+        public string MatchDate { get => _matchDate; set => _matchDate = value; }
 
         public override string ToString()
         {
             return "MatchID: " + MatchID + "\nMatch Time " + MatchTime + "\nHome Team: " + 
-                HomeTeam + "\nAway Team: " + AwayTeamID ;
+                HomeTeam;
         }
 
         public void AddMatches()
         {
             string sqlQuery = $"INSERT INTO Matches Values ('{this.MatchID}'," +
-                $"TO_DATE('{this.MatchTime}','YYYY-MM-DD'),'{this.AwayTeamID}')";
+                $"TO_DATE('{this.MatchDate}','YYYY-MM-DD'),'{this.MatchTime}','{this.AwayTeamID}')";
 
             cmd = new OracleCommand(sqlQuery, conn);
 
@@ -91,10 +94,10 @@ namespace NBA_Tickets_Retail
             allMatchID = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlMatchID = "SELECT m.Match_ID, t.Team_Name FROM Matches m JOIN Teams t ON m.Team_ID = t.Team_ID " +
-                $"WHERE m.Match_Time >= TO_DATE('{DateTime.Today:dd-MMM-yy}', 'dd-MON-yy') ORDER BY t.Team_Name";
+            string sqlQuery = "SELECT m.Match_ID, t.Team_Name FROM Matches m JOIN Teams t ON m.Team_ID = t.Team_ID " +
+                $"WHERE m.Match_Date >= TO_DATE('{DateTime.Today:dd-MMM-yy}', 'dd-MON-yy') ORDER BY t.Team_Name";
 
-            OracleCommand cmd = new OracleCommand(sqlMatchID, conn);
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             OracleDataReader dr = cmd.ExecuteReader();
 

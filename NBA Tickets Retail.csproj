@@ -148,6 +148,7 @@
     <Compile Include="ReturnSales.cs" />
     <Compile Include="Sale.cs" />
     <Compile Include="MatchSeat.cs" />
+    <Compile Include="SaleSeat.cs" />
     <Compile Include="Seat.cs" />
     <Compile Include="SeatType.cs" />
     <EmbeddedResource Include="Manage Seat Types\frmAddSeatType.resx">
