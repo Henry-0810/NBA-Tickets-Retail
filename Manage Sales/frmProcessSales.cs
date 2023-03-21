@@ -33,7 +33,7 @@ namespace NBA_Tickets_Retail
             TextBox[] optionalBoxes = { txtName, txtEmail };
             for (int i = 0; i < optionalBoxes.Length; i++)
             {
-                if(optionalBoxes[i].Text == null || optionalBoxes[i].Text.Equals(""))
+                if(String.IsNullOrEmpty(optionalBoxes[i].Text))
                 {
                     optionalBoxes[0].Text = "Guest";
                     optionalBoxes[1].Text = "-";
@@ -107,7 +107,6 @@ namespace NBA_Tickets_Retail
                     seatTxtBox[i].Focus();
                     return;
                 }
-
             }
             //save to class
             for(int i = 0; i < seatTxtBox.Length; i++)
@@ -152,8 +151,9 @@ namespace NBA_Tickets_Retail
                 }
             }*/
             //Display confirmation message
-            MessageBox.Show("Sales processed\n" + sale.ToString(), "Information", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            //MessageBox.Show("Sales processed\n" + sale.ToString(), "Information", MessageBoxButtons.OK,
+                //MessageBoxIcon.Information);
+            
 
             //Reset UI
             foreach(TextBox txtbox in optionalBoxes)
@@ -166,6 +166,7 @@ namespace NBA_Tickets_Retail
             numberOfSeats.Value = 1;
             btnProcess.Enabled = false;
             cboMatches.Focus();
+            grpBoxCart.Visible = true;
         }
 
         private void FrmProcessSales_Load(object sender, EventArgs e)

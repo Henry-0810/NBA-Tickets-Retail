@@ -30,6 +30,7 @@ namespace NBA_Tickets_Retail
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcessSales));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPSback = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -46,9 +47,15 @@ namespace NBA_Tickets_Retail
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.numberOfSeats = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBoxCart = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seatNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfSeats)).BeginInit();
+            this.grpBoxCart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPSback
@@ -259,15 +266,53 @@ namespace NBA_Tickets_Retail
             0,
             0});
             // 
-            // groupBox1
+            // grpBoxCart
             // 
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(399, 47);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 325);
-            this.groupBox1.TabIndex = 48;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cart";
+            this.grpBoxCart.Controls.Add(this.dataGridView1);
+            this.grpBoxCart.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBoxCart.Location = new System.Drawing.Point(399, 47);
+            this.grpBoxCart.Name = "grpBoxCart";
+            this.grpBoxCart.Size = new System.Drawing.Size(316, 325);
+            this.grpBoxCart.TabIndex = 48;
+            this.grpBoxCart.TabStop = false;
+            this.grpBoxCart.Text = "Cart";
+            this.grpBoxCart.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TypeCode,
+            this.seatNum,
+            this.Price});
+            this.dataGridView1.Location = new System.Drawing.Point(6, 46);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(304, 195);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // TypeCode
+            // 
+            this.TypeCode.HeaderText = "Seat Type";
+            this.TypeCode.Name = "TypeCode";
+            // 
+            // seatNum
+            // 
+            this.seatNum.HeaderText = "Seat Number";
+            this.seatNum.Name = "seatNum";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
             // 
             // frmProcessSales
             // 
@@ -276,7 +321,7 @@ namespace NBA_Tickets_Retail
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(768, 461);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpBoxCart);
             this.Controls.Add(this.numberOfSeats);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -302,6 +347,8 @@ namespace NBA_Tickets_Retail
             this.Load += new System.EventHandler(this.FrmProcessSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfSeats)).EndInit();
+            this.grpBoxCart.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +372,10 @@ namespace NBA_Tickets_Retail
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numberOfSeats;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBoxCart;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn seatNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
     }
 }
