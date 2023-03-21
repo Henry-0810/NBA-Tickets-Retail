@@ -1,22 +1,23 @@
 ﻿
 
 using Oracle.ManagedDataAccess.Client;
+using System.Collections.Generic;
 
 namespace NBA_Tickets_Retail
 {
-    class SeatTypes
+    class SeatType
     {
         private string _TypeCode;
         private string _description;
         private double _price;
         //My seat types in database
-        //LLS - Lower-Level Sideline, ideal angle for game action - 250 - 80
-        //CS - Courtside, expensive but nearest to the players - 800 - 100
-        //CL - Club-Level seats, exclusive lounges, bars - 950 - 60
-        //UPS - Upper-Level Sideline, budget but elegant - 150 - 130
-        //BTB - Behind the basket, best seats for families - 200 - 130
+        //LLS - Lower-Level Sideline, ideal angle for game action - 250 - 10
+        //CS - Courtside, expensive but nearest to the players - 800 - 10
+        //CL - Club-Level seats, exclusive lounges, bars - 950 - 10
+        //UPS - Upper-Level Sideline, budget but elegant - 150 - 10
+        //BTB - Behind the basket, best seats for families - 200 - 10
 
-        public SeatTypes( string typeCode, string description, double price)
+        public SeatType( string typeCode, string description, double price)
         {
             TypeCode = typeCode;
             Description = description;
@@ -52,6 +53,27 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public static void getAllSeatTypes(ref List<string> allSeatTypes)
+        {
+            allSeatTypes = new List<string>();
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT Type_Code FROM SeatTypes";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read() && !dr.IsDBNull(0))
+            {
+                string seatType = dr.GetString(0);
+
+                allSeatTypes.Add(seatType);
+            }
+
+            dr.Close();
         }
     }
 }

@@ -10,9 +10,10 @@ namespace NBA_Tickets_Retail
     public partial class frmProcessSales : Form
     {
         private static List<string> allMatchID;
+        private static List<string> allSeatTypes;
         private static List<double> ChosenSeatNumPrice = new List<double>();
         private static new Form Parent;
-        private Sales sale = null;
+        private Sale sale = null;
         private List<int> seatNums = new List<int>();
         public frmProcessSales(Form parent)
         {
@@ -62,7 +63,7 @@ namespace NBA_Tickets_Retail
             }
             //validation
             TextBox[] seatTxtBox = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
-            for (int i = 0; i < cboNumSeats.SelectedIndex + 1; i++)
+            for (int i = 0; i < cboSeatType.SelectedIndex + 1; i++)
             { 
                 string txtBox = seatTxtBox[i].Text;
                 //check null
@@ -122,14 +123,14 @@ namespace NBA_Tickets_Retail
             int[] seats = seatNums.ToArray();
             for(int i = 0; i < seats.Length; i++)
             {
-                ChosenSeatNumPrice.Add(Sales.GetSeatPrice(seats[i]));
+                ChosenSeatNumPrice.Add(Sale.GetSeatPrice(seats[i]));
             }
             double[] prices = ChosenSeatNumPrice.ToArray();
             double totSales = prices.Sum();
             //check seats availability
             for(int i = 0; i < seats.Length; i++)
             {
-                if (MatchSeatStatus.CheckSeatAvailability(cboMatchID.SelectedItem.ToString(), seats[i]) == false)
+                if (MatchSeat.CheckSeatAvailability(cboMatchID.SelectedItem.ToString(), seats[i]) == false)
                 {
                     if(seats[i] == 0)
                     {
@@ -143,10 +144,10 @@ namespace NBA_Tickets_Retail
                 else
                 {
                     //if availability validation done, only create object
-                    sale = new Sales(txtName.Text, txtEmail.Text, seats, DateTime.Now, totSales,
+                    sale = new Sale(txtName.Text, txtEmail.Text, seats, DateTime.Now, totSales,
                         cboMatchID.SelectedItem.ToString());
-                    sale.AddSales(Convert.ToInt32(cboNumSeats.SelectedItem.ToString()));
-                    MatchSeatStatus.UpdateSeatStatus(sale.MatchID, sale.Seats[i]);
+                    sale.AddSales(Convert.ToInt32(cboSeatType.SelectedItem.ToString()));
+                    MatchSeat.UpdateSeatStatus(sale.MatchID, sale.Seats[i]);
                 }
             }
             //Display confirmation message
@@ -159,8 +160,8 @@ namespace NBA_Tickets_Retail
                 txtbox.Clear();
             }
             cboMatchID.SelectedIndex = -1;
-            cboNumSeats.SelectedIndex = -1;
-            cboNumSeats.Enabled = false;
+            cboSeatType.SelectedIndex = -1;
+            cboSeatType.Enabled = false;
             foreach (TextBox text in seatTxtBox)
             {
                 text.Clear();
@@ -177,13 +178,16 @@ namespace NBA_Tickets_Retail
             {
                 cboMatchID.Items.Add(matchID);
             }
-
-            cboNumSeats.Items.AddRange(new object[] { 1, 2, 3, 4 });
+            SeatType.getAllSeatTypes(ref allSeatTypes);
+            foreach(string seatType in allSeatTypes)
+            {
+                cboSeatType.Items.Add(seatType);
+            }
         }
 
         private void CboMatchID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboNumSeats.Enabled = true;
+            cboSeatType.Enabled = true;
         }
 
         private void FrmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
@@ -194,7 +198,7 @@ namespace NBA_Tickets_Retail
         private void CboNumSeats_SelectedIndexChanged(object sender, EventArgs e)
         {
             TextBox[] textBoxes = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
-            int idx = cboNumSeats.SelectedIndex + 1;
+            int idx = cboSeatType.SelectedIndex + 1;
             foreach (TextBox text in textBoxes)
             {
                 text.Enabled = false;

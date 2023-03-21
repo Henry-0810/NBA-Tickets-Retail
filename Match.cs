@@ -10,7 +10,7 @@ namespace NBA_Tickets_Retail
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
         private OracleDataReader dr;
-        private MatchSeatStatus matchSeatStatus;
+        private MatchSeat matchSeatStatus;
         private string _MatchID;
         private string _matchTime;
         private string _homeTeam;
@@ -55,9 +55,9 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
 
-            for(int i = 1; i <= 500; i++)
+            for(int i = 1; i <= 50; i++)
             {
-                matchSeatStatus = new MatchSeatStatus("M" + GetPreviousMatchID().ToString(), i);
+                matchSeatStatus = new MatchSeat("M" + GetPreviousMatchID().ToString(), i);
                 matchSeatStatus.AddMatchSeatStatus();
             }
         }
@@ -91,16 +91,17 @@ namespace NBA_Tickets_Retail
             allMatchID = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlMatchID = "SELECT Match_ID FROM Matches";
+            string sqlMatchID = "SELECT m.Match_ID, t.Team_Name FROM Matches m JOIN Teams t ON m.Team_ID = t.Team_ID " +
+                $"WHERE m.Match_Time >= TO_DATE('{DateTime.Today:dd-MMM-yy}', 'dd-MON-yy') ORDER BY t.Team_Name";
 
             OracleCommand cmd = new OracleCommand(sqlMatchID, conn);
 
             OracleDataReader dr = cmd.ExecuteReader();
 
-            while (dr.Read() && !dr.IsDBNull(0))
+            while (dr.Read())
             {
-                    string matchID = dr.GetString(0);
-
+                    string matchID = $"{dr.GetString(0)} - {dr.GetString(1)}";
+                    
                     allMatchID.Add(matchID);
             }
 

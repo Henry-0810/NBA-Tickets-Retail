@@ -3,7 +3,7 @@ using System;
 
 namespace NBA_Tickets_Retail
 {
-    class MatchSeatStatus
+    class MatchSeat
     {
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
@@ -13,7 +13,7 @@ namespace NBA_Tickets_Retail
         private int _Seat_Num;
         private string _Status;
 
-        public MatchSeatStatus(string match_ID, int seat_Num)
+        public MatchSeat(string match_ID, int seat_Num)
         {
             _MSS_ID = $"{match_ID}-{seat_Num}";
             _Match_ID = match_ID;
@@ -28,7 +28,7 @@ namespace NBA_Tickets_Retail
 
         public void AddMatchSeatStatus()
         {
-            string sqlQuery = $"INSERT INTO MatchSeatStatus (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.Match_ID}'" +
+            string sqlQuery = $"INSERT INTO MatchSeats (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.Match_ID}'" +
                 $",{this.Seat_Num})";
 
             cmd = new OracleCommand(sqlQuery, conn);
@@ -40,7 +40,7 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = $"UPDATE MatchSeatStatus SET Status = 'O' WHERE MSS_ID = '{MatchID}-{seatNum}'";
+            string sqlQuery = $"UPDATE MatchSeats SET Status = 'O' WHERE MSS_ID = '{MatchID}-{seatNum}'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -51,7 +51,7 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = $"SELECT Status FROM MatchSeatStatus WHERE MSS_ID = '{MatchID}-{seatNum}'";
+            string sqlQuery = $"SELECT Status FROM MatchSeats WHERE MSS_ID = '{MatchID}-{seatNum}'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 

@@ -2,12 +2,12 @@
 
 namespace NBA_Tickets_Retail
 {
-    class Seats
+    class Seat
     {
         private int _seatNum;
         private string _TypeCode;
        
-        public Seats(int seatNum, string typeCode)
+        public Seat(int seatNum, string typeCode)
         {
             SeatNum = seatNum;
             TypeCode = typeCode;
@@ -50,7 +50,7 @@ namespace NBA_Tickets_Retail
             }
             else
             {
-                if(dr.GetInt32(0)+1 <= 500)
+                if(dr.GetInt32(0)+1 <= 50)
                 {
                     return false;
                 }

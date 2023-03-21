@@ -38,7 +38,7 @@ namespace NBA_Tickets_Retail
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cboMatchID = new System.Windows.Forms.ComboBox();
-            this.cboNumSeats = new System.Windows.Forms.ComboBox();
+            this.cboSeatType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@ namespace NBA_Tickets_Retail
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(28, 280);
+            this.label2.Location = new System.Drawing.Point(28, 298);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 23);
@@ -97,8 +97,8 @@ namespace NBA_Tickets_Retail
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(315, 379);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(669, 377);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(88, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -112,7 +112,7 @@ namespace NBA_Tickets_Retail
             this.btnProcess.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcess.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnProcess.Location = new System.Drawing.Point(154, 391);
-            this.btnProcess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProcess.Margin = new System.Windows.Forms.Padding(2);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(85, 29);
             this.btnProcess.TabIndex = 4;
@@ -142,9 +142,9 @@ namespace NBA_Tickets_Retail
             this.label5.Location = new System.Drawing.Point(28, 219);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(201, 23);
+            this.label5.Size = new System.Drawing.Size(146, 23);
             this.label5.TabIndex = 31;
-            this.label5.Text = "Choose number of seats:";
+            this.label5.Text = "Choose seat type:";
             // 
             // cboMatchID
             // 
@@ -152,24 +152,24 @@ namespace NBA_Tickets_Retail
             this.cboMatchID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMatchID.FormattingEnabled = true;
             this.cboMatchID.Location = new System.Drawing.Point(122, 178);
-            this.cboMatchID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboMatchID.Margin = new System.Windows.Forms.Padding(2);
             this.cboMatchID.Name = "cboMatchID";
-            this.cboMatchID.Size = new System.Drawing.Size(99, 27);
+            this.cboMatchID.Size = new System.Drawing.Size(208, 27);
             this.cboMatchID.TabIndex = 2;
             this.cboMatchID.SelectedIndexChanged += new System.EventHandler(this.CboMatchID_SelectedIndexChanged);
             // 
-            // cboNumSeats
+            // cboSeatType
             // 
-            this.cboNumSeats.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNumSeats.Enabled = false;
-            this.cboNumSeats.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboNumSeats.FormattingEnabled = true;
-            this.cboNumSeats.Location = new System.Drawing.Point(231, 220);
-            this.cboNumSeats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cboNumSeats.Name = "cboNumSeats";
-            this.cboNumSeats.Size = new System.Drawing.Size(99, 27);
-            this.cboNumSeats.TabIndex = 3;
-            this.cboNumSeats.SelectedIndexChanged += new System.EventHandler(this.CboNumSeats_SelectedIndexChanged);
+            this.cboSeatType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSeatType.Enabled = false;
+            this.cboSeatType.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboSeatType.FormattingEnabled = true;
+            this.cboSeatType.Location = new System.Drawing.Point(178, 219);
+            this.cboSeatType.Margin = new System.Windows.Forms.Padding(2);
+            this.cboSeatType.Name = "cboSeatType";
+            this.cboSeatType.Size = new System.Drawing.Size(102, 27);
+            this.cboSeatType.TabIndex = 3;
+            this.cboSeatType.SelectedIndexChanged += new System.EventHandler(this.CboNumSeats_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -177,7 +177,7 @@ namespace NBA_Tickets_Retail
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(211, 329);
+            this.label3.Location = new System.Drawing.Point(211, 347);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 23);
@@ -190,7 +190,7 @@ namespace NBA_Tickets_Retail
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(211, 280);
+            this.label4.Location = new System.Drawing.Point(211, 298);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 23);
@@ -203,7 +203,7 @@ namespace NBA_Tickets_Retail
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(28, 330);
+            this.label7.Location = new System.Drawing.Point(28, 348);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 23);
@@ -214,7 +214,7 @@ namespace NBA_Tickets_Retail
             // 
             this.txtSeat1.Enabled = false;
             this.txtSeat1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeat1.Location = new System.Drawing.Point(95, 281);
+            this.txtSeat1.Location = new System.Drawing.Point(95, 299);
             this.txtSeat1.MaxLength = 3;
             this.txtSeat1.Name = "txtSeat1";
             this.txtSeat1.Size = new System.Drawing.Size(100, 27);
@@ -224,7 +224,7 @@ namespace NBA_Tickets_Retail
             // 
             this.txtSeat2.Enabled = false;
             this.txtSeat2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeat2.Location = new System.Drawing.Point(95, 331);
+            this.txtSeat2.Location = new System.Drawing.Point(95, 349);
             this.txtSeat2.MaxLength = 3;
             this.txtSeat2.Name = "txtSeat2";
             this.txtSeat2.Size = new System.Drawing.Size(100, 27);
@@ -234,7 +234,7 @@ namespace NBA_Tickets_Retail
             // 
             this.txtSeat3.Enabled = false;
             this.txtSeat3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeat3.Location = new System.Drawing.Point(278, 281);
+            this.txtSeat3.Location = new System.Drawing.Point(278, 299);
             this.txtSeat3.MaxLength = 3;
             this.txtSeat3.Name = "txtSeat3";
             this.txtSeat3.Size = new System.Drawing.Size(100, 27);
@@ -244,7 +244,7 @@ namespace NBA_Tickets_Retail
             // 
             this.txtSeat4.Enabled = false;
             this.txtSeat4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeat4.Location = new System.Drawing.Point(278, 330);
+            this.txtSeat4.Location = new System.Drawing.Point(278, 348);
             this.txtSeat4.MaxLength = 3;
             this.txtSeat4.Name = "txtSeat4";
             this.txtSeat4.Size = new System.Drawing.Size(100, 27);
@@ -324,7 +324,7 @@ namespace NBA_Tickets_Retail
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(412, 461);
+            this.ClientSize = new System.Drawing.Size(768, 461);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtName);
@@ -338,7 +338,7 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboNumSeats);
+            this.Controls.Add(this.cboSeatType);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -348,7 +348,7 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPSback);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmProcessSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Tickets] - [Process Sales]";
@@ -370,7 +370,7 @@ namespace NBA_Tickets_Retail
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboMatchID;
-        private System.Windows.Forms.ComboBox cboNumSeats;
+        private System.Windows.Forms.ComboBox cboSeatType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;

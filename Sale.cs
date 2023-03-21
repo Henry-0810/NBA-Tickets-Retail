@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
-    class Sales
+    class Sale
     {
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
@@ -17,7 +17,7 @@ namespace NBA_Tickets_Retail
         private double _totalSales;
         private string _matchID;
 
-        public Sales(string custName, string custMail, int[] seats, DateTime salesDate, double totalSales, string matchID)
+        public Sale(string custName, string custMail, int[] seats, DateTime salesDate, double totalSales, string matchID)
         {
             CustName = custName;
             CustMail = custMail;
