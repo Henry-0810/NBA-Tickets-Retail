@@ -82,16 +82,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AwayTeam.cs" />
-    <Compile Include="frmAddSeatType.cs">
+    <Compile Include="Manage Seat Types\frmAddSeatType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddSeatType.Designer.cs">
+    <Compile Include="Manage Seat Types\frmAddSeatType.Designer.cs">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddTeams.cs">
+    <Compile Include="Manage Matches\frmAddTeams.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddTeams.Designer.cs">
+    <Compile Include="Manage Matches\frmAddTeams.Designer.cs">
       <DependentUpon>frmAddTeams.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainMenu.cs">
@@ -100,46 +100,46 @@
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProcessSales.cs">
+    <Compile Include="Manage Sales\frmProcessSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProcessSales.Designer.cs">
+    <Compile Include="Manage Sales\frmProcessSales.Designer.cs">
       <DependentUpon>frmProcessSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReturnSale.cs">
+    <Compile Include="Manage Sales\frmReturnSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReturnSale.Designer.cs">
+    <Compile Include="Manage Sales\frmReturnSale.Designer.cs">
       <DependentUpon>frmReturnSale.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmScheduleMatches.cs">
+    <Compile Include="Manage Matches\frmScheduleMatches.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmScheduleMatches.Designer.cs">
+    <Compile Include="Manage Matches\frmScheduleMatches.Designer.cs">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPopulaityAnalysis.cs">
+    <Compile Include="Admin\frmPopulaityAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPopulaityAnalysis.Designer.cs">
+    <Compile Include="Admin\frmPopulaityAnalysis.Designer.cs">
       <DependentUpon>frmPopulaityAnalysis.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUpdateSeatType.cs">
+    <Compile Include="Manage Seat Types\frmUpdateSeatType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUpdateSeatType.Designer.cs">
+    <Compile Include="Manage Seat Types\frmUpdateSeatType.Designer.cs">
       <DependentUpon>frmUpdateSeatType.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSeasonalSalesAnalysis.cs">
+    <Compile Include="Admin\frmSeasonalSalesAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSeasonalSalesAnalysis.Designer.cs">
+    <Compile Include="Admin\frmSeasonalSalesAnalysis.Designer.cs">
       <DependentUpon>frmSeasonalSalesAnalysis.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewTeams.cs">
+    <Compile Include="Manage Matches\frmViewTeams.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewTeams.Designer.cs">
+    <Compile Include="Manage Matches\frmViewTeams.Designer.cs">
       <DependentUpon>frmViewTeams.cs</DependentUpon>
     </Compile>
     <Compile Include="Match.cs" />
@@ -150,34 +150,34 @@
     <Compile Include="MatchSeatStatus.cs" />
     <Compile Include="Seats.cs" />
     <Compile Include="SeatTypes.cs" />
-    <EmbeddedResource Include="frmAddSeatType.resx">
+    <EmbeddedResource Include="Manage Seat Types\frmAddSeatType.resx">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddTeams.resx">
+    <EmbeddedResource Include="Manage Matches\frmAddTeams.resx">
       <DependentUpon>frmAddTeams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProcessSales.resx">
+    <EmbeddedResource Include="Manage Sales\frmProcessSales.resx">
       <DependentUpon>frmProcessSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReturnSale.resx">
+    <EmbeddedResource Include="Manage Sales\frmReturnSale.resx">
       <DependentUpon>frmReturnSale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmScheduleMatches.resx">
+    <EmbeddedResource Include="Manage Matches\frmScheduleMatches.resx">
       <DependentUpon>frmScheduleMatches.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPopulaityAnalysis.resx">
+    <EmbeddedResource Include="Admin\frmPopulaityAnalysis.resx">
       <DependentUpon>frmPopulaityAnalysis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateSeatType.resx">
+    <EmbeddedResource Include="Manage Seat Types\frmUpdateSeatType.resx">
       <DependentUpon>frmUpdateSeatType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSeasonalSalesAnalysis.resx">
+    <EmbeddedResource Include="Admin\frmSeasonalSalesAnalysis.resx">
       <DependentUpon>frmSeasonalSalesAnalysis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewTeams.resx">
+    <EmbeddedResource Include="Manage Matches\frmViewTeams.resx">
       <DependentUpon>frmViewTeams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -210,5 +210,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

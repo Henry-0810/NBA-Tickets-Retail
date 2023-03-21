@@ -18,7 +18,7 @@ namespace NBA_Tickets_Retail
 
         public Match(string matchTime, string awayTeamID)
         {
-            MatchID = $"M{(getPreviousMatchID() + 1)}";
+            MatchID = $"M{(GetPreviousMatchID() + 1)}";
             MatchTime = matchTime;
             HomeTeam = "";
             AwayTeamID = awayTeamID;
@@ -46,7 +46,7 @@ namespace NBA_Tickets_Retail
                 HomeTeam + "\nAway Team: " + AwayTeamID ;
         }
 
-        public void addMatches()
+        public void AddMatches()
         {
             string sqlQuery = $"INSERT INTO Matches Values ('{this.MatchID}'," +
                 $"TO_DATE('{this.MatchTime}','YYYY-MM-DD'),'{this.AwayTeamID}')";
@@ -57,12 +57,12 @@ namespace NBA_Tickets_Retail
 
             for(int i = 1; i <= 500; i++)
             {
-                matchSeatStatus = new MatchSeatStatus("M" + getPreviousMatchID().ToString(), i);
-                matchSeatStatus.addMatchSeatStatus();
+                matchSeatStatus = new MatchSeatStatus("M" + GetPreviousMatchID().ToString(), i);
+                matchSeatStatus.AddMatchSeatStatus();
             }
         }
 
-        public int getPreviousMatchID()
+        public int GetPreviousMatchID()
         {
             string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";
 
@@ -86,7 +86,7 @@ namespace NBA_Tickets_Retail
             return 0;
         }
 
-        public static void showMatchID(ref List<string> allMatchID)
+        public static void ShowMatchID(ref List<string> allMatchID)
         {
             allMatchID = new List<string>();
             OracleConnection conn = Program.getOracleConnection();

@@ -21,7 +21,7 @@ namespace NBA_Tickets_Retail
         {
             CustName = custName;
             CustMail = custMail;
-            SalesID = $"S{(getPreviousSalesID() + 1)}";
+            SalesID = $"S{(GetPreviousSalesID() + 1)}";
             Seats = seats;
             SalesDate = salesDate;
             TotalSales = totalSales;
@@ -55,7 +55,7 @@ namespace NBA_Tickets_Retail
             return output;
         }
 
-        public void addSales(int numPurchasedSeats)
+        public void AddSales(int numPurchasedSeats)
         { 
             string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Seat_1, Seat_2, Seat_3, Seat_4, Sales_Date, Total_Sales, Match_ID) " +
                 "VALUES (:SalesID, :CustName, :CustMail, :Seat1, :Seat2, :Seat3, :Seat4, TO_DATE(TO_CHAR(:SalesDate, 'MM/DD/YYYY HH24:MI:SS'), 'MM/DD/YYYY HH24:MI:SS'), :TotSales, :MatchID)";
@@ -85,7 +85,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static double getSeatPrice(int seatNum)
+        public static double GetSeatPrice(int seatNum)
         {
             if(seatNum == 0)
             {
@@ -108,7 +108,7 @@ namespace NBA_Tickets_Retail
             return 0;
         }
 
-        public int getPreviousSalesID()
+        public int GetPreviousSalesID()
         {
             string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales";
 

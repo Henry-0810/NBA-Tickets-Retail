@@ -12,7 +12,7 @@ namespace NBA_Tickets_Retail
         private static List<string> allMatchID;
         private static List<double> ChosenSeatNumPrice = new List<double>();
         private static new Form Parent;
-        private Sales sale;
+        private Sales sale = null;
         private List<int> seatNums = new List<int>();
         public frmProcessSales(Form parent)
         {
@@ -122,32 +122,33 @@ namespace NBA_Tickets_Retail
             int[] seats = seatNums.ToArray();
             for(int i = 0; i < seats.Length; i++)
             {
-                ChosenSeatNumPrice.Add(Sales.getSeatPrice(seats[i]));
+                ChosenSeatNumPrice.Add(Sales.GetSeatPrice(seats[i]));
             }
             double[] prices = ChosenSeatNumPrice.ToArray();
             double totSales = prices.Sum();
             //check seats availability
             for(int i = 0; i < seats.Length; i++)
             {
-                if (!MatchSeatStatus.checkSeatAvailability(cboMatchID.SelectedIndex.ToString(), seats[i]))
+                if (MatchSeatStatus.CheckSeatAvailability(cboMatchID.SelectedItem.ToString(), seats[i]) == false)
                 {
-                    MessageBox.Show($"Seat Number - {seats[i]} is occupied, please choose another seat", "Seat occupied",
+                    if(seats[i] == 0)
+                    {
+                        continue;
+                    }
+                    MessageBox.Show($"Seat Number: {seats[i]} is occupied, please choose another seat", "Seat occupied",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     seatTxtBox[i].Focus();
                     return;
                 }
+                else
+                {
+                    //if availability validation done, only create object
+                    sale = new Sales(txtName.Text, txtEmail.Text, seats, DateTime.Now, totSales,
+                        cboMatchID.SelectedItem.ToString());
+                    sale.AddSales(Convert.ToInt32(cboNumSeats.SelectedItem.ToString()));
+                    MatchSeatStatus.UpdateSeatStatus(sale.MatchID, sale.Seats[i]);
+                }
             }
-            //if availability validation done, only create object
-            sale = new Sales(txtName.Text,txtEmail.Text,seats,DateTime.Now,totSales,
-                cboMatchID.SelectedItem.ToString());
-            sale.addSales(Convert.ToInt32(cboNumSeats.SelectedItem.ToString()));
-            for(int i = 0; i < seats.Length; i++)
-            {
-                MatchSeatStatus.updateSeatStatus(sale.MatchID, sale.Seats[i]);
-            }
-            //Save data in database
-            //YOU ARE NOT IMPLEMENTING THIS!!!
-
             //Display confirmation message
             MessageBox.Show("Sales processed\n" + sale.ToString(), "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -169,9 +170,9 @@ namespace NBA_Tickets_Retail
             cboMatchID.Focus();
         }
 
-        private void frmProcessSales_Load(object sender, EventArgs e)
+        private void FrmProcessSales_Load(object sender, EventArgs e)
         {
-            Match.showMatchID(ref allMatchID);
+            Match.ShowMatchID(ref allMatchID);
             foreach (string matchID in allMatchID)
             {
                 cboMatchID.Items.Add(matchID);
@@ -180,17 +181,17 @@ namespace NBA_Tickets_Retail
             cboNumSeats.Items.AddRange(new object[] { 1, 2, 3, 4 });
         }
 
-        private void cboMatchID_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboMatchID_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboNumSeats.Enabled = true;
         }
 
-        private void frmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
         {
             Parent.Visible = true;
         }
 
-        private void cboNumSeats_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboNumSeats_SelectedIndexChanged(object sender, EventArgs e)
         {
             TextBox[] textBoxes = { txtSeat1, txtSeat2, txtSeat3, txtSeat4 };
             int idx = cboNumSeats.SelectedIndex + 1;

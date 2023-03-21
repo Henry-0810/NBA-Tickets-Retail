@@ -67,12 +67,12 @@ namespace NBA_Tickets_Retail
             //save to class
             //create 100 object in next semester
             seatType = new SeatTypes(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
-            seatType.addSeatType();
-            int getCurrSeatNum = Seats.getCurrentSeatNum();
+            seatType.AddSeatType();
+            int getCurrSeatNum = Seats.GetCurrentSeatNum();
             for(int i = getCurrSeatNum; i < Convert.ToInt32(txtNumSeats.Text)+getCurrSeatNum; i++)
             {
                 seat = new Seats(i+1, txtTypeCode.Text);
-                if (Seats.fullCapacity())
+                if (Seats.FullCapacity())
                 {
                     MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();

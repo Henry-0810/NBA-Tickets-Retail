@@ -1,6 +1,5 @@
-﻿
-using Oracle.ManagedDataAccess.Client;
-
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 
 namespace NBA_Tickets_Retail
 {
@@ -27,7 +26,7 @@ namespace NBA_Tickets_Retail
         public int Seat_Num { get => _Seat_Num; set => _Seat_Num = value; }
         public string Status { get => _Status; set => _Status = value; }
 
-        public void addMatchSeatStatus()
+        public void AddMatchSeatStatus()
         {
             string sqlQuery = $"INSERT INTO MatchSeatStatus (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.Match_ID}'" +
                 $",{this.Seat_Num})";
@@ -37,7 +36,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static void updateSeatStatus(string MatchID, int seatNum)
+        public static void UpdateSeatStatus(string MatchID, int seatNum)
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -48,7 +47,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static bool checkSeatAvailability(string MatchID, int seatNum)
+        public static bool CheckSeatAvailability(string MatchID, int seatNum)
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -58,10 +57,11 @@ namespace NBA_Tickets_Retail
 
             OracleDataReader dr = cmd.ExecuteReader();
 
-            if(dr.Read() && !dr.IsDBNull(0))
+            if(dr.Read())
             {
                 string status = dr.GetString(0);
-                if (status.Equals("U")) return true;
+                Console.WriteLine(status);
+                if (status.Equals("U") || status == null) return true;
                 else return false;
             }
             dr.Close();

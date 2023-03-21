@@ -156,7 +156,7 @@ namespace NBA_Tickets_Retail
             this.cboMatchID.Name = "cboMatchID";
             this.cboMatchID.Size = new System.Drawing.Size(99, 27);
             this.cboMatchID.TabIndex = 2;
-            this.cboMatchID.SelectedIndexChanged += new System.EventHandler(this.cboMatchID_SelectedIndexChanged);
+            this.cboMatchID.SelectedIndexChanged += new System.EventHandler(this.CboMatchID_SelectedIndexChanged);
             // 
             // cboNumSeats
             // 
@@ -169,7 +169,7 @@ namespace NBA_Tickets_Retail
             this.cboNumSeats.Name = "cboNumSeats";
             this.cboNumSeats.Size = new System.Drawing.Size(99, 27);
             this.cboNumSeats.TabIndex = 3;
-            this.cboNumSeats.SelectedIndexChanged += new System.EventHandler(this.cboNumSeats_SelectedIndexChanged);
+            this.cboNumSeats.SelectedIndexChanged += new System.EventHandler(this.CboNumSeats_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -352,8 +352,8 @@ namespace NBA_Tickets_Retail
             this.Name = "frmProcessSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Tickets] - [Process Sales]";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProcessSales_FormClosed);
-            this.Load += new System.EventHandler(this.frmProcessSales_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProcessSales_FormClosed);
+            this.Load += new System.EventHandler(this.FrmProcessSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

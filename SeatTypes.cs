@@ -31,7 +31,7 @@ namespace NBA_Tickets_Retail
             return "Type Code: " + TypeCode + "\nDescription: " + Description + "\nPrice: " + Price;
         }
 
-        public void addSeatType()
+        public void AddSeatType()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -42,7 +42,7 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
         }
-        public void updateSeatType()
+        public void UpdateSeatType()
         {
             OracleConnection conn = Program.getOracleConnection();
 

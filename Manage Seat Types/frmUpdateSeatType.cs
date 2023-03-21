@@ -86,7 +86,7 @@ namespace NBA_Tickets_Retail
             //save to class
             seatType = new SeatTypes(cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
-            seatType.updateSeatType();
+            seatType.UpdateSeatType();
             //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message

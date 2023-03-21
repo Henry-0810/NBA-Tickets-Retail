@@ -1,5 +1,4 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-using System.Collections.Generic;
 
 namespace NBA_Tickets_Retail
 {
@@ -34,7 +33,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static bool fullCapacity()
+        public static bool FullCapacity()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -59,7 +58,7 @@ namespace NBA_Tickets_Retail
             }
         }
 
-        public static int getCurrentSeatNum()
+        public static int GetCurrentSeatNum()
         {
             OracleConnection conn = Program.getOracleConnection();
 
