@@ -22,7 +22,7 @@ namespace NBA_Tickets_Retail
             //const String oradb = "Data Source = localhost/orcl; User Id = C##User; Password = itt12345;";
             conn = new OracleConnection(oradb);
             conn.Open();
-            MessageBox.Show("Database Connection status is " + conn.State.ToString(), "Connection State", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Console.WriteLine("Database Connection status is " + conn.State.ToString(), "Connection State");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMainMenu());

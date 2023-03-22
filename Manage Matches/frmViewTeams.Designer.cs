@@ -41,6 +41,7 @@ namespace NBA_Tickets_Retail
             this.dgvTeamList.AllowUserToAddRows = false;
             this.dgvTeamList.AllowUserToResizeRows = false;
             this.dgvTeamList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvTeamList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTeamList.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvTeamList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvTeamList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -51,6 +52,7 @@ namespace NBA_Tickets_Retail
             this.dgvTeamList.Location = new System.Drawing.Point(0, 0);
             this.dgvTeamList.Name = "dgvTeamList";
             this.dgvTeamList.RowHeadersVisible = false;
+            this.dgvTeamList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvTeamList.Size = new System.Drawing.Size(214, 247);
             this.dgvTeamList.TabIndex = 0;
             // 
@@ -84,8 +86,8 @@ namespace NBA_Tickets_Retail
             this.Name = "frmViewTeams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Team List";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewTeams_FormClosed);
-            this.Load += new System.EventHandler(this.frmViewTeams_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmViewTeams_FormClosed);
+            this.Load += new System.EventHandler(this.FrmViewTeams_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).EndInit();
             this.ResumeLayout(false);
 

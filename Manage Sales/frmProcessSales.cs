@@ -152,9 +152,9 @@ namespace NBA_Tickets_Retail
             }*/
             //Display confirmation message
             //MessageBox.Show("Sales processed\n" + sale.ToString(), "Information", MessageBoxButtons.OK,
-                //MessageBoxIcon.Information);
-            
+            //MessageBoxIcon.Information);
 
+           
             //Reset UI
             foreach(TextBox txtbox in optionalBoxes)
             {

@@ -81,7 +81,7 @@ namespace NBA_Tickets_Retail
                 }
                 else
                 {
-                    seat.addSeat();
+                    seat.AddSeat();
                 }
             }
             //Display confirmation message

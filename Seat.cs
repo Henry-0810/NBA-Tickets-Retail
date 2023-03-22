@@ -22,7 +22,7 @@ namespace NBA_Tickets_Retail
             return "Type Code: " + TypeCode;
         }
 
-        public void addSeat()
+        public void AddSeat()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -75,6 +75,25 @@ namespace NBA_Tickets_Retail
             int currSeats = dr.GetInt32(0);
             dr.Close();
             return currSeats;
+        }
+
+        public static int GetLatestUnoccupiedSeatNum(string seatType, string matchID)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT MIN (Seat_Num) FROM MatchSeats ms JOIN Seats s ON " +
+                $"ms.Seat_Num = s.Seat_Num WHERE s.Type_Code = {seatType} AND ms.Status = 'U' AND ms.Match_ID = {matchID}";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read() && !dr.IsDBNull(0))
+            {
+                return dr.GetInt32(0);
+            }
+
+            return 0;
         }
     }
 }
