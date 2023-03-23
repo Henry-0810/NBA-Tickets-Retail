@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -25,9 +26,13 @@ namespace NBA_Tickets_Retail
             {
                 dgvTeamList.Rows.Add(team.AwayTeamID, team.TeamName);
             }
+            Console.WriteLine(dgvTeamList.Width);
+            Console.WriteLine(dgvTeamList.Height);
+            Console.WriteLine(dgvTeamList.Rows[0].Height);
+          
 
-           
-            
+
+
         }
     }
 }

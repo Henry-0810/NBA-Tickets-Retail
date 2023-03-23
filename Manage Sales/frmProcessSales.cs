@@ -153,10 +153,11 @@ namespace NBA_Tickets_Retail
             //Display confirmation message
             //MessageBox.Show("Sales processed\n" + sale.ToString(), "Information", MessageBoxButtons.OK,
             //MessageBoxIcon.Information);
-
+            int assignedSeat = Seat.GetLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString(), cboMatches.SelectedItem.ToString().Substring(0, 2));
            
+            dgvCart.Rows.Add(cboSeatType.SelectedItem.ToString(), assignedSeat, Sale.GetSeatPrice(assignedSeat));
             //Reset UI
-            foreach(TextBox txtbox in optionalBoxes)
+            foreach (TextBox txtbox in optionalBoxes)
             {
                 txtbox.Clear();
             }
@@ -181,6 +182,8 @@ namespace NBA_Tickets_Retail
             {
                 cboSeatType.Items.Add(seatType);
             }
+            dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCart.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void CboMatches_SelectedIndexChanged(object sender, EventArgs e)
