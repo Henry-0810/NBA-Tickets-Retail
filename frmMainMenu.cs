@@ -21,25 +21,74 @@ namespace NBA_Tickets_Retail
 
         private void updateSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUpdateSeatType frmUpdateSeatType = new frmUpdateSeatType(this);
-            frmUpdateSeatType.Show();
-            Visible = false;
+            if (SeatType.isSeatTypesEmpty() == 0)
+            {
+                MessageBox.Show("Seat Type is empty!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                frmUpdateSeatType frmUpdateSeatType = new frmUpdateSeatType(this);
+                frmUpdateSeatType.Show();
+                Visible = false;
+            }
+                
         }
 
 
         private void scheduleMatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmScheduleMatch frmScheduleMatch = new frmScheduleMatch(this);
-            frmScheduleMatch.Show(); 
+            if(SeatType.isSeatTypesEmpty() == 0)
+            {
+                MessageBox.Show("No Seat Type, must assign team before scheduling match!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                if(AwayTeam.isTeamsEmpty() == 0)
+                {
+                    MessageBox.Show("No Team, must assign team before scheduling match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    this.Hide();
+                    frmScheduleMatch frmScheduleMatch = new frmScheduleMatch(this);
+                    frmScheduleMatch.Show();
+                }
+            }
         }
 
 
         private void processSalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmProcessSales frmProcessSales = new frmProcessSales(this);
-            frmProcessSales.Show();
+            if (SeatType.isSeatTypesEmpty() == 0)
+            {
+                MessageBox.Show("No Seat Type, must assign a seat type before scheduling match!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                if (AwayTeam.isTeamsEmpty() == 0)
+                {
+                    MessageBox.Show("No Team, must assign a team before scheduling match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    if (Match.isMatchEmpty() == 0)
+                    {
+                        MessageBox.Show("No Match, must assign a match before scheduling match!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        this.Hide();
+                        frmProcessSales frmProcessSales = new frmProcessSales(this);
+                        frmProcessSales.Show();
+                    }
+                }
+            }
         }
 
         private void returnTicketsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,6 +118,14 @@ namespace NBA_Tickets_Retail
             this.Hide();
             frmAddTeams frmAddTeams = new frmAddTeams(this);
             frmAddTeams.Show();
+        }
+
+        private void frmMainMenu_Load(object sender, EventArgs e)
+        {
+            if(SeatType.isSeatTypesEmpty() == 0)
+            {
+
+            }
         }
     }
 }

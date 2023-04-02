@@ -1,5 +1,4 @@
-﻿
-using Oracle.ManagedDataAccess.Client;
+﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Windows.Forms;
 
@@ -33,6 +32,7 @@ namespace NBA_Tickets_Retail
                 cboSeatTypes.Items.Add(dr.GetString(0));
             }
             dr.Close();
+            
         }
 
         private void btnUSTback_Click(object sender, EventArgs e)

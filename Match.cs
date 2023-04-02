@@ -110,5 +110,16 @@ namespace NBA_Tickets_Retail
 
             dr.Close();
         }
+
+        public static int isMatchEmpty()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT COUNT(*) FROM Matches";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
     }
 }

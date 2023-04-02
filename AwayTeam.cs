@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 
 namespace NBA_Tickets_Retail
@@ -54,6 +55,17 @@ namespace NBA_Tickets_Retail
             }
 
             dr.Close();
+        }
+
+        public static int isTeamsEmpty()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT COUNT(*) FROM Teams";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }
 }
