@@ -23,7 +23,7 @@ namespace NBA_Tickets_Retail
         {
             if (SeatType.isSeatTypesEmpty() == 0)
             {
-                MessageBox.Show("Seat Type is empty!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Seat Type, must assign seat type before updating one!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
@@ -40,14 +40,14 @@ namespace NBA_Tickets_Retail
         {
             if(SeatType.isSeatTypesEmpty() == 0)
             {
-                MessageBox.Show("No Seat Type, must assign team before scheduling match!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Seat Type, must assign seat type before scheduling a match!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
                 if(AwayTeam.isTeamsEmpty() == 0)
                 {
-                    MessageBox.Show("No Team, must assign team before scheduling match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No Team, must assign team before scheduling a match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
@@ -64,21 +64,21 @@ namespace NBA_Tickets_Retail
         {
             if (SeatType.isSeatTypesEmpty() == 0)
             {
-                MessageBox.Show("No Seat Type, must assign a seat type before scheduling match!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Seat Type, must assign a seat type before processing a sale!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
                 if (AwayTeam.isTeamsEmpty() == 0)
                 {
-                    MessageBox.Show("No Team, must assign a team before scheduling match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No Team, must assign a team before processing a sale!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
-                    if (Match.isMatchEmpty() == 0)
+                    if (Match.isMatchesEmpty() == 0)
                     {
-                        MessageBox.Show("No Match, must assign a match before scheduling match!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No Match, must assign a match before processing a sale!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
@@ -93,39 +93,86 @@ namespace NBA_Tickets_Retail
 
         private void returnTicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmReturnSale frmReturnSale = new frmReturnSale(this);
-            frmReturnSale.Show();
+            if(Sale.isSalesEmpty() == 0){
+                MessageBox.Show("No Sale, must assign a sale before returning a sale!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;          
+            }
+            else
+            {
+                this.Hide();
+                frmReturnSale frmReturnSale = new frmReturnSale(this);
+                frmReturnSale.Show();
+            }
         }
 
 
         private void yearlyRevenueAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmSeasonalSalesAnalysis frmSeasonalAnalysis = new frmSeasonalSalesAnalysis(this);
-            frmSeasonalAnalysis.Show();
+            if (SeatType.isSeatTypesEmpty() == 0)
+            {
+                MessageBox.Show("No Seat Type, must assign a seat type before running a seasonal sales analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                if (AwayTeam.isTeamsEmpty() == 0)
+                {
+                    MessageBox.Show("No Team, must assign a team before running a seasonal sales analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    if (Match.isMatchesEmpty() == 0)
+                    {
+                        MessageBox.Show("No Match, must assign a match before running a seasonal sales analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        this.Hide();
+                        frmSeasonalSalesAnalysis frmSeasonalAnalysis = new frmSeasonalSalesAnalysis(this);
+                        frmSeasonalAnalysis.Show();
+                    }
+                }
+            }
         }
 
         private void seatsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmPopulaityAnalysis frmPopulaityAnalysis = new frmPopulaityAnalysis(this);
-            frmPopulaityAnalysis.Show();
+            if (SeatType.isSeatTypesEmpty() == 0)
+            {
+                MessageBox.Show("No Seat Type, must assign a seat type before running a popularity analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                if (AwayTeam.isTeamsEmpty() == 0)
+                {
+                    MessageBox.Show("No Team, must assign a team before running a popularity analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    if (Match.isMatchesEmpty() == 0)
+                    {
+                        MessageBox.Show("No Match, must assign a match before running a popularity analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else {
+                        this.Hide();
+                        frmPopulaityAnalysis frmPopulaityAnalysis = new frmPopulaityAnalysis(this);
+                        frmPopulaityAnalysis.Show();
+                    }
+                }
+            }
         }
+        
 
         private void addTeamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmAddTeams frmAddTeams = new frmAddTeams(this);
             frmAddTeams.Show();
-        }
-
-        private void frmMainMenu_Load(object sender, EventArgs e)
-        {
-            if(SeatType.isSeatTypesEmpty() == 0)
-            {
-
-            }
         }
     }
 }
