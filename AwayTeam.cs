@@ -57,7 +57,7 @@ namespace NBA_Tickets_Retail
             dr.Close();
         }
 
-        public static int isTeamsEmpty()
+        public static int getTeamsCount()
         {
             OracleConnection conn = Program.getOracleConnection();
 

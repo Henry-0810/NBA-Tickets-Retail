@@ -21,7 +21,7 @@ namespace NBA_Tickets_Retail
 
         private void updateSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SeatType.isSeatTypesEmpty() == 0)
+            if (SeatType.getSeatTypesCount() == 0)
             {
                 MessageBox.Show("No Seat Type, must assign seat type before updating one!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -38,14 +38,14 @@ namespace NBA_Tickets_Retail
 
         private void scheduleMatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(SeatType.isSeatTypesEmpty() == 0)
+            if(SeatType.getSeatTypesCount() == 0)
             {
                 MessageBox.Show("No Seat Type, must assign seat type before scheduling a match!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                if(AwayTeam.isTeamsEmpty() == 0)
+                if(AwayTeam.getTeamsCount() == 0)
                 {
                     MessageBox.Show("No Team, must assign team before scheduling a match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -62,21 +62,21 @@ namespace NBA_Tickets_Retail
 
         private void processSalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SeatType.isSeatTypesEmpty() == 0)
+            if (SeatType.getSeatTypesCount() == 0)
             {
                 MessageBox.Show("No Seat Type, must assign a seat type before processing a sale!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                if (AwayTeam.isTeamsEmpty() == 0)
+                if (AwayTeam.getTeamsCount() == 0)
                 {
                     MessageBox.Show("No Team, must assign a team before processing a sale!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
-                    if (Match.isMatchesEmpty() == 0)
+                    if (Match.getMatchesCount() == 0)
                     {
                         MessageBox.Show("No Match, must assign a match before processing a sale!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -108,21 +108,21 @@ namespace NBA_Tickets_Retail
 
         private void yearlyRevenueAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SeatType.isSeatTypesEmpty() == 0)
+            if (SeatType.getSeatTypesCount() == 0)
             {
                 MessageBox.Show("No Seat Type, must assign a seat type before running a seasonal sales analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                if (AwayTeam.isTeamsEmpty() == 0)
+                if (AwayTeam.getTeamsCount() == 0)
                 {
                     MessageBox.Show("No Team, must assign a team before running a seasonal sales analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
-                    if (Match.isMatchesEmpty() == 0)
+                    if (Match.getMatchesCount() == 0)
                     {
                         MessageBox.Show("No Match, must assign a match before running a seasonal sales analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -139,21 +139,21 @@ namespace NBA_Tickets_Retail
 
         private void seatsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SeatType.isSeatTypesEmpty() == 0)
+            if (SeatType.getSeatTypesCount() == 0)
             {
                 MessageBox.Show("No Seat Type, must assign a seat type before running a popularity analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                if (AwayTeam.isTeamsEmpty() == 0)
+                if (AwayTeam.getTeamsCount() == 0)
                 {
                     MessageBox.Show("No Team, must assign a team before running a popularity analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
-                    if (Match.isMatchesEmpty() == 0)
+                    if (Match.getMatchesCount() == 0)
                     {
                         MessageBox.Show("No Match, must assign a match before running a popularity analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

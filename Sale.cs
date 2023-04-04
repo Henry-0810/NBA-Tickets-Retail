@@ -39,7 +39,7 @@ namespace NBA_Tickets_Retail
         }
 
         public void AddSales(int numPurchasedSeats)
-        { 
+        {
             string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Sales_Date, Total_Sales, Match_ID) " +
                 "VALUES (:SalesID, :CustName, :CustMail, TO_DATE(TO_CHAR(:SalesDate, 'MM/DD/YYYY HH24:MI:SS'), 'MM/DD/YYYY HH24:MI:SS'), :TotSales, :MatchID)";
 
@@ -53,29 +53,6 @@ namespace NBA_Tickets_Retail
             cmd.Parameters.Add(new OracleParameter(":MatchID", this.MatchID));
 
             cmd.ExecuteNonQuery();
-        }
-
-        public static double GetSeatPrice(int seatNum)
-        {
-            if(seatNum == 0)
-            {
-                return 0;
-            }
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlGetPrice = "SELECT st.Price FROM Seats s JOIN SeatTypes st ON s.Type_Code = st.Type_Code " +
-                $"WHERE s.Seat_Num = {seatNum}";
-
-            OracleCommand cmd = new OracleCommand(sqlGetPrice, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read() && !dr.IsDBNull(0))
-            {
-                return dr.GetDouble(0);
-            }
-            dr.Close();
-            return 0;
         }
 
         public static int getAvailableSeats(string seatType, string matchID)

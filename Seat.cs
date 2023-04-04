@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using System;
 
 namespace NBA_Tickets_Retail
 {
@@ -81,8 +82,8 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT MIN (Seat_Num) FROM MatchSeats ms JOIN Seats s ON " +
-                $"ms.Seat_Num = s.Seat_Num WHERE s.Type_Code = {seatType} AND ms.Status = 'U' AND ms.Match_ID = {matchID}";
+            string sqlQuery = "SELECT MIN (ms.Seat_Num) FROM MatchSeats ms JOIN Seats s ON " +
+                $"ms.Seat_Num = s.Seat_Num WHERE s.Type_Code = '{seatType}' AND ms.Status = 'U' AND ms.Match_ID = '{matchID}'";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -94,6 +95,17 @@ namespace NBA_Tickets_Retail
             }
 
             return 0;
+        }
+
+        public static int GetSeatsCount()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT COUNT(*) FROM Seats";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }
 }

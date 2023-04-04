@@ -58,7 +58,7 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
 
-            for(int i = 1; i <= 50; i++)
+            for(int i = 1; i <= Seat.GetSeatsCount(); i++)
             {
                 matchSeatStatus = new MatchSeat("M" + GetPreviousMatchID().ToString(), i);
                 matchSeatStatus.AddMatchSeatStatus();
@@ -111,7 +111,7 @@ namespace NBA_Tickets_Retail
             dr.Close();
         }
 
-        public static int isMatchesEmpty()
+        public static int getMatchesCount()
         {
             OracleConnection conn = Program.getOracleConnection();
 

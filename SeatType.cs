@@ -77,7 +77,7 @@ namespace NBA_Tickets_Retail
             dr.Close();
         }
 
-        public static int isSeatTypesEmpty()
+        public static int getSeatTypesCount()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -86,6 +86,22 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static double getPrice(string seatType)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = $"SELECT Price FROM SeatTypes WHERE Type_Code = '{seatType}'";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            if(dr.Read() && !dr.IsDBNull(0))
+            {
+                return dr.GetDouble(0);
+            }
+            return 0;
         }
     }
 }
