@@ -31,18 +31,17 @@ namespace NBA_Tickets_Retail
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewTeams));
             this.dgvTeamList = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnVTback = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvTeamList
             // 
             this.dgvTeamList.AllowUserToAddRows = false;
+            this.dgvTeamList.AllowUserToDeleteRows = false;
             this.dgvTeamList.AllowUserToResizeColumns = false;
             this.dgvTeamList.AllowUserToResizeRows = false;
             this.dgvTeamList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -57,21 +56,11 @@ namespace NBA_Tickets_Retail
             this.dgvTeamList.Location = new System.Drawing.Point(28, 88);
             this.dgvTeamList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTeamList.Name = "dgvTeamList";
+            this.dgvTeamList.ReadOnly = true;
             this.dgvTeamList.RowHeadersVisible = false;
             this.dgvTeamList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvTeamList.Size = new System.Drawing.Size(341, 314);
+            this.dgvTeamList.Size = new System.Drawing.Size(273, 314);
             this.dgvTeamList.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(383, 315);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 90);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 47;
-            this.pictureBox1.TabStop = false;
             // 
             // btnVTback
             // 
@@ -102,7 +91,7 @@ namespace NBA_Tickets_Retail
             // teamID
             // 
             this.teamID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.teamID.FillWeight = 35.29412F;
+            this.teamID.FillWeight = 47.05883F;
             this.teamID.HeaderText = "Team ID";
             this.teamID.MinimumWidth = 6;
             this.teamID.Name = "teamID";
@@ -112,7 +101,7 @@ namespace NBA_Tickets_Retail
             // teamName
             // 
             this.teamName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.teamName.FillWeight = 74.70589F;
+            this.teamName.FillWeight = 62.94118F;
             this.teamName.HeaderText = "Team Name";
             this.teamName.MinimumWidth = 6;
             this.teamName.Name = "teamName";
@@ -123,10 +112,9 @@ namespace NBA_Tickets_Retail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 417);
+            this.ClientSize = new System.Drawing.Size(329, 417);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVTback);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvTeamList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -138,7 +126,6 @@ namespace NBA_Tickets_Retail
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmViewTeams_FormClosed);
             this.Load += new System.EventHandler(this.FrmViewTeams_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,7 +134,6 @@ namespace NBA_Tickets_Retail
         #endregion
 
         private System.Windows.Forms.DataGridView dgvTeamList;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnVTback;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamID;

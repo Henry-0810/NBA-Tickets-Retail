@@ -30,6 +30,11 @@ namespace NBA_Tickets_Retail
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcessSales));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPSback = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -47,6 +52,7 @@ namespace NBA_Tickets_Retail
             this.label11 = new System.Windows.Forms.Label();
             this.numberOfSeats = new System.Windows.Forms.NumericUpDown();
             this.grpBoxCart = new System.Windows.Forms.GroupBox();
+            this.btnCheckOut = new System.Windows.Forms.Button();
             this.txtTotPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
@@ -54,7 +60,6 @@ namespace NBA_Tickets_Retail
             this.seatNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cancellation = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnCheckOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfSeats)).BeginInit();
             this.grpBoxCart.SuspendLayout();
@@ -246,7 +251,7 @@ namespace NBA_Tickets_Retail
             this.numberOfSeats.Location = new System.Drawing.Point(237, 364);
             this.numberOfSeats.Margin = new System.Windows.Forms.Padding(4);
             this.numberOfSeats.Maximum = new decimal(new int[] {
-            50,
+            4,
             0,
             0,
             0});
@@ -275,11 +280,25 @@ namespace NBA_Tickets_Retail
             this.grpBoxCart.Margin = new System.Windows.Forms.Padding(4);
             this.grpBoxCart.Name = "grpBoxCart";
             this.grpBoxCart.Padding = new System.Windows.Forms.Padding(4);
-            this.grpBoxCart.Size = new System.Drawing.Size(421, 372);
+            this.grpBoxCart.Size = new System.Drawing.Size(485, 372);
             this.grpBoxCart.TabIndex = 48;
             this.grpBoxCart.TabStop = false;
             this.grpBoxCart.Text = "Cart";
             this.grpBoxCart.Visible = false;
+            // 
+            // btnCheckOut
+            // 
+            this.btnCheckOut.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCheckOut.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckOut.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCheckOut.Location = new System.Drawing.Point(354, 310);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(124, 36);
+            this.btnCheckOut.TabIndex = 34;
+            this.btnCheckOut.Text = "CHECKOUT";
+            this.btnCheckOut.UseVisualStyleBackColor = false;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // txtTotPrice
             // 
@@ -306,6 +325,14 @@ namespace NBA_Tickets_Retail
             // dgvCart
             // 
             this.dgvCart.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TypeCode,
@@ -318,13 +345,17 @@ namespace NBA_Tickets_Retail
             this.dgvCart.ReadOnly = true;
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.RowHeadersWidth = 51;
-            this.dgvCart.Size = new System.Drawing.Size(405, 255);
+            this.dgvCart.Size = new System.Drawing.Size(469, 255);
             this.dgvCart.TabIndex = 10;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
             // 
             // TypeCode
             // 
             this.TypeCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TypeCode.DefaultCellStyle = dataGridViewCellStyle2;
+            this.TypeCode.FillWeight = 87.2514F;
             this.TypeCode.HeaderText = "Seat Type";
             this.TypeCode.MinimumWidth = 6;
             this.TypeCode.Name = "TypeCode";
@@ -333,6 +364,10 @@ namespace NBA_Tickets_Retail
             // seatNum
             // 
             this.seatNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.seatNum.DefaultCellStyle = dataGridViewCellStyle3;
+            this.seatNum.FillWeight = 130.9569F;
             this.seatNum.HeaderText = "Seat Number";
             this.seatNum.MinimumWidth = 6;
             this.seatNum.Name = "seatNum";
@@ -341,6 +376,12 @@ namespace NBA_Tickets_Retail
             // Price
             // 
             this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Price.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Price.FillWeight = 106.9519F;
             this.Price.HeaderText = "Price";
             this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
@@ -349,24 +390,14 @@ namespace NBA_Tickets_Retail
             // Cancellation
             // 
             this.Cancellation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancellation.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Cancellation.FillWeight = 74.83984F;
             this.Cancellation.HeaderText = "Cancel";
             this.Cancellation.MinimumWidth = 6;
             this.Cancellation.Name = "Cancellation";
             this.Cancellation.ReadOnly = true;
-            // 
-            // btnCheckOut
-            // 
-            this.btnCheckOut.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCheckOut.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCheckOut.Location = new System.Drawing.Point(289, 313);
-            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(124, 36);
-            this.btnCheckOut.TabIndex = 34;
-            this.btnCheckOut.Text = "CHECKOUT";
-            this.btnCheckOut.UseVisualStyleBackColor = false;
-            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // frmProcessSales
             // 
@@ -429,12 +460,12 @@ namespace NBA_Tickets_Retail
         private System.Windows.Forms.NumericUpDown numberOfSeats;
         private System.Windows.Forms.GroupBox grpBoxCart;
         private System.Windows.Forms.DataGridView dgvCart;
+        private System.Windows.Forms.TextBox txtTotPrice;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn seatNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewButtonColumn Cancellation;
-        private System.Windows.Forms.TextBox txtTotPrice;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCheckOut;
     }
 }

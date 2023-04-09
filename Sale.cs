@@ -38,7 +38,7 @@ namespace NBA_Tickets_Retail
             return $"SalesID: {SalesID}\nCustomer Name: {CustName}\nCustomer Mail: {CustMail}\nMatch ID: {MatchID}\nSales Date: {SalesDate}\nTotal Sales: { TotalSales}";
         }
 
-        public void AddSales(int numPurchasedSeats)
+        public void AddSale()
         {
             string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Sales_Date, Total_Sales, Match_ID) " +
                 "VALUES (:SalesID, :CustName, :CustMail, TO_DATE(TO_CHAR(:SalesDate, 'MM/DD/YYYY HH24:MI:SS'), 'MM/DD/YYYY HH24:MI:SS'), :TotSales, :MatchID)";

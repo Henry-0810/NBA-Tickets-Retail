@@ -9,6 +9,7 @@ namespace NBA_Tickets_Retail
 {
     public partial class frmProcessSales : Form
     {
+        private static int count = 0;
         private static double totPrice = 0;
         private static List<string> allMatchID;
         private static List<string> allSeatTypes;
@@ -63,6 +64,7 @@ namespace NBA_Tickets_Retail
                 }
             }
             int assignedSeat = Seat.GetLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString(), cboMatches.SelectedItem.ToString().Substring(0, 2));
+            Console.WriteLine(assignedSeat);
             string pickedSeats = $"{assignedSeat}";
             for(int i = 1; i <= numberOfSeats.Value-1; i++)
             {
@@ -73,7 +75,7 @@ namespace NBA_Tickets_Retail
             dgvCart.Rows.Add(cboSeatType.SelectedItem.ToString(), pickedSeats,
                 itemPrice);
             totPrice += itemPrice;
-            txtTotPrice.Text = totPrice.ToString();
+            txtTotPrice.Text = totPrice.ToString("0.00");
             //Reset UI
             foreach (TextBox txtbox in optionalBoxes)
             {
@@ -86,6 +88,15 @@ namespace NBA_Tickets_Retail
             cboSeatType.SelectedIndex = -1;
             cboSeatType.Focus();
             grpBoxCart.Visible = true;
+            btnCheckOut.Enabled = true;
+            count++;
+            // Calculate the total height of the header and data rows
+            int headerHeight = dgvCart.ColumnHeadersHeight;
+            int rowsHeight = count * dgvCart.Rows[0].Height;
+
+            // Set the height of the DataGridView to fit the header and data rows
+            dgvCart.Height = headerHeight + rowsHeight + 2;
+            dgvCart.Width = 304;
         }
 
         private void FrmProcessSales_Load(object sender, EventArgs e)
@@ -118,7 +129,6 @@ namespace NBA_Tickets_Retail
             {
                 numberOfSeats.Enabled = true;
                 numberOfSeats.Value = 1;
-                numberOfSeats.Maximum = Sale.getAvailableSeats(cboSeatType.SelectedItem.ToString(), cboMatches.SelectedItem.ToString().Substring(0, 2));
                 btnProcess.Enabled = true;
                 lblSeatType.Text = $"Seat Type - {cboSeatType.SelectedItem}";
             }
@@ -140,23 +150,40 @@ namespace NBA_Tickets_Retail
 
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == dgvCart.Columns["Cancellation"].Index && e.RowIndex >= 0)
-            {
-                totPrice -= Convert.ToDouble(dgvCart.Rows[e.RowIndex].Cells[2].Value);
-                txtTotPrice.Text = totPrice.ToString();
-                cboSeatType.Items.Add(dgvCart.Rows[e.RowIndex].Cells[0].Value.ToString());
-                dgvCart.Rows.RemoveAt(e.RowIndex);
-            }
-
-            if(e.RowIndex == 0)
+            if (e.RowIndex == 0)
             {
                 btnCheckOut.Enabled = false;
+                cboMatches.Enabled = true;
+            }
+
+            if (e.ColumnIndex == dgvCart.Columns["Cancellation"].Index && e.RowIndex >= 0)
+            {
+                count--;
+                int headerHeight = dgvCart.ColumnHeadersHeight;
+                int rowsHeight = count * dgvCart.Rows[e.RowIndex].Height;
+                dgvCart.Height = headerHeight + rowsHeight + 2;
+                totPrice -= Convert.ToDouble(dgvCart.Rows[e.RowIndex].Cells[2].Value);
+                txtTotPrice.Text = totPrice.ToString("0.00");
+                cboSeatType.Items.Add(dgvCart.Rows[e.RowIndex].Cells[0].Value.ToString());
+                dgvCart.Rows.RemoveAt(e.RowIndex);
             }
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-
+            Sale sale = new Sale(txtName.Text.ToString(), txtEmail.Text.ToString(), DateTime.Now, Convert.ToDouble(txtTotPrice.Text), 
+                cboMatches.SelectedItem.ToString().Substring(0, 2));
+            sale.AddSale();
+            foreach(DataGridViewRow row in dgvCart.Rows)
+            {
+                string[] seatNums = row.Cells["seatNum"].Value.ToString().Split(',');
+                int[] seatNumArr = Array.ConvertAll(seatNums, s => int.Parse(s));
+                for(int i = 0; i < seatNumArr.Length; i++)
+                {
+                    SaleSeat saleSeat = new SaleSeat(sale.SalesID, seatNumArr[i]);
+                    saleSeat.addSaleSeat();
+                }
+            }
         }
 
     }

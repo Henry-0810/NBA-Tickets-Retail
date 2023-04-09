@@ -39,7 +39,7 @@ namespace NBA_Tickets_Retail
             int rowsHeight = count * dgvTeamList.Rows[0].Height;
 
             // Set the height of the DataGridView to fit the header and data rows
-            dgvTeamList.Height = headerHeight + rowsHeight;
+            dgvTeamList.Height = headerHeight + rowsHeight + 2;
             dgvTeamList.Width = 210;
 
 
