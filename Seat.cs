@@ -82,8 +82,11 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT MIN (ms.Seat_Num) FROM MatchSeats ms JOIN Seats s ON " +
-                $"ms.Seat_Num = s.Seat_Num WHERE s.Type_Code = '{seatType}' AND ms.Status = 'U' AND ms.Match_ID = '{matchID}'";
+            string sqlQuery = "SELECT MIN(s.Seat_Num) FROM Seats s " + 
+                              "JOIN MatchSeats ms ON s.SEAT_Num = ms.SEAT_Num " + 
+                              "LEFT JOIN SaleSeats ss ON s.SEAT_Num = ss.SEAT_Num " +
+                              $"WHERE s.Type_Code = '{seatType}' AND ms.Status = 'U' AND " +
+                              $"ms.Match_ID = '{matchID}' AND ss.Seat_Num IS NULL";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -106,6 +109,26 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public static int getTotalNumSeatsLeft(string seatType, string matchID)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT COUNT(s.Seat_Num) FROM Seats s " +
+                              "JOIN MatchSeats ms ON s.SEAT_Num = ms.SEAT_Num " +
+                              "LEFT JOIN SaleSeats ss ON s.SEAT_Num = ss.SEAT_Num " +
+                              $"WHERE s.Type_Code = '{seatType}' AND ms.Status = 'U' AND " +
+                              $"ms.Match_ID = '{matchID}' AND ss.Seat_Num IS NULL";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            if(cmd.ExecuteScalar() != null)
+            {
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            return 0;
         }
     }
 }

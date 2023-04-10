@@ -13,7 +13,7 @@ namespace NBA_Tickets_Retail
         private static double totPrice = 0;
         private static List<string> allMatchID;
         private static List<string> allSeatTypes;
-        private static List<double> ChosenSeatNumPrice = new List<double>();
+        private static string[] cboSeatTypeItems;
         private static new Form Parent;
         private Sale sale;
         private List<int> seatNums = new List<int>();
@@ -63,17 +63,15 @@ namespace NBA_Tickets_Retail
                     }       
                 }
             }
-            int assignedSeat = Seat.GetLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString(), cboMatches.SelectedItem.ToString().Substring(0, 2));
-            Console.WriteLine(assignedSeat);
+            int assignedSeat = Seat.GetLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString().Substring(0, 3), 
+                cboMatches.SelectedItem.ToString().Substring(0, 2));
             string pickedSeats = $"{assignedSeat}";
-            for(int i = 1; i <= numberOfSeats.Value-1; i++)
+            double itemPrice = SeatType.getPrice(cboSeatType.SelectedItem.ToString().Substring(0, 3)) * Convert.ToDouble(numberOfSeats.Value);
+            for (int i = 1; i <= numberOfSeats.Value-1; i++)
             {
                 pickedSeats += $", {assignedSeat + i}";
             }
-            Console.WriteLine(pickedSeats);
-            double itemPrice = SeatType.getPrice(cboSeatType.SelectedItem.ToString()) * Convert.ToDouble(numberOfSeats.Value);
-            dgvCart.Rows.Add(cboSeatType.SelectedItem.ToString(), pickedSeats,
-                itemPrice);
+            dgvCart.Rows.Add(cboSeatType.SelectedItem.ToString().Substring(0,3), pickedSeats, itemPrice);
             totPrice += itemPrice;
             txtTotPrice.Text = totPrice.ToString("0.00");
             //Reset UI
@@ -89,14 +87,12 @@ namespace NBA_Tickets_Retail
             cboSeatType.Focus();
             grpBoxCart.Visible = true;
             btnCheckOut.Enabled = true;
+            lblSeatType.Text = "Seat Type";
             count++;
             // Calculate the total height of the header and data rows
             int headerHeight = dgvCart.ColumnHeadersHeight;
             int rowsHeight = count * dgvCart.Rows[0].Height;
-
-            // Set the height of the DataGridView to fit the header and data rows
             dgvCart.Height = headerHeight + rowsHeight + 2;
-            dgvCart.Width = 304;
         }
 
         private void FrmProcessSales_Load(object sender, EventArgs e)
@@ -106,16 +102,28 @@ namespace NBA_Tickets_Retail
             {
                 cboMatches.Items.Add(matchID);
             }
-            SeatType.getAllSeatTypes(ref allSeatTypes);
-            foreach(string seatType in allSeatTypes)
-            {
-                cboSeatType.Items.Add(seatType);
-            }
         }
 
         private void CboMatches_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboSeatType.Enabled = true;
+            SeatType.getAllSeatTypes(ref allSeatTypes);
+            if(cboMatches.SelectedIndex != -1)
+            {
+                foreach (string seatType in allSeatTypes)
+                {
+                    if (Seat.getTotalNumSeatsLeft(seatType.Substring(0, 3), cboMatches.SelectedItem.ToString().Substring(0, 2)) > 0)
+                    {
+                        cboSeatType.Items.Add(seatType);
+                        cboSeatTypeItems = cboSeatType.Items.Cast<string>().ToArray();
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            
         }
 
         private void FrmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
@@ -129,8 +137,19 @@ namespace NBA_Tickets_Retail
             {
                 numberOfSeats.Enabled = true;
                 numberOfSeats.Value = 1;
+                int seatsLeft = Seat.getTotalNumSeatsLeft(cboSeatType.SelectedItem.ToString().Substring(0,3), 
+                    cboMatches.SelectedItem.ToString().Substring(0,2));
+                Console.WriteLine(seatsLeft);
+                if (seatsLeft < 4)
+                {
+                    numberOfSeats.Maximum = seatsLeft;
+                }
+                else
+                {
+                    numberOfSeats.Maximum = 4;
+                }
                 btnProcess.Enabled = true;
-                lblSeatType.Text = $"Seat Type - {cboSeatType.SelectedItem}";
+                lblSeatType.Text = $"Seat Type - {cboSeatType.SelectedItem.ToString().Substring(0,3)}";
             }
         }
            
@@ -150,7 +169,7 @@ namespace NBA_Tickets_Retail
 
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == 0)
+            if (dgvCart.RowCount == 1)
             {
                 btnCheckOut.Enabled = false;
                 cboMatches.Enabled = true;
@@ -164,7 +183,13 @@ namespace NBA_Tickets_Retail
                 dgvCart.Height = headerHeight + rowsHeight + 2;
                 totPrice -= Convert.ToDouble(dgvCart.Rows[e.RowIndex].Cells[2].Value);
                 txtTotPrice.Text = totPrice.ToString("0.00");
-                cboSeatType.Items.Add(dgvCart.Rows[e.RowIndex].Cells[0].Value.ToString());
+                for(int i = 0; i < cboSeatTypeItems.Length; i++)
+                {
+                    if (cboSeatTypeItems[i].Contains(dgvCart.Rows[e.RowIndex].Cells[0].Value.ToString()))
+                    {
+                        cboSeatType.Items.Add(cboSeatTypeItems[i]);
+                    }
+                }
                 dgvCart.Rows.RemoveAt(e.RowIndex);
             }
         }
@@ -182,9 +207,37 @@ namespace NBA_Tickets_Retail
                 {
                     SaleSeat saleSeat = new SaleSeat(sale.SalesID, seatNumArr[i]);
                     saleSeat.addSaleSeat();
+                    MatchSeat.UpdateSeatStatus(sale.MatchID,seatNumArr[i]);
                 }
             }
-        }
 
+            MessageBox.Show("Succesfully purcahse seats", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //reset UI
+            // Recalculate and set height of DataGridView
+            int headerHeight = dgvCart.ColumnHeadersHeight;
+            int rowsHeight = count * dgvCart.Rows[0].Height;
+            dgvCart.Height = headerHeight + rowsHeight + 2;
+
+            // Update count
+            count--;
+            txtName.Clear();
+            txtEmail.Clear();
+            cboMatches.SelectedIndex = -1;
+            cboMatches.Enabled = true;
+            cboSeatType.SelectedIndex = -1;
+            cboSeatType.Enabled = false;
+            cboSeatType.Items.Clear();
+            numberOfSeats.Value = 1;
+            numberOfSeats.Enabled = false;
+            dgvCart.Rows.Clear();
+            dgvCart.Height = dgvCart.ColumnHeadersHeight;
+            dgvCart.Refresh();
+            totPrice = 0;
+            txtTotPrice.Text = $"{totPrice}";
+            grpBoxCart.Visible = false;
+            btnProcess.Enabled = false;
+            btnCheckOut.Enabled = false;
+            lblSeatType.Text = "Seat Type";
+        }
     }
 }

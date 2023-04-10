@@ -61,7 +61,7 @@ namespace NBA_Tickets_Retail
             allSeatTypes = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT Type_Code FROM SeatTypes";
+            string sqlQuery = "SELECT Type_Code, Description FROM SeatTypes";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -69,7 +69,7 @@ namespace NBA_Tickets_Retail
 
             while (dr.Read() && !dr.IsDBNull(0))
             {
-                string seatType = dr.GetString(0);
+                string seatType = $"{dr.GetString(0)} - {dr.GetString(1)}";
 
                 allSeatTypes.Add(seatType);
             }

@@ -46,26 +46,5 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
         }
-
-        public static bool CheckSeatAvailability(string MatchID, int seatNum)
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = $"SELECT Status FROM MatchSeats WHERE MSS_ID = '{MatchID}-{seatNum}'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if(dr.Read())
-            {
-                string status = dr.GetString(0);
-                Console.WriteLine(status);
-                if (status.Equals("U") || status == null) return true;
-                else return false;
-            }
-            dr.Close();
-            return false;
-        }
     }
 }
