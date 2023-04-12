@@ -19,7 +19,15 @@ namespace NBA_Tickets_Retail
 
         public Match(string matchDate, string matchTime, string awayTeamID)
         {
-            MatchID = $"M{(GetPreviousMatchID() + 1)}";
+            int matchIDNumeric = GetPreviousMatchID() + 1;
+            if(matchIDNumeric >= 1 && matchIDNumeric <= 9)
+            {
+                MatchID = $"M0{matchIDNumeric}";
+            }
+            else
+            {
+                MatchID = $"M{matchIDNumeric}";
+            }
             MatchDate = matchDate;
             MatchTime = matchTime;
             HomeTeam = "";
@@ -60,7 +68,7 @@ namespace NBA_Tickets_Retail
 
             for(int i = 1; i <= Seat.GetSeatsCount(); i++)
             {
-                matchSeatStatus = new MatchSeat("M" + GetPreviousMatchID().ToString(), i);
+                matchSeatStatus = new MatchSeat(this.MatchID, i);
                 matchSeatStatus.AddMatchSeatStatus();
             }
         }

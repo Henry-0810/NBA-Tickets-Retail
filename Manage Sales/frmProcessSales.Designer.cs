@@ -149,7 +149,7 @@ namespace NBA_Tickets_Retail
             this.cboMatches.Location = new System.Drawing.Point(147, 239);
             this.cboMatches.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboMatches.Name = "cboMatches";
-            this.cboMatches.Size = new System.Drawing.Size(234, 32);
+            this.cboMatches.Size = new System.Drawing.Size(286, 32);
             this.cboMatches.TabIndex = 2;
             this.cboMatches.SelectedIndexChanged += new System.EventHandler(this.CboMatches_SelectedIndexChanged);
             // 
@@ -329,7 +329,7 @@ namespace NBA_Tickets_Retail
             this.dgvCart.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -427,6 +427,7 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.btnPSback);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "frmProcessSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Tickets] - [Process Sales]";

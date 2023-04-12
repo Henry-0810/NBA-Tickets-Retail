@@ -20,7 +20,20 @@ namespace NBA_Tickets_Retail
         {
             CustName = custName;
             CustMail = custMail;
-            SalesID = $"S{(GetPreviousSalesID() + 1)}";
+            int salesIDNumeric = GetPreviousSalesID() + 1;
+            string salesIDPrefix = "S";
+            if (salesIDNumeric >= 1 && salesIDNumeric <= 9)
+            {
+                SalesID = $"{salesIDPrefix}00{salesIDNumeric}";
+            }
+            else if(salesIDNumeric >= 10 && salesIDNumeric <= 99)
+            {
+                SalesID = $"{salesIDPrefix}0{salesIDNumeric}";
+            }
+            else
+            {
+                SalesID = $"{salesIDPrefix}{salesIDNumeric}";
+            }
             SalesDate = salesDate;
             TotalSales = totalSales;
             MatchID = matchID;
@@ -75,7 +88,7 @@ namespace NBA_Tickets_Retail
 
         public int GetPreviousSalesID()
         {
-            string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales";
+            string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales WHERE Sales_ID LIKE 'S%'";
 
             cmd = new OracleCommand(sqlQuery, conn);
 

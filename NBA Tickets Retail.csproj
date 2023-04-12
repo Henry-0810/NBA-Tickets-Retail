@@ -145,7 +145,7 @@
     <Compile Include="Match.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReturnSales.cs" />
+    <Compile Include="ReturnSale.cs" />
     <Compile Include="Sale.cs" />
     <Compile Include="MatchSeat.cs" />
     <Compile Include="SaleSeat.cs" />
