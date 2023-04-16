@@ -11,13 +11,13 @@ namespace NBA_Tickets_Retail
         private OracleCommand cmd;
         private OracleDataReader dr;
         private string _rSalesID;
-        private string _seatType;
-        private int _seats;
+        private string _custName;
+        private string _custMail;
         private DateTime _rSalesDate;
         private double _totalSales;
         private string _matchID;
 
-        public ReturnSale(string seatType, int seats, DateTime rSalesDate, double totalSales, string matchID)
+        public ReturnSale(string custName, string custMail, DateTime rSalesDate, double totalSales, string matchID)
         {
             int returnSalesIDNumeric = GetPreviousReturnSalesID() + 1;
             string returnSalesIDPrefix = "R";
@@ -33,19 +33,24 @@ namespace NBA_Tickets_Retail
             {
                 RSalesID = $"{returnSalesIDPrefix}{returnSalesIDNumeric}";
             }
-            SeatType = seatType;
-            Seats = seats;
+            CustName = custName;
+            CustMail = custMail;
             RSalesDate = rSalesDate;
             TotalSales = totalSales;
             MatchID = matchID;
         }
 
         public string RSalesID { get => _rSalesID; set => _rSalesID = value; }
-        public string SeatType { get => _seatType; set => _seatType = value; }
-        public int Seats { get => _seats; set => _seats = value; }
+        public string CustName { get => _custName; set => _custName = value; }
+        public string CustMail { get => _custMail; set => _custMail = value; }
         public DateTime RSalesDate { get => _rSalesDate; set => _rSalesDate = value; }
         public double TotalSales { get => _totalSales; set => _totalSales = value; }
         public string MatchID { get => _matchID; set => _matchID = value; }
+
+        public override string ToString()
+        {
+            return $"Return SalesID: {RSalesID}\nCustomer Name: {CustName}\nCustomer Mail: {CustMail}\nMatch ID: {MatchID}\nSales Date: {RSalesDate}\nTotal Sales: { TotalSales}";
+        }
 
         public int GetPreviousReturnSalesID()
         {
@@ -73,9 +78,20 @@ namespace NBA_Tickets_Retail
 
         public void addReturnSale()
         {
-            string sqlQuery = "INSERT INTO "
-        }
+            string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Sales_Date, Total_Sales, Match_ID) " +
+                "VALUES (:SalesID, :CustName, :CustMail, TO_DATE(TO_CHAR(:SalesDate, 'MM/DD/YYYY HH24:MI:SS'), 'MM/DD/YYYY HH24:MI:SS'), :TotSales, :MatchID)";
 
+            cmd = new OracleCommand(sqlQuery, conn);
+
+            cmd.Parameters.Add(new OracleParameter(":SalesID", this.RSalesID));
+            cmd.Parameters.Add(new OracleParameter(":CustName", this.CustName));
+            cmd.Parameters.Add(new OracleParameter(":CustMail", this.CustMail));
+            cmd.Parameters.Add(new OracleParameter(":SalesDate", OracleDbType.TimeStamp)).Value = this.RSalesDate;
+            cmd.Parameters.Add(new OracleParameter(":TotSales", this.TotalSales));
+            cmd.Parameters.Add(new OracleParameter(":MatchID", this.MatchID));
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
 

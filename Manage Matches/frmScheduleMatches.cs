@@ -75,7 +75,6 @@ namespace NBA_Tickets_Retail
             dtPickMatchTime.Value = DateTime.Now;
             dtPickMatchTime.Format = DateTimePickerFormat.Custom;
             dtPickMatchTime.CustomFormat = "yyyy-MM-dd";
-
             AwayTeam.viewAllTeams(ref allTeams);
             foreach(AwayTeam awayTeam in allTeams)
             {

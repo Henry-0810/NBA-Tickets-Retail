@@ -38,6 +38,7 @@ namespace NBA_Tickets_Retail
             this.txtTeamName = new System.Windows.Forms.TextBox();
             this.txtTeamID = new System.Windows.Forms.TextBox();
             this.btnAddTeams = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,9 +47,9 @@ namespace NBA_Tickets_Retail
             this.btnATback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnATback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnATback.Location = new System.Drawing.Point(0, 1);
-            this.btnATback.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnATback.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnATback.Name = "btnATback";
-            this.btnATback.Size = new System.Drawing.Size(43, 21);
+            this.btnATback.Size = new System.Drawing.Size(57, 26);
             this.btnATback.TabIndex = 18;
             this.btnATback.Text = "Back";
             this.btnATback.UseVisualStyleBackColor = false;
@@ -57,10 +58,10 @@ namespace NBA_Tickets_Retail
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(262, 170);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(388, 235);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(118, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
@@ -68,9 +69,10 @@ namespace NBA_Tickets_Retail
             // btnViewTeams
             // 
             this.btnViewTeams.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewTeams.Location = new System.Drawing.Point(257, 12);
+            this.btnViewTeams.Location = new System.Drawing.Point(375, 1);
+            this.btnViewTeams.Margin = new System.Windows.Forms.Padding(4);
             this.btnViewTeams.Name = "btnViewTeams";
-            this.btnViewTeams.Size = new System.Drawing.Size(107, 30);
+            this.btnViewTeams.Size = new System.Drawing.Size(143, 37);
             this.btnViewTeams.TabIndex = 20;
             this.btnViewTeams.Text = "View Teams";
             this.btnViewTeams.UseVisualStyleBackColor = true;
@@ -80,9 +82,10 @@ namespace NBA_Tickets_Retail
             // 
             this.lblTeamID.AutoSize = true;
             this.lblTeamID.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeamID.Location = new System.Drawing.Point(34, 53);
+            this.lblTeamID.Location = new System.Drawing.Point(28, 111);
+            this.lblTeamID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTeamID.Name = "lblTeamID";
-            this.lblTeamID.Size = new System.Drawing.Size(81, 23);
+            this.lblTeamID.Size = new System.Drawing.Size(103, 29);
             this.lblTeamID.TabIndex = 21;
             this.lblTeamID.Text = "Team ID: ";
             // 
@@ -90,27 +93,30 @@ namespace NBA_Tickets_Retail
             // 
             this.lblTeamName.AutoSize = true;
             this.lblTeamName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeamName.Location = new System.Drawing.Point(34, 99);
+            this.lblTeamName.Location = new System.Drawing.Point(28, 168);
+            this.lblTeamName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTeamName.Name = "lblTeamName";
-            this.lblTeamName.Size = new System.Drawing.Size(108, 23);
+            this.lblTeamName.Size = new System.Drawing.Size(141, 29);
             this.lblTeamName.TabIndex = 22;
             this.lblTeamName.Text = "Team Name: ";
             // 
             // txtTeamName
             // 
             this.txtTeamName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeamName.Location = new System.Drawing.Point(153, 99);
+            this.txtTeamName.Location = new System.Drawing.Point(187, 168);
+            this.txtTeamName.Margin = new System.Windows.Forms.Padding(4);
             this.txtTeamName.Multiline = true;
             this.txtTeamName.Name = "txtTeamName";
-            this.txtTeamName.Size = new System.Drawing.Size(171, 49);
+            this.txtTeamName.Size = new System.Drawing.Size(227, 59);
             this.txtTeamName.TabIndex = 1;
             // 
             // txtTeamID
             // 
             this.txtTeamID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeamID.Location = new System.Drawing.Point(153, 53);
+            this.txtTeamID.Location = new System.Drawing.Point(187, 111);
+            this.txtTeamID.Margin = new System.Windows.Forms.Padding(4);
             this.txtTeamID.Name = "txtTeamID";
-            this.txtTeamID.Size = new System.Drawing.Size(89, 27);
+            this.txtTeamID.Size = new System.Drawing.Size(117, 32);
             this.txtTeamID.TabIndex = 0;
             // 
             // btnAddTeams
@@ -118,22 +124,36 @@ namespace NBA_Tickets_Retail
             this.btnAddTeams.BackColor = System.Drawing.SystemColors.Menu;
             this.btnAddTeams.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTeams.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddTeams.Location = new System.Drawing.Point(68, 195);
-            this.btnAddTeams.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnAddTeams.Location = new System.Drawing.Point(134, 248);
+            this.btnAddTeams.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddTeams.Name = "btnAddTeams";
-            this.btnAddTeams.Size = new System.Drawing.Size(113, 36);
+            this.btnAddTeams.Size = new System.Drawing.Size(151, 44);
             this.btnAddTeams.TabIndex = 2;
             this.btnAddTeams.Text = "ADD";
             this.btnAddTeams.UseVisualStyleBackColor = false;
             this.btnAddTeams.Click += new System.EventHandler(this.btnAddTeams_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(26, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 39);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Add Teams";
+            // 
             // frmAddTeams
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(391, 272);
+            this.ClientSize = new System.Drawing.Size(521, 335);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddTeams);
             this.Controls.Add(this.txtTeamID);
             this.Controls.Add(this.txtTeamName);
@@ -144,6 +164,7 @@ namespace NBA_Tickets_Retail
             this.Controls.Add(this.btnATback);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmAddTeams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -165,5 +186,6 @@ namespace NBA_Tickets_Retail
         private System.Windows.Forms.TextBox txtTeamName;
         private System.Windows.Forms.TextBox txtTeamID;
         private System.Windows.Forms.Button btnAddTeams;
+        private System.Windows.Forms.Label label1;
     }
 }

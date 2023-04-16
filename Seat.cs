@@ -82,13 +82,17 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT MIN(s.Seat_Num) FROM Seats s " + 
-                              "JOIN MatchSeats ms ON s.SEAT_Num = ms.SEAT_Num " + 
-                              "LEFT JOIN SaleSeats ss ON s.SEAT_Num = ss.SEAT_Num " +
-                              $"WHERE s.Type_Code = '{seatType}' AND ms.Status = 'U' AND " +
-                              $"ms.Match_ID = '{matchID}' AND ss.Seat_Num IS NULL";
+            string sqlQuery = "SELECT Min(ms.Seat_Num) FROM MatchSeats ms " +
+                "JOIN Seats s ON ms.Seat_Num = s.Seat_Num " +
+                "LEFT JOIN SaleSeats ss ON ms.Seat_Num = ss.Seat_Num " +
+                "LEFT JOIN Sales sa ON ss.Sales_ID = sa.Sales_ID " +
+                "WHERE ms.Status = 'U' AND ms.Match_ID = :matchID AND s.Type_Code = :seatType " +
+                "AND (sa.Match_ID IS NULL OR sa.Match_ID <> ms.Match_ID)";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            cmd.Parameters.Add(new OracleParameter(":matchID", matchID));
+            cmd.Parameters.Add(new OracleParameter(":seatType", seatType));
 
             OracleDataReader dr = cmd.ExecuteReader();
 
@@ -115,15 +119,19 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT COUNT(s.Seat_Num) FROM Seats s " +
-                              "JOIN MatchSeats ms ON s.SEAT_Num = ms.SEAT_Num " +
-                              "LEFT JOIN SaleSeats ss ON s.SEAT_Num = ss.SEAT_Num " +
-                              $"WHERE s.Type_Code = '{seatType}' AND ms.Status = 'U' AND " +
-                              $"ms.Match_ID = '{matchID}' AND ss.Seat_Num IS NULL";
+            string sqlQuery = "SELECT COUNT(ms.Seat_Num) FROM MatchSeats ms " +
+                "JOIN Seats s ON ms.Seat_Num = s.Seat_Num " +
+                "LEFT JOIN SaleSeats ss ON ms.Seat_Num = ss.Seat_Num " +
+                "LEFT JOIN Sales sa ON ss.Sales_ID = sa.Sales_ID " +
+                "WHERE ms.Status = 'U' AND ms.Match_ID = :matchID AND s.Type_Code = :seatType " +
+                "AND (sa.Match_ID IS NULL OR sa.Match_ID <> ms.Match_ID)";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
-            if(cmd.ExecuteScalar() != null)
+            cmd.Parameters.Add(new OracleParameter(":matchID", matchID));
+            cmd.Parameters.Add(new OracleParameter(":seatType", seatType));
+
+            if (cmd.ExecuteScalar() != null)
             {
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }

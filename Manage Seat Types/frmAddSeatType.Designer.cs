@@ -50,7 +50,7 @@
             this.lblTypeCode.BackColor = System.Drawing.Color.Transparent;
             this.lblTypeCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTypeCode.ForeColor = System.Drawing.Color.Black;
-            this.lblTypeCode.Location = new System.Drawing.Point(28, 90);
+            this.lblTypeCode.Location = new System.Drawing.Point(28, 89);
             this.lblTypeCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTypeCode.Name = "lblTypeCode";
             this.lblTypeCode.Size = new System.Drawing.Size(122, 29);
@@ -150,7 +150,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(26, 41);
+            this.label6.Location = new System.Drawing.Point(26, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(255, 39);
             this.label6.TabIndex = 16;

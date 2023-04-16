@@ -59,7 +59,7 @@ namespace NBA_Tickets_Retail
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(35, 46);
+            this.label6.Location = new System.Drawing.Point(26, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(325, 39);
             this.label6.TabIndex = 39;

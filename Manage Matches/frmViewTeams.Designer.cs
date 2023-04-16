@@ -31,10 +31,10 @@ namespace NBA_Tickets_Retail
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewTeams));
             this.dgvTeamList = new System.Windows.Forms.DataGridView();
-            this.btnVTback = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVTback = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +44,8 @@ namespace NBA_Tickets_Retail
             this.dgvTeamList.AllowUserToDeleteRows = false;
             this.dgvTeamList.AllowUserToResizeColumns = false;
             this.dgvTeamList.AllowUserToResizeRows = false;
-            this.dgvTeamList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvTeamList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTeamList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTeamList.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -53,40 +54,15 @@ namespace NBA_Tickets_Retail
             this.dgvTeamList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamID,
             this.teamName});
-            this.dgvTeamList.Location = new System.Drawing.Point(28, 88);
+            this.dgvTeamList.Location = new System.Drawing.Point(24, 83);
             this.dgvTeamList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTeamList.Name = "dgvTeamList";
             this.dgvTeamList.ReadOnly = true;
             this.dgvTeamList.RowHeadersVisible = false;
             this.dgvTeamList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvTeamList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvTeamList.Size = new System.Drawing.Size(273, 314);
             this.dgvTeamList.TabIndex = 0;
-            // 
-            // btnVTback
-            // 
-            this.btnVTback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnVTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVTback.Location = new System.Drawing.Point(0, 1);
-            this.btnVTback.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnVTback.Name = "btnVTback";
-            this.btnVTback.Size = new System.Drawing.Size(57, 26);
-            this.btnVTback.TabIndex = 48;
-            this.btnVTback.Text = "Back";
-            this.btnVTback.UseVisualStyleBackColor = false;
-            this.btnVTback.Click += new System.EventHandler(this.btnVTback_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(41, 45);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 39);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "Teams";
             // 
             // teamID
             // 
@@ -108,11 +84,37 @@ namespace NBA_Tickets_Retail
             this.teamName.ReadOnly = true;
             this.teamName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // btnVTback
+            // 
+            this.btnVTback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVTback.Location = new System.Drawing.Point(0, 1);
+            this.btnVTback.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnVTback.Name = "btnVTback";
+            this.btnVTback.Size = new System.Drawing.Size(57, 26);
+            this.btnVTback.TabIndex = 48;
+            this.btnVTback.Text = "Back";
+            this.btnVTback.UseVisualStyleBackColor = false;
+            this.btnVTback.Click += new System.EventHandler(this.btnVTback_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(26, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 39);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Teams";
+            // 
             // frmViewTeams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 417);
+            this.ClientSize = new System.Drawing.Size(329, 410);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVTback);
             this.Controls.Add(this.dgvTeamList);

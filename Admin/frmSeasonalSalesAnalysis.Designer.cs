@@ -30,15 +30,19 @@ namespace NBA_Tickets_Retail
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeasonalSalesAnalysis));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnYRAback = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnMaxSales = new System.Windows.Forms.Button();
-            this.btnMinSales = new System.Windows.Forms.Button();
-            this.btnAvgSales = new System.Windows.Forms.Button();
-            this.btnSeasonRevenue = new System.Windows.Forms.Button();
-            this.btnGraph = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnYRAback
@@ -57,7 +61,7 @@ namespace NBA_Tickets_Retail
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(339, 270);
+            this.pictureBox1.Location = new System.Drawing.Point(947, 502);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(118, 90);
@@ -71,71 +75,75 @@ namespace NBA_Tickets_Retail
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(32, 43);
+            this.label6.Location = new System.Drawing.Point(26, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(415, 39);
             this.label6.TabIndex = 20;
             this.label6.Text = "Seasonal Sales Analysis";
             // 
-            // btnMaxSales
+            // label1
             // 
-            this.btnMaxSales.BackColor = System.Drawing.SystemColors.Window;
-            this.btnMaxSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaxSales.Location = new System.Drawing.Point(39, 115);
-            this.btnMaxSales.Name = "btnMaxSales";
-            this.btnMaxSales.Size = new System.Drawing.Size(109, 89);
-            this.btnMaxSales.TabIndex = 0;
-            this.btnMaxSales.Text = "Most Sales per Match";
-            this.btnMaxSales.UseVisualStyleBackColor = false;
-            this.btnMaxSales.Click += new System.EventHandler(this.btnMaxSales_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(12, 453);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 24);
+            this.label1.TabIndex = 79;
+            this.label1.Text = "Most Sales:";
             // 
-            // btnMinSales
+            // label4
             // 
-            this.btnMinSales.BackColor = System.Drawing.SystemColors.Window;
-            this.btnMinSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinSales.Location = new System.Drawing.Point(176, 115);
-            this.btnMinSales.Name = "btnMinSales";
-            this.btnMinSales.Size = new System.Drawing.Size(109, 89);
-            this.btnMinSales.TabIndex = 22;
-            this.btnMinSales.Text = "Least Sales per Match";
-            this.btnMinSales.UseVisualStyleBackColor = false;
-            this.btnMinSales.Click += new System.EventHandler(this.btnMinSales_Click);
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(12, 491);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 24);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Least Sales:";
             // 
-            // btnAvgSales
+            // label3
             // 
-            this.btnAvgSales.BackColor = System.Drawing.SystemColors.Window;
-            this.btnAvgSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAvgSales.Location = new System.Drawing.Point(176, 257);
-            this.btnAvgSales.Name = "btnAvgSales";
-            this.btnAvgSales.Size = new System.Drawing.Size(109, 89);
-            this.btnAvgSales.TabIndex = 23;
-            this.btnAvgSales.Text = "Average Sales per Match";
-            this.btnAvgSales.UseVisualStyleBackColor = false;
-            this.btnAvgSales.Click += new System.EventHandler(this.btnAvgSales_Click);
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(12, 529);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 24);
+            this.label3.TabIndex = 77;
+            this.label3.Text = "Average Sales:";
             // 
-            // btnSeasonRevenue
+            // label9
             // 
-            this.btnSeasonRevenue.BackColor = System.Drawing.SystemColors.Window;
-            this.btnSeasonRevenue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeasonRevenue.Location = new System.Drawing.Point(39, 257);
-            this.btnSeasonRevenue.Name = "btnSeasonRevenue";
-            this.btnSeasonRevenue.Size = new System.Drawing.Size(109, 89);
-            this.btnSeasonRevenue.TabIndex = 24;
-            this.btnSeasonRevenue.Text = "Total sales for this season";
-            this.btnSeasonRevenue.UseVisualStyleBackColor = false;
-            this.btnSeasonRevenue.Click += new System.EventHandler(this.btnSeasonRevenue_Click);
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(12, 567);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(251, 24);
+            this.label9.TabIndex = 76;
+            this.label9.Text = "Total Sales for whole season:";
             // 
-            // btnGraph
+            // chart1
             // 
-            this.btnGraph.BackColor = System.Drawing.SystemColors.Window;
-            this.btnGraph.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGraph.Location = new System.Drawing.Point(313, 115);
-            this.btnGraph.Name = "btnGraph";
-            this.btnGraph.Size = new System.Drawing.Size(109, 89);
-            this.btnGraph.TabIndex = 25;
-            this.btnGraph.Text = "Graphical analysis";
-            this.btnGraph.UseVisualStyleBackColor = false;
-            this.btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(16, 90);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Total Sales";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1048, 350);
+            this.chart1.TabIndex = 80;
+            this.chart1.Text = "chart1";
             // 
             // frmSeasonalSalesAnalysis
             // 
@@ -143,12 +151,12 @@ namespace NBA_Tickets_Retail
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(468, 372);
-            this.Controls.Add(this.btnGraph);
-            this.Controls.Add(this.btnSeasonRevenue);
-            this.Controls.Add(this.btnAvgSales);
-            this.Controls.Add(this.btnMinSales);
-            this.Controls.Add(this.btnMaxSales);
+            this.ClientSize = new System.Drawing.Size(1076, 604);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnYRAback);
@@ -157,7 +165,9 @@ namespace NBA_Tickets_Retail
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Admin] - [Seasonal Sales Analysis]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmYearlyRevenueAnalysis_FormClosed);
+            this.Load += new System.EventHandler(this.frmSeasonalSalesAnalysis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,10 +178,10 @@ namespace NBA_Tickets_Retail
         private System.Windows.Forms.Button btnYRAback;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnMaxSales;
-        private System.Windows.Forms.Button btnMinSales;
-        private System.Windows.Forms.Button btnAvgSales;
-        private System.Windows.Forms.Button btnSeasonRevenue;
-        private System.Windows.Forms.Button btnGraph;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

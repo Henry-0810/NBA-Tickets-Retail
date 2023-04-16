@@ -68,24 +68,6 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static int getAvailableSeats(string seatType, string matchID)
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = $"SELECT count(*) FROM Seats s JOIN MatchSeats ms ON s.Seat_Num = ms.Seat_Num WHERE ms.Match_ID = '{matchID}' AND s.Type_Code = '{seatType}' AND ms.Status = 'U'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read() && !dr.IsDBNull(0))
-            {
-                return dr.GetInt32(0);
-            }
-            dr.Close();
-            return 0;
-        }
-
         public int GetPreviousSalesID()
         {
             string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales WHERE Sales_ID LIKE 'S%'";
