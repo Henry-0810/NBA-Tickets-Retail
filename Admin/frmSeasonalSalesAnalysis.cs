@@ -29,7 +29,7 @@ namespace NBA_Tickets_Retail
 
         private void frmSeasonalSalesAnalysis_Load(object sender, EventArgs e)
         {
-            chartSales.Titles.Add("Sales chart");
+            chartSales.Titles.Add("Sales analysis chart");
             chartSales.Titles[0].Font = new Font("Calibri", 16, FontStyle.Bold);
             chartSales.ChartAreas[0].BackColor = Color.LightGray;
             chartSales.ChartAreas[0].AxisX.Title = "Match ID";
@@ -63,11 +63,13 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
-            string sqlQuery = "SELECT DISTINCT COALESCE(sa.Match_ID, m.Match_ID) AS Match_ID, " +
-                "COALESCE(SUM(sa.Total_Sales), 0) AS Total_Sales_Match FROM Matches m " +
-                "LEFT JOIN Sales sa ON sa.Match_ID = m.Match_ID GROUP BY COALESCE(sa.Match_ID, m.Match_ID) " +
-                "ORDER BY Match_ID";
-
+            string sqlQuery = @"SELECT DISTINCT COALESCE(sa.Match_ID, m.Match_ID) AS Match_ID, 
+                                  SUM(CASE WHEN sa.Sales_ID LIKE 'S%' THEN sa.Total_Sales ELSE 0 END) -
+                                  SUM(CASE WHEN sa.Sales_ID LIKE 'R%' THEN sa.Total_Sales ELSE 0 END) AS Total_Sales_Match
+                              FROM Matches m
+                              LEFT JOIN Sales sa ON sa.Match_ID = m.Match_ID
+                              GROUP BY COALESCE(sa.Match_ID, m.Match_ID)
+                              ORDER BY Match_ID";
             DataSet ds = new DataSet();
             OracleDataAdapter adapt = new OracleDataAdapter(sqlQuery, conn);
             adapt.Fill(ds);

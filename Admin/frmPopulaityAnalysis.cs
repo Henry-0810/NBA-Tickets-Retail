@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
+using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -23,40 +26,52 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
 
-        private void btnMaxSeats_Click(object sender, EventArgs e)
+        private void frmPopulaityAnalysis_Load(object sender, EventArgs e)
         {
-            //calculations for most seats sold
-            //will be done next semester
-            //no validation needed because all Manager did not enter information
-            MessageBox.Show("Most seats sold per match is calculated: \nit is 'algorithm next semester'",
-                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            chartPopularity.Titles.Add("Popularity analysis chart");
+            chartPopularity.Titles[0].Font = new Font("Calibri", 16, FontStyle.Bold);
+            chartPopularity.ChartAreas[0].BackColor = Color.LightGray;
+            chartPopularity.ChartAreas[0].AxisX.Title = "Seat Type";
+            chartPopularity.ChartAreas[0].AxisY.Title = "Purchased Count";
+            chartPopularity.ChartAreas[0].AxisX.TitleFont = new Font("Calibri", 12, FontStyle.Bold);
+            chartPopularity.ChartAreas[0].AxisY.TitleFont = new Font("Calibri", 12, FontStyle.Bold);
+
+            chartPopularity.DataSource = loadChart().Tables[0];
+            chartPopularity.DataBind();
+
+            int seatTypeCount = loadChart().Tables[0].Rows.Count;
+            chartPopularity.ChartAreas[0].AxisX.Interval = Math.Max(1, seatTypeCount / 10);
+
+            chartPopularity.Series["No. of times purchased"].XValueMember = "Seat_Type";
+            chartPopularity.Series["No. of times purchased"].YValueMembers = "Popularity";
+            chartPopularity.Series["No. of times purchased"].IsValueShownAsLabel = true;
+
+            chartPopularity.Series["No. of times purchased"].LabelForeColor = Color.Black;
+
+            chartPopularity.Series["No. of times purchased"]["PointWidth"] = "0.5";
+            chartPopularity.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            chartPopularity.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            chartPopularity.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            chartPopularity.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
         }
 
-        private void btnMinSales_Click(object sender, EventArgs e)
+        private DataSet loadChart()
         {
-            //calculations for least seats sold
-            //will be done next semester
-            //no validation needed because all Manager did not enter information
-            MessageBox.Show("Least seats sold per match is calculated: \nit is 'algorithm next semester'",
-                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+            OracleConnection conn = Program.getOracleConnection();
 
-        private void btnAvgSeats_Click(object sender, EventArgs e)
-        {
-            //calculations for average seats sold
-            //will be done next semester
-            //no validation needed because all Manager did not enter information
-            MessageBox.Show("Average seats sold per match is calculated: \nit is 'algorithm next semester'",
-                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+            string sqlQuery = @"SELECT st.Type_Code AS Seat_Type, COUNT(*) AS Popularity FROM SeatTypes st
+                              INNER JOIN Seats s ON s.Type_Code = st.Type_Code
+                              INNER JOIN MatchSeats ms ON ms.Seat_Num = s.Seat_Num
+                              INNER JOIN Matches m ON m.Match_ID = ms.Match_ID
+                              INNER JOIN Sales sa ON sa.Match_ID = ms.Match_ID
+                              INNER JOIN SaleSeats ss ON ss.Sales_ID = sa.Sales_ID AND ss.Seat_Num = ms.Seat_Num
+                              GROUP BY st.Type_Code
+                              ORDER BY st.Type_Code";
 
-        private void btnGraph_Click(object sender, EventArgs e)
-        {
-            //show a graph for seats sold per match
-            //will be done next semester
-            //no validation needed because all Manager did not enter information
-            MessageBox.Show("Graph succesfully plotted: 'algorithm next semester'",
-                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DataSet ds = new DataSet();
+            OracleDataAdapter adapt = new OracleDataAdapter(sqlQuery, conn);
+            adapt.Fill(ds);
+            return ds;
         }
     }
 }
