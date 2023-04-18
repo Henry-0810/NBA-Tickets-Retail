@@ -10,11 +10,11 @@ namespace NBA_Tickets_Retail
         private string _description;
         private double _price;
         //My seat types in database
-        //LLS - Lower-Level Sideline, ideal angle for game action - 250 - 10
-        //CS - Courtside, expensive but nearest to the players - 800 - 10
-        //CL - Club-Level seats, exclusive lounges, bars - 950 - 10
-        //UPS - Upper-Level Sideline, budget but elegant - 150 - 10
-        //BTB - Behind the basket, best seats for families - 200 - 10
+        //LLS - Lower-Level Sideline - 250 - 10
+        //CTS - Courtside - 800 - 10
+        //CLL - Club-Level seats - 950 - 10
+        //UPS - Upper-Level Sideline - 150 - 10
+        //BTB - Behind the basket - 200 - 10
 
         public SeatType( string typeCode, string description, double price)
         {

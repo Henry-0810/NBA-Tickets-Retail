@@ -26,15 +26,18 @@ namespace NBA_Tickets_Retail
             {
                 dgvTeamList.Rows.Add(team.AwayTeamID, team.TeamName);
             }
-            // Calculate the total height of the header and data rows
-            int headerHeight = dgvTeamList.ColumnHeadersHeight;
-            int rowsHeight = 10 * dgvTeamList.Rows[0].Height;
+            if (dgvTeamList.Rows.Count > 0)
+            {
+                int headerHeight = dgvTeamList.ColumnHeadersHeight;
+                int rowsHeight = 10 * dgvTeamList.Rows[0].Height;
 
-            // Set the height of the DataGridView to fit the header and data rows
-            dgvTeamList.Height = headerHeight + rowsHeight + 2;
-            dgvTeamList.Width = 210;
-
-
+                dgvTeamList.Height = headerHeight + rowsHeight + 2;
+                dgvTeamList.Width = 210;
+            }
+            else
+            {
+                MessageBox.Show("Team list is blank, add a team!", "Team List Blank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnVTback_Click(object sender, EventArgs e)

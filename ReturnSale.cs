@@ -9,7 +9,6 @@ namespace NBA_Tickets_Retail
     {
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
-        private OracleDataReader dr;
         private string _rSalesID;
         private string _custName;
         private string _custMail;
@@ -17,21 +16,20 @@ namespace NBA_Tickets_Retail
         private double _totalSales;
         private string _matchID;
 
-        public ReturnSale(string custName, string custMail, DateTime rSalesDate, double totalSales, string matchID)
+        public ReturnSale(int rSalesID, string custName, string custMail, DateTime rSalesDate, double totalSales, string matchID)
         {
-            int returnSalesIDNumeric = GetPreviousReturnSalesID() + 1;
-            string returnSalesIDPrefix = "R";
-            if (returnSalesIDNumeric >= 1 && returnSalesIDNumeric <= 9)
+            string returnSalesIDPrefix = "RS";
+            if (rSalesID >= 1 && rSalesID <= 9)
             {
-                RSalesID = $"{returnSalesIDPrefix}00{returnSalesIDNumeric}";
+                RSalesID = $"{returnSalesIDPrefix}00{rSalesID}";
             }
-            else if (returnSalesIDNumeric >= 10 && returnSalesIDNumeric <= 99)
+            else if (rSalesID >= 10 && rSalesID <= 99)
             {
-                RSalesID = $"{returnSalesIDPrefix}0{returnSalesIDNumeric}";
+                RSalesID = $"{returnSalesIDPrefix}0{rSalesID}";
             }
             else
             {
-                RSalesID = $"{returnSalesIDPrefix}{returnSalesIDNumeric}";
+                RSalesID = $"{returnSalesIDPrefix}{rSalesID}";
             }
             CustName = custName;
             CustMail = custMail;
@@ -50,30 +48,6 @@ namespace NBA_Tickets_Retail
         public override string ToString()
         {
             return $"Return SalesID: {RSalesID}\nCustomer Name: {CustName}\nCustomer Mail: {CustMail}\nMatch ID: {MatchID}\nSales Date: {RSalesDate}\nTotal Sales: { TotalSales}";
-        }
-
-        public int GetPreviousReturnSalesID()
-        {
-            string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales WHERE Sales_ID LIKE 'R%'";
-
-            cmd = new OracleCommand(sqlQuery, conn);
-
-            dr = cmd.ExecuteReader();
-
-            if (dr.Read())
-            {
-                if (!dr.IsDBNull(0) && Int32.TryParse(dr.GetString(0).Substring(1), out int value))
-                {
-                    return Convert.ToInt32(dr.GetString(0).Substring(1));
-                }
-                else
-                {
-                    MessageBox.Show("No Return Sales ID found, have set Return Sales ID as 1", "Getting Return Sales ID",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            dr.Close();
-            return 0;
         }
 
         public void addReturnSale()

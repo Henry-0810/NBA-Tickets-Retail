@@ -52,7 +52,10 @@ namespace NBA_Tickets_Retail
                     }
                 }
             }
-            
+            foreach(string items in cboSeatTypeItems)
+            {
+                Console.WriteLine(items);
+            }
         }
 
         private void FrmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
@@ -166,10 +169,6 @@ namespace NBA_Tickets_Retail
             totPrice += itemPrice;
             txtTotPrice.Text = totPrice.ToString("0.00");
             //Reset UI
-            foreach (TextBox txtbox in optionalBoxes)
-            {
-                txtbox.Clear();
-            }
             cboMatches.Enabled = false;
             numberOfSeats.Value = 1;
             btnProcess.Enabled = false;

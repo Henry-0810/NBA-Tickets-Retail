@@ -28,7 +28,10 @@ namespace NBA_Tickets_Retail
             {
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            dgvSale.Height = dgvSale.ColumnHeadersHeight + (5 * dgvSale.Rows[0].Height) + 2;
+            if(dgvSale.Rows.Count > 0)
+            {
+                dgvSale.Height = dgvSale.ColumnHeadersHeight + (5 * dgvSale.Rows[0].Height) + 2;
+            }
         }
         
         private void frmReturnTickets_FormClosed(object sender, FormClosedEventArgs e)
@@ -40,11 +43,12 @@ namespace NBA_Tickets_Retail
         {
             OracleConnection conn = Program.getOracleConnection();
 
+            //ListAgg was the one I'm using at home, but the school's version is lower than 11.2 therefore I stacked overflow this
             string sqlQuery = "SELECT s.Sales_ID, s.Cust_Name, s.Cust_Email, s.Sales_Date, " +
-                "s.Total_Sales, s.Match_ID, LISTAGG(ss.Seat_Num, ',') WITHIN GROUP (ORDER BY ss.Seat_Num) AS Seat_Num " +
+                "s.Total_Sales, s.Match_ID, RTRIM(XMLAGG(XMLELEMENT(E, ss.Seat_Num || ',')).EXTRACT('//text()'), ',') AS Seat_Num " +
                 "FROM Sales s JOIN SaleSeats ss ON s.Sales_ID = ss.Sales_ID JOIN Matches m ON m.Match_ID = s.Match_ID " +
                 "WHERE m.Match_Date > SYSDATE GROUP BY s.Sales_ID, s.Cust_Name, s.Cust_Email, " +
-                "s.Sales_Date, s.Total_Sales, s.Match_ID"; // Use LISTAGG function to concatenate Seat_Num values into a string
+                "s.Sales_Date, s.Total_Sales, s.Match_ID"; 
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
             OracleDataReader dr = cmd.ExecuteReader();
@@ -90,13 +94,18 @@ namespace NBA_Tickets_Retail
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            ReturnSale rSale = new ReturnSale(txtName.Text, txtEmail.Text, dtPickSalesDate.Value, 
+            ReturnSale rSale = new ReturnSale(Convert.ToInt32(txtSalesID.Text.Substring(1).TrimStart('0')), txtName.Text, txtEmail.Text, dtPickSalesDate.Value, 
                 Convert.ToDouble(txtTotSales.Text.Substring(1)), txtMatchID.Text);
             SaleSeat.deleteSaleSeat(txtSalesID.Text);
             MessageBox.Show($"Succesfully deleted Sales ID: {txtSalesID.Text}", "Return Sale",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             rSale.addReturnSale();
-
+            string[] seatNums = txtSeats.Text.Split(',');
+            for(int i = 0; i < seatNums.Length; i++)
+            {
+                MatchSeat.UpdateSeatStatus(txtMatchID.Text, Convert.ToInt32(seatNums[i]));
+            }
+            dgvSale.Rows.RemoveAt(dgvSale.CurrentRow.Index);
             //Reset UI
             TextBox[] txtBoxes = { txtSalesID, txtName, txtEmail, txtTotSales, txtMatchID, txtSeats };
             foreach(TextBox textBox in txtBoxes)
