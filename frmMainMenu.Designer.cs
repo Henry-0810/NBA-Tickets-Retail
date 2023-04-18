@@ -52,10 +52,10 @@
             this.picMainMenu.Cursor = System.Windows.Forms.Cursors.Default;
             this.picMainMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picMainMenu.Image = ((System.Drawing.Image)(resources.GetObject("picMainMenu.Image")));
-            this.picMainMenu.Location = new System.Drawing.Point(0, 30);
-            this.picMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picMainMenu.Location = new System.Drawing.Point(0, 25);
+            this.picMainMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picMainMenu.Name = "picMainMenu";
-            this.picMainMenu.Size = new System.Drawing.Size(941, 491);
+            this.picMainMenu.Size = new System.Drawing.Size(719, 375);
             this.picMainMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMainMenu.TabIndex = 0;
             this.picMainMenu.TabStop = false;
@@ -67,20 +67,20 @@
             this.updateSeatTypeToolStripMenuItem});
             this.seatTypeToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.seatTypeToolStripMenuItem.Name = "seatTypeToolStripMenuItem";
-            this.seatTypeToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
+            this.seatTypeToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.seatTypeToolStripMenuItem.Text = "Seats";
             // 
             // addSeatTypeToolStripMenuItem
             // 
             this.addSeatTypeToolStripMenuItem.Name = "addSeatTypeToolStripMenuItem";
-            this.addSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.addSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.addSeatTypeToolStripMenuItem.Text = "Add Seat Type";
             this.addSeatTypeToolStripMenuItem.Click += new System.EventHandler(this.addSeatTypeToolStripMenuItem_Click);
             // 
             // updateSeatTypeToolStripMenuItem
             // 
             this.updateSeatTypeToolStripMenuItem.Name = "updateSeatTypeToolStripMenuItem";
-            this.updateSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.updateSeatTypeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.updateSeatTypeToolStripMenuItem.Text = "Update Seat Type";
             this.updateSeatTypeToolStripMenuItem.Click += new System.EventHandler(this.updateSeatTypeToolStripMenuItem_Click);
             // 
@@ -91,20 +91,20 @@
             this.scheduleMatchToolStripMenuItem});
             this.matchesToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matchesToolStripMenuItem.Name = "matchesToolStripMenuItem";
-            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(78, 26);
+            this.matchesToolStripMenuItem.Size = new System.Drawing.Size(63, 21);
             this.matchesToolStripMenuItem.Text = "Matches";
             // 
             // addTeamsToolStripMenuItem
             // 
             this.addTeamsToolStripMenuItem.Name = "addTeamsToolStripMenuItem";
-            this.addTeamsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.addTeamsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.addTeamsToolStripMenuItem.Text = "Add Teams";
             this.addTeamsToolStripMenuItem.Click += new System.EventHandler(this.addTeamsToolStripMenuItem_Click);
             // 
             // scheduleMatchToolStripMenuItem
             // 
             this.scheduleMatchToolStripMenuItem.Name = "scheduleMatchToolStripMenuItem";
-            this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.scheduleMatchToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.scheduleMatchToolStripMenuItem.Text = "Schedule Match";
             this.scheduleMatchToolStripMenuItem.Click += new System.EventHandler(this.scheduleMatchToolStripMenuItem_Click);
             // 
@@ -115,20 +115,20 @@
             this.returnTicketsToolStripMenuItem});
             this.ticketsToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.ticketsToolStripMenuItem.Text = "Sales";
             // 
             // processSalesToolStripMenuItem
             // 
             this.processSalesToolStripMenuItem.Name = "processSalesToolStripMenuItem";
-            this.processSalesToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.processSalesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.processSalesToolStripMenuItem.Text = "Process Sales";
             this.processSalesToolStripMenuItem.Click += new System.EventHandler(this.processSalesToolStripMenuItem_Click);
             // 
             // returnTicketsToolStripMenuItem
             // 
             this.returnTicketsToolStripMenuItem.Name = "returnTicketsToolStripMenuItem";
-            this.returnTicketsToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.returnTicketsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.returnTicketsToolStripMenuItem.Text = "Return Sale";
             this.returnTicketsToolStripMenuItem.Click += new System.EventHandler(this.returnTicketsToolStripMenuItem_Click);
             // 
@@ -140,20 +140,20 @@
             this.seatsToolStripMenuItem});
             this.adminToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
             this.adminToolStripMenuItem.Text = " Admin";
             // 
             // yearlyRevenueAnalysisToolStripMenuItem
             // 
             this.yearlyRevenueAnalysisToolStripMenuItem.Name = "yearlyRevenueAnalysisToolStripMenuItem";
-            this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Seasonal Sales Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
             // seatsToolStripMenuItem
             // 
             this.seatsToolStripMenuItem.Name = "seatsToolStripMenuItem";
-            this.seatsToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
+            this.seatsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.seatsToolStripMenuItem.Text = "Popularity Analysis";
             this.seatsToolStripMenuItem.Click += new System.EventHandler(this.seatsToolStripMenuItem_Click);
             // 
@@ -167,21 +167,21 @@
             this.adminToolStripMenuItem});
             this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMainMenu.Name = "mnuMainMenu";
-            this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.mnuMainMenu.Size = new System.Drawing.Size(941, 30);
+            this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.mnuMainMenu.Size = new System.Drawing.Size(719, 25);
             this.mnuMainMenu.TabIndex = 1;
             this.mnuMainMenu.Text = "menuStrip1";
             // 
             // frmMainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 521);
+            this.ClientSize = new System.Drawing.Size(719, 400);
             this.Controls.Add(this.picMainMenu);
             this.Controls.Add(this.mnuMainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMainMenu;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Tickets Retail - [Main Menu]";

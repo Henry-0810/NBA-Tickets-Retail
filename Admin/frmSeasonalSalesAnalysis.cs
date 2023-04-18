@@ -107,5 +107,6 @@ namespace NBA_Tickets_Retail
             txtAvgSales.Text = $"The average sales for {numOfRows} Matches is €{avgSales:N2}";
             txtSumOfSales.Text = $"€{totSales:N2}";
         }
+
     }
 }

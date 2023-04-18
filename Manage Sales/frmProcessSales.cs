@@ -52,10 +52,6 @@ namespace NBA_Tickets_Retail
                     }
                 }
             }
-            foreach(string items in cboSeatTypeItems)
-            {
-                Console.WriteLine(items);
-            }
         }
 
         private void FrmProcessSales_FormClosed(object sender, FormClosedEventArgs e)
@@ -107,9 +103,7 @@ namespace NBA_Tickets_Retail
                 }
                 else
                 {
-                    int headerHeight = dgvCart.ColumnHeadersHeight;
-                    int rowsHeight = dgvCart.Rows.Count * dgvCart.Rows[e.RowIndex].Height;
-                    dgvCart.Height = headerHeight + rowsHeight + 2;
+                    dgvCart.Height = dgvCart.ColumnHeadersHeight + dgvCart.Rows.Count * dgvCart.Rows[e.RowIndex].Height + 2;
                 }
                 totPrice -= Convert.ToDouble(dgvCart.Rows[e.RowIndex].Cells[2].Value);
                 txtTotPrice.Text = totPrice.ToString("0.00");
@@ -179,9 +173,7 @@ namespace NBA_Tickets_Retail
             btnCheckOut.Enabled = true;
             lblSeatType.Text = "Seat Type";
             // Calculate the total height of the header and data rows
-            int headerHeight = dgvCart.ColumnHeadersHeight;
-            int rowsHeight = dgvCart.Rows.Count * dgvCart.Rows[0].Height;
-            dgvCart.Height = headerHeight + rowsHeight + 2;
+            dgvCart.Height = dgvCart.ColumnHeadersHeight + dgvCart.Rows.Count * dgvCart.Rows[0].Height + 2;
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
@@ -203,10 +195,6 @@ namespace NBA_Tickets_Retail
 
             MessageBox.Show("Succesfully purcahse seats", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //reset UI
-            // Recalculate and set height of DataGridView
-            int headerHeight = dgvCart.ColumnHeadersHeight;
-            int rowsHeight = dgvCart.Rows.Count * dgvCart.Rows[0].Height;
-            dgvCart.Height = headerHeight + rowsHeight + 2;
             txtName.Clear();
             txtEmail.Clear();
             cboMatches.SelectedIndex = -1;

@@ -105,7 +105,7 @@ namespace NBA_Tickets_Retail
             {
                 MatchSeat.UpdateSeatStatus(txtMatchID.Text, Convert.ToInt32(seatNums[i]));
             }
-            dgvSale.Rows.RemoveAt(dgvSale.CurrentRow.Index);
+            dgvSale.Rows.Remove(dgvSale.CurrentRow);
             //Reset UI
             TextBox[] txtBoxes = { txtSalesID, txtName, txtEmail, txtTotSales, txtMatchID, txtSeats };
             foreach(TextBox textBox in txtBoxes)

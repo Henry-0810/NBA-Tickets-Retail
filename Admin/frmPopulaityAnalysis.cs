@@ -53,6 +53,7 @@ namespace NBA_Tickets_Retail
             chartPopularity.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chartPopularity.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
             chartPopularity.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+            getStats();
         }
 
         private DataSet loadChart()
@@ -72,6 +73,31 @@ namespace NBA_Tickets_Retail
             OracleDataAdapter adapt = new OracleDataAdapter(sqlQuery, conn);
             adapt.Fill(ds);
             return ds;
+        }
+
+        private void getStats()
+        {
+            string favouriteSeatType = "";
+            int mostSeatTypeCount = int.MinValue;
+            string leastFavouriteSeatType = "";
+            decimal leastSeatTypeCount = int.MaxValue;
+
+            foreach (DataRow row in loadChart().Tables[0].Rows)
+            {
+                int seatTypeCount = Convert.ToInt32(row["Popularity"]);
+                if (seatTypeCount > mostSeatTypeCount)
+                {
+                    mostSeatTypeCount = seatTypeCount;
+                    favouriteSeatType = row["Seat_Type"].ToString();
+                }
+                if (seatTypeCount < leastSeatTypeCount)
+                {
+                    leastSeatTypeCount = seatTypeCount;
+                    leastFavouriteSeatType = row["Seat_Type"].ToString();
+                }
+            }
+            txtFavSeatType.Text = $"{favouriteSeatType} - €{mostSeatTypeCount}";
+            txtLeastFavSeatType.Text = $"{leastFavouriteSeatType} - €{leastSeatTypeCount}";
         }
     }
 }
