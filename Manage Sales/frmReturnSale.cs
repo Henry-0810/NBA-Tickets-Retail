@@ -45,7 +45,7 @@ namespace NBA_Tickets_Retail
 
             //ListAgg was the one I'm using at home, but the school's version is lower than 11.2 therefore I stacked overflow this
             string sqlQuery = "SELECT s.Sales_ID, s.Cust_Name, s.Cust_Email, s.Sales_Date, " +
-                "s.Total_Sales, s.Match_ID, RTRIM(XMLAGG(XMLELEMENT(E, ss.Seat_Num || ',')).EXTRACT('//text()'), ',') AS Seat_Num " +
+                "s.Total_Sales, s.Match_ID, RTRIM(XMLAGG(XMLELEMENT(E, ss.Seat_Num || ',') ORDER BY ss.Seat_Num ASC).EXTRACT('//text()'), ',') AS Seat_Num " +
                 "FROM Sales s JOIN SaleSeats ss ON s.Sales_ID = ss.Sales_ID JOIN Matches m ON m.Match_ID = s.Match_ID " +
                 "WHERE m.Match_Date > SYSDATE GROUP BY s.Sales_ID, s.Cust_Name, s.Cust_Email, " +
                 "s.Sales_Date, s.Total_Sales, s.Match_ID"; 

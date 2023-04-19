@@ -53,6 +53,7 @@ namespace NBA_Tickets_Retail
             // 
             this.btnYRAback.BackColor = System.Drawing.SystemColors.Menu;
             this.btnYRAback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYRAback.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnYRAback.Location = new System.Drawing.Point(1, 1);
             this.btnYRAback.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnYRAback.Name = "btnYRAback";

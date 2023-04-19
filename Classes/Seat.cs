@@ -51,7 +51,7 @@ namespace NBA_Tickets_Retail
             }
             else
             {
-                if(dr.GetInt32(0)+1 <= 50)
+                if(dr.GetInt32(0)+1 <= 100)
                 {
                     return false;
                 }

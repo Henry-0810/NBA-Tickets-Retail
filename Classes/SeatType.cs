@@ -6,6 +6,8 @@ namespace NBA_Tickets_Retail
 {
     class SeatType
     {
+        private OracleConnection conn = Program.getOracleConnection();
+        private OracleCommand cmd;
         private string _TypeCode;
         private string _description;
         private double _price;
@@ -32,26 +34,25 @@ namespace NBA_Tickets_Retail
         }
 
         public void AddSeatType()
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
+        { 
             string sqlQuery = $"INSERT INTO SeatTypes (Type_Code, Description, Price) Values ('{this.TypeCode}'," +
                 $"'{this.Description}',{this.Price})";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+        
+            cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
         }
+
         public void UpdateSeatType()
         {
-            OracleConnection conn = Program.getOracleConnection();
-
             string sqlQuery = $"UPDATE SeatTypes SET Description = '{this.Description}',Price = {this.Price} " +
                 $"WHERE Type_Code = '{this.TypeCode}'";
 
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
+
+            SaleSeat.updateNewPrice(this.TypeCode);
         }
 
         public static void getAllSeatTypes(ref List<string> allSeatTypes)

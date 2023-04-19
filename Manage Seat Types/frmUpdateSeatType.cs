@@ -1,5 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -8,6 +9,7 @@ namespace NBA_Tickets_Retail
     {
         private static new Form Parent;
         private SeatType seatType;
+        private List<string> allSeatTypes;
         public frmUpdateSeatType(Form parent)
         {
             InitializeComponent();
@@ -18,21 +20,11 @@ namespace NBA_Tickets_Retail
 
         private void frmUpdateSeatType_Load(object sender, EventArgs e)
         {
-            //Load Seat types
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = "SELECT Type_Code FROM SeatTypes";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            SeatType.getAllSeatTypes(ref allSeatTypes);
+            foreach(string seatType in allSeatTypes)
             {
-                cboSeatTypes.Items.Add(dr.GetString(0));
+                cboSeatTypes.Items.Add(seatType);
             }
-            dr.Close();
-            
         }
 
         private void btnUSTback_Click(object sender, EventArgs e)
@@ -49,7 +41,7 @@ namespace NBA_Tickets_Retail
             {
                 OracleConnection conn = Program.getOracleConnection();
 
-                string sqlQuery = "SELECT Description, Price FROM SeatTypes WHERE Type_Code = '" + cboSeatTypes.SelectedItem.ToString() + "'";
+                string sqlQuery = $"SELECT Description, Price FROM SeatTypes WHERE Type_Code = '{cboSeatTypes.SelectedItem.ToString().Substring(0,3)}'";
 
                 OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -84,7 +76,7 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            seatType = new SeatType(cboSeatTypes.SelectedItem.ToString(),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
+            seatType = new SeatType(cboSeatTypes.SelectedItem.ToString().Substring(0,3),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
             //Save data in database
             seatType.UpdateSeatType();
             //YOU ARE NOT IMPLEMENTING THIS!!!
