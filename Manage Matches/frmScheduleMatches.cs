@@ -29,17 +29,30 @@ namespace NBA_Tickets_Retail
 
         private void btnSchedule_Click(object sender, EventArgs e)
         {
-            //check all fields entered
-            //Match Time
+            //validation
             if(dtPickMatchTime.Value <= DateTime.Now)
             {
-                MessageBox.Show("Match Time must be in the future", "Error!", MessageBoxButtons.OK,
+                MessageBox.Show("Match Date must be in the future", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 dtPickMatchTime.Focus();
                 return;
             }
 
-            //Away Team
+            for (int i = 0; i < txtMatchTime.Text.Length; i++)
+            {
+                if(txtMatchTime.Text[i] == ':')
+                {
+                    continue;
+                }
+                else if (Char.IsDigit(txtMatchTime.Text[i]))
+                {
+                    MessageBox.Show("Match Time must be numeric", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                    txtMatchTime.Focus();
+                    return;
+                }
+            }
+
             if(cboAwayTeam.SelectedIndex == -1)
             {
                 MessageBox.Show("Away Team ID is blank!", "Error!", MessageBoxButtons.OK,
@@ -91,6 +104,13 @@ namespace NBA_Tickets_Retail
                 MessageBox.Show("Invalid time format. Please enter a valid time in the format 'HH:mm'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
             }
+        }
+
+        private void btnViewMatches_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmViewMatches frmViewMatches = new frmViewMatches(this);
+            frmViewMatches.Show();
         }
     }
 

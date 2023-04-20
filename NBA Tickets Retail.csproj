@@ -83,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AwayTeam.cs" />
+    <Compile Include="Manage Matches\frmViewMatches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage Matches\frmViewMatches.Designer.cs">
+      <DependentUpon>frmViewMatches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage Seat Types\frmAddSeatType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <Compile Include="Classes\SaleSeat.cs" />
     <Compile Include="Classes\Seat.cs" />
     <Compile Include="Classes\SeatType.cs" />
+    <EmbeddedResource Include="Manage Matches\frmViewMatches.resx">
+      <DependentUpon>frmViewMatches.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Manage Seat Types\frmAddSeatType.resx">
       <DependentUpon>frmAddSeatType.cs</DependentUpon>
     </EmbeddedResource>

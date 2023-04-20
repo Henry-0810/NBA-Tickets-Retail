@@ -43,6 +43,7 @@ namespace NBA_Tickets_Retail
             this.label5 = new System.Windows.Forms.Label();
             this.txtMatchTime = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnViewMatches = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -184,6 +185,7 @@ namespace NBA_Tickets_Retail
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnViewMatches);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtMatchTime);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -199,6 +201,17 @@ namespace NBA_Tickets_Retail
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 385);
             this.panel1.TabIndex = 29;
+            // 
+            // btnViewMatches
+            // 
+            this.btnViewMatches.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewMatches.Location = new System.Drawing.Point(250, 3);
+            this.btnViewMatches.Name = "btnViewMatches";
+            this.btnViewMatches.Size = new System.Drawing.Size(164, 30);
+            this.btnViewMatches.TabIndex = 29;
+            this.btnViewMatches.Text = "View Match Schedule";
+            this.btnViewMatches.UseVisualStyleBackColor = true;
+            this.btnViewMatches.Click += new System.EventHandler(this.btnViewMatches_Click);
             // 
             // frmScheduleMatch
             // 
@@ -238,5 +251,6 @@ namespace NBA_Tickets_Retail
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtMatchTime;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnViewMatches;
     }
 }
