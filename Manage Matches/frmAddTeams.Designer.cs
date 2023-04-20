@@ -77,6 +77,7 @@ namespace NBA_Tickets_Retail
             this.btnViewTeams.Name = "btnViewTeams";
             this.btnViewTeams.Size = new System.Drawing.Size(107, 30);
             this.btnViewTeams.TabIndex = 20;
+            this.btnViewTeams.TabStop = false;
             this.btnViewTeams.Text = "View Teams";
             this.btnViewTeams.UseVisualStyleBackColor = true;
             this.btnViewTeams.Click += new System.EventHandler(this.btnViewTeams_Click);

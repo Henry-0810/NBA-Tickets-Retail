@@ -7,7 +7,6 @@ namespace NBA_Tickets_Retail
     {
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
-        private OracleDataReader dr;
         private string _MSS_ID;
         private string _Match_ID;
         private int _Seat_Num;

@@ -209,6 +209,7 @@ namespace NBA_Tickets_Retail
             this.btnViewMatches.Name = "btnViewMatches";
             this.btnViewMatches.Size = new System.Drawing.Size(164, 30);
             this.btnViewMatches.TabIndex = 29;
+            this.btnViewMatches.TabStop = false;
             this.btnViewMatches.Text = "View Match Schedule";
             this.btnViewMatches.UseVisualStyleBackColor = true;
             this.btnViewMatches.Click += new System.EventHandler(this.btnViewMatches_Click);
