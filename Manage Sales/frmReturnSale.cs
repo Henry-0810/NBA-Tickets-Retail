@@ -39,7 +39,7 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
 
-        public DataTable loadSalesData()
+        private DataTable loadSalesData()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -96,23 +96,32 @@ namespace NBA_Tickets_Retail
         {
             ReturnSale rSale = new ReturnSale(Convert.ToInt32(txtSalesID.Text.Substring(1).TrimStart('0')), txtName.Text, txtEmail.Text, dtPickSalesDate.Value, 
                 Convert.ToDouble(txtTotSales.Text.Substring(1)), txtMatchID.Text);
-            SaleSeat.deleteSaleSeat(txtSalesID.Text);
-            MessageBox.Show($"Succesfully deleted Sales ID: {txtSalesID.Text}", "Return Sale",
+            DialogResult dialogResult = MessageBox.Show($"Are you sure you want to return {txtSalesID.Text}?", "Return Sale", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show($"Succesfully deleted Sales ID: {txtSalesID.Text}", "Return Sale",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            rSale.addReturnSale();
-            string[] seatNums = txtSeats.Text.Split(',');
-            for(int i = 0; i < seatNums.Length; i++)
-            {
-                MatchSeat.UpdateSeatStatus(txtMatchID.Text, Convert.ToInt32(seatNums[i]));
+                SaleSeat.deleteSaleSeat(txtSalesID.Text);
+                rSale.addReturnSale();
+                string[] seatNums = txtSeats.Text.Split(',');
+                for (int i = 0; i < seatNums.Length; i++)
+                {
+                    MatchSeat.UpdateSeatStatus(txtMatchID.Text, Convert.ToInt32(seatNums[i]));
+                }
+                dgvSale.Rows.Remove(dgvSale.CurrentRow);
+                //Reset UI
+                TextBox[] txtBoxes = { txtSalesID, txtName, txtEmail, txtTotSales, txtMatchID, txtSeats };
+                foreach (TextBox textBox in txtBoxes)
+                {
+                    textBox.Clear();
+                }
+                grpSaleDetails.Visible = false;
             }
-            dgvSale.Rows.Remove(dgvSale.CurrentRow);
-            //Reset UI
-            TextBox[] txtBoxes = { txtSalesID, txtName, txtEmail, txtTotSales, txtMatchID, txtSeats };
-            foreach(TextBox textBox in txtBoxes)
+            else
             {
-                textBox.Clear();
+                return;
             }
-            grpSaleDetails.Visible = false;
+            
         }
     }
 }

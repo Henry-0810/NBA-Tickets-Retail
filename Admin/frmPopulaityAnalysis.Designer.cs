@@ -30,9 +30,10 @@ namespace NBA_Tickets_Retail
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPopulaityAnalysis));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSAback = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -88,20 +89,20 @@ namespace NBA_Tickets_Retail
             // 
             // chartPopularity
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartPopularity.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartPopularity.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartPopularity.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartPopularity.Legends.Add(legend1);
             this.chartPopularity.Location = new System.Drawing.Point(11, 74);
             this.chartPopularity.Margin = new System.Windows.Forms.Padding(2);
             this.chartPopularity.Name = "chartPopularity";
             this.chartPopularity.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartPopularity.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.DimGray};
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Sold percentage";
-            this.chartPopularity.Series.Add(series2);
+        System.Drawing.Color.LightGray};
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Sold percentage";
+            this.chartPopularity.Series.Add(series1);
             this.chartPopularity.Size = new System.Drawing.Size(504, 248);
             this.chartPopularity.TabIndex = 47;
             this.chartPopularity.TabStop = false;
@@ -165,6 +166,14 @@ namespace NBA_Tickets_Retail
             this.dgvPopularityAnalysis.AllowUserToDeleteRows = false;
             this.dgvPopularityAnalysis.AllowUserToResizeColumns = false;
             this.dgvPopularityAnalysis.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPopularityAnalysis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPopularityAnalysis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPopularityAnalysis.Location = new System.Drawing.Point(520, 90);
             this.dgvPopularityAnalysis.Name = "dgvPopularityAnalysis";

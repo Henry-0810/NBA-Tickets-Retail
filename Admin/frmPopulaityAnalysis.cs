@@ -46,7 +46,7 @@ namespace NBA_Tickets_Retail
         {
             chartPopularity.Titles.Add("Popularity analysis chart");
             chartPopularity.Titles[0].Font = new Font("Calibri", 16, FontStyle.Bold);
-            chartPopularity.ChartAreas[0].BackColor = Color.LightGray;
+            chartPopularity.ChartAreas[0].BackColor = Color.DimGray;
             chartPopularity.ChartAreas[0].AxisX.Title = "Seat Type";
             chartPopularity.ChartAreas[0].AxisY.Title = "Purchased Count";
             chartPopularity.ChartAreas[0].AxisX.TitleFont = new Font("Calibri", 12, FontStyle.Bold);
@@ -62,6 +62,7 @@ namespace NBA_Tickets_Retail
             chartPopularity.Series["Sold percentage"].YValueMembers = "Popularity";
             chartPopularity.Series["Sold percentage"].IsValueShownAsLabel = true;
 
+            chartPopularity.Series["Sold percentage"].Font = new Font("Calibri", 10);
             chartPopularity.Series["Sold percentage"].LabelForeColor = Color.Black;
 
             chartPopularity.Series["Sold percentage"]["PointWidth"] = "0.5";

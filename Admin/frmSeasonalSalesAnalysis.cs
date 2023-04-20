@@ -31,7 +31,7 @@ namespace NBA_Tickets_Retail
         {
             chartSales.Titles.Add("Sales analysis chart");
             chartSales.Titles[0].Font = new Font("Calibri", 16, FontStyle.Bold);
-            chartSales.ChartAreas[0].BackColor = Color.LightGray;
+            chartSales.ChartAreas[0].BackColor = Color.DimGray;
             chartSales.ChartAreas[0].AxisX.Title = "Match ID";
             chartSales.ChartAreas[0].AxisY.Title = "Total Sales (€)";
             chartSales.ChartAreas[0].AxisX.TitleFont = new Font("Calibri", 12, FontStyle.Bold);
@@ -47,6 +47,7 @@ namespace NBA_Tickets_Retail
             chartSales.Series["Total Sales"].YValueMembers = "Total_Sales_Match";
             chartSales.Series["Total Sales"].IsValueShownAsLabel = true;
 
+            chartSales.Series["Total Sales"].Font = new Font("Calibri", 10);
             chartSales.Series["Total Sales"].LabelFormat = "#,##0.#0";
             chartSales.Series["Total Sales"].LabelForeColor = Color.Black;
 

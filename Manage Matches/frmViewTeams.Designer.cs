@@ -29,14 +29,53 @@ namespace NBA_Tickets_Retail
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewTeams));
+            this.btnVTback = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvTeamList = new System.Windows.Forms.DataGridView();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnVTback = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnVTback
+            // 
+            this.btnVTback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVTback.Location = new System.Drawing.Point(0, 1);
+            this.btnVTback.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnVTback.Name = "btnVTback";
+            this.btnVTback.Size = new System.Drawing.Size(43, 21);
+            this.btnVTback.TabIndex = 48;
+            this.btnVTback.TabStop = false;
+            this.btnVTback.Text = "Back";
+            this.btnVTback.UseVisualStyleBackColor = false;
+            this.btnVTback.Click += new System.EventHandler(this.btnVTback_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.dgvTeamList);
+            this.panel1.Location = new System.Drawing.Point(72, 66);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(325, 329);
+            this.panel1.TabIndex = 49;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Imprint MT Shadow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(18, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 32);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Teams";
             // 
             // dgvTeamList
             // 
@@ -50,19 +89,26 @@ namespace NBA_Tickets_Retail
             this.dgvTeamList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTeamList.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvTeamList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTeamList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTeamList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTeamList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamID,
             this.teamName});
-            this.dgvTeamList.Location = new System.Drawing.Point(24, 83);
-            this.dgvTeamList.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvTeamList.Location = new System.Drawing.Point(46, 54);
             this.dgvTeamList.Name = "dgvTeamList";
             this.dgvTeamList.ReadOnly = true;
             this.dgvTeamList.RowHeadersVisible = false;
             this.dgvTeamList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvTeamList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvTeamList.Size = new System.Drawing.Size(273, 314);
-            this.dgvTeamList.TabIndex = 0;
+            this.dgvTeamList.Size = new System.Drawing.Size(230, 247);
+            this.dgvTeamList.TabIndex = 50;
             // 
             // teamID
             // 
@@ -84,60 +130,34 @@ namespace NBA_Tickets_Retail
             this.teamName.ReadOnly = true;
             this.teamName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // btnVTback
-            // 
-            this.btnVTback.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnVTback.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVTback.Location = new System.Drawing.Point(0, 1);
-            this.btnVTback.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnVTback.Name = "btnVTback";
-            this.btnVTback.Size = new System.Drawing.Size(57, 26);
-            this.btnVTback.TabIndex = 48;
-            this.btnVTback.Text = "Back";
-            this.btnVTback.UseVisualStyleBackColor = false;
-            this.btnVTback.Click += new System.EventHandler(this.btnVTback_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(26, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 39);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "Teams";
-            // 
             // frmViewTeams
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 410);
-            this.Controls.Add(this.label1);
+            this.BackgroundImage = global::NBA_Tickets_Retail.Properties.Resources.Background;
+            this.ClientSize = new System.Drawing.Size(469, 461);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnVTback);
-            this.Controls.Add(this.dgvTeamList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmViewTeams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Team List";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmViewTeams_FormClosed);
             this.Load += new System.EventHandler(this.FrmViewTeams_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeamList)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvTeamList;
         private System.Windows.Forms.Button btnVTback;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvTeamList;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamName;
     }
