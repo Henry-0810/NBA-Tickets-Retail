@@ -10,21 +10,14 @@ namespace NBA_Tickets_Retail
     {
         private OracleConnection conn = Program.getOracleConnection();
         private static new Form Parent;
-        private string loadQuery = @"SELECT st.Type_Code AS Seat_Type, 
-                                       COUNT(ss.Seat_Num) AS Bought_Count, 
-                                       tc.Total_Count AS Total_Count,
-                                       (COUNT(ss.Seat_Num) / tc.Total_Count * 100) AS Popularity
-                                FROM SeatTypes st
-                                INNER JOIN Seats s ON s.Type_Code = st.Type_Code
-                                LEFT JOIN MatchSeats ms ON ms.Seat_Num = s.Seat_Num
-                                LEFT JOIN Matches m ON m.Match_ID = ms.Match_ID
-                                LEFT JOIN Sales sa ON sa.Match_ID = ms.Match_ID
-                                LEFT JOIN SaleSeats ss ON ss.Sales_ID = sa.Sales_ID AND ss.Seat_Num = ms.Seat_Num
-                                LEFT JOIN (SELECT s.Type_Code, COUNT(ms.Seat_Num) AS Total_Count
-                                           FROM Seats s LEFT JOIN MatchSeats ms ON s.Seat_Num = ms.Seat_Num
-                                           GROUP BY s.Type_Code) tc ON tc.Type_Code = st.Type_Code
-                                GROUP BY st.Type_Code, tc.Total_Count
-                                ORDER BY st.Type_Code";
+        private string loadQuery = @"SELECT m.Match_ID AS Match_ID, t.Team_Name, COUNT(*) AS Seats_Sold
+                                    FROM MatchSeats ms
+                                    JOIN Matches m ON ms.Match_ID = m.Match_ID
+                                    JOIN Teams t ON m.Team_ID = t.Team_ID
+                                    WHERE ms.Status = 'O'
+                                    GROUP BY m.Match_ID, t.Team_Name
+                                    ORDER BY m.Match_ID";
+
         public frmPopulaityAnalysis(Form parent)
         {
             InitializeComponent();
@@ -47,25 +40,25 @@ namespace NBA_Tickets_Retail
             chartPopularity.Titles.Add("Popularity analysis chart");
             chartPopularity.Titles[0].Font = new Font("Calibri", 16, FontStyle.Bold);
             chartPopularity.ChartAreas[0].BackColor = Color.DimGray;
-            chartPopularity.ChartAreas[0].AxisX.Title = "Seat Type";
-            chartPopularity.ChartAreas[0].AxisY.Title = "Purchased Count";
+            chartPopularity.ChartAreas[0].AxisX.Title = "Match";
+            chartPopularity.ChartAreas[0].AxisY.Title = "Seats Sold";
             chartPopularity.ChartAreas[0].AxisX.TitleFont = new Font("Calibri", 12, FontStyle.Bold);
             chartPopularity.ChartAreas[0].AxisY.TitleFont = new Font("Calibri", 12, FontStyle.Bold);
 
             chartPopularity.DataSource = loadChart().Tables[0];
             chartPopularity.DataBind();
 
-            int seatTypeCount = loadChart().Tables[0].Rows.Count;
-            chartPopularity.ChartAreas[0].AxisX.Interval = Math.Max(1, seatTypeCount / 10);
+            int matchCount = loadChart().Tables[0].Rows.Count;
+            chartPopularity.ChartAreas[0].AxisX.Interval = Math.Max(1, matchCount / 10);
 
-            chartPopularity.Series["Sold percentage"].XValueMember = "Seat_Type";
-            chartPopularity.Series["Sold percentage"].YValueMembers = "Popularity";
-            chartPopularity.Series["Sold percentage"].IsValueShownAsLabel = true;
+            chartPopularity.Series["Seats Sold"].XValueMember = "Match_ID";
+            chartPopularity.Series["Seats Sold"].YValueMembers = "Seats_Sold";
+            chartPopularity.Series["Seats Sold"].IsValueShownAsLabel = true;
 
-            chartPopularity.Series["Sold percentage"].Font = new Font("Calibri", 10);
-            chartPopularity.Series["Sold percentage"].LabelForeColor = Color.Black;
+            chartPopularity.Series["Seats Sold"].Font = new Font("Calibri", 10);
+            chartPopularity.Series["Seats Sold"].LabelForeColor = Color.Black;
 
-            chartPopularity.Series["Sold percentage"]["PointWidth"] = "0.5";
+            chartPopularity.Series["Seats Sold"]["PointWidth"] = "0.5";
             chartPopularity.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             chartPopularity.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chartPopularity.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
@@ -77,9 +70,9 @@ namespace NBA_Tickets_Retail
             }
             if (dgvPopularityAnalysis.Rows.Count > 0)
             {
-                dgvPopularityAnalysis.Height = dgvPopularityAnalysis.ColumnHeadersHeight + (5 * dgvPopularityAnalysis.Rows[0].Height) + 2;
+                dgvPopularityAnalysis.Height = dgvPopularityAnalysis.ColumnHeadersHeight + (10 * dgvPopularityAnalysis.Rows[0].Height) + 2;
             }
-            getStats();
+            //getStats();
         }
 
         private DataSet loadChart()
@@ -99,10 +92,9 @@ namespace NBA_Tickets_Retail
             dt.Load(dr);
             dr.Close();
 
-            dt.Columns["Seat_Type"].ColumnName = "Seat Type";
-            dt.Columns["Bought_Count"].ColumnName = "Bought Seats";
-            dt.Columns["Total_Count"].ColumnName = "Total Seats";
-            dt.Columns["Popularity"].ColumnName = "Percentage (%)";
+            dt.Columns["Match_ID"].ColumnName = "Match ID";
+            dt.Columns["Team_Name"].ColumnName = "Team Name";
+            dt.Columns["Seats_Sold"].ColumnName = "Total Seats";
 
             return dt;
         }

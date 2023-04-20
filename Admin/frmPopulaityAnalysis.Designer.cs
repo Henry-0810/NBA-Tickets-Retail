@@ -30,10 +30,10 @@ namespace NBA_Tickets_Retail
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPopulaityAnalysis));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSAback = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -79,30 +79,30 @@ namespace NBA_Tickets_Retail
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(896, 265);
+            this.pictureBox1.Location = new System.Drawing.Point(886, 356);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 58);
+            this.pictureBox1.Size = new System.Drawing.Size(95, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 46;
             this.pictureBox1.TabStop = false;
             // 
             // chartPopularity
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartPopularity.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartPopularity.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartPopularity.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartPopularity.Legends.Add(legend2);
             this.chartPopularity.Location = new System.Drawing.Point(11, 74);
             this.chartPopularity.Margin = new System.Windows.Forms.Padding(2);
             this.chartPopularity.Name = "chartPopularity";
             this.chartPopularity.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartPopularity.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.LightGray};
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Sold percentage";
-            this.chartPopularity.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Seats Sold";
+            this.chartPopularity.Series.Add(series2);
             this.chartPopularity.Size = new System.Drawing.Size(504, 248);
             this.chartPopularity.TabIndex = 47;
             this.chartPopularity.TabStop = false;
@@ -113,7 +113,7 @@ namespace NBA_Tickets_Retail
             this.txtLeastFavSeatType.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtLeastFavSeatType.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLeastFavSeatType.ForeColor = System.Drawing.Color.White;
-            this.txtLeastFavSeatType.Location = new System.Drawing.Point(730, 273);
+            this.txtLeastFavSeatType.Location = new System.Drawing.Point(217, 393);
             this.txtLeastFavSeatType.Margin = new System.Windows.Forms.Padding(2);
             this.txtLeastFavSeatType.Name = "txtLeastFavSeatType";
             this.txtLeastFavSeatType.ReadOnly = true;
@@ -126,7 +126,7 @@ namespace NBA_Tickets_Retail
             this.txtFavSeatType.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtFavSeatType.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFavSeatType.ForeColor = System.Drawing.Color.White;
-            this.txtFavSeatType.Location = new System.Drawing.Point(730, 242);
+            this.txtFavSeatType.Location = new System.Drawing.Point(217, 362);
             this.txtFavSeatType.Margin = new System.Windows.Forms.Padding(2);
             this.txtFavSeatType.Name = "txtFavSeatType";
             this.txtFavSeatType.ReadOnly = true;
@@ -140,12 +140,12 @@ namespace NBA_Tickets_Retail
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(544, 243);
+            this.label1.Location = new System.Drawing.Point(31, 363);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 19);
+            this.label1.Size = new System.Drawing.Size(156, 19);
             this.label1.TabIndex = 87;
-            this.label1.Text = "Fan-favourite Seat Type(s):";
+            this.label1.Text = "Fan-favourite game(s):";
             // 
             // label4
             // 
@@ -153,12 +153,12 @@ namespace NBA_Tickets_Retail
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(544, 274);
+            this.label4.Location = new System.Drawing.Point(31, 394);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 19);
+            this.label4.Size = new System.Drawing.Size(158, 19);
             this.label4.TabIndex = 86;
-            this.label4.Text = "Least popular Seat Type(s):";
+            this.label4.Text = "Least popular game(s):";
             // 
             // dgvPopularityAnalysis
             // 
@@ -166,20 +166,20 @@ namespace NBA_Tickets_Retail
             this.dgvPopularityAnalysis.AllowUserToDeleteRows = false;
             this.dgvPopularityAnalysis.AllowUserToResizeColumns = false;
             this.dgvPopularityAnalysis.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPopularityAnalysis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPopularityAnalysis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPopularityAnalysis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPopularityAnalysis.Location = new System.Drawing.Point(520, 90);
+            this.dgvPopularityAnalysis.Location = new System.Drawing.Point(520, 74);
             this.dgvPopularityAnalysis.Name = "dgvPopularityAnalysis";
             this.dgvPopularityAnalysis.ReadOnly = true;
             this.dgvPopularityAnalysis.RowHeadersVisible = false;
-            this.dgvPopularityAnalysis.Size = new System.Drawing.Size(441, 134);
+            this.dgvPopularityAnalysis.Size = new System.Drawing.Size(441, 248);
             this.dgvPopularityAnalysis.TabIndex = 91;
             this.dgvPopularityAnalysis.TabStop = false;
             // 
@@ -190,7 +190,7 @@ namespace NBA_Tickets_Retail
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::NBA_Tickets_Retail.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(984, 333);
+            this.ClientSize = new System.Drawing.Size(992, 438);
             this.Controls.Add(this.dgvPopularityAnalysis);
             this.Controls.Add(this.txtLeastFavSeatType);
             this.Controls.Add(this.txtFavSeatType);
