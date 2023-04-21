@@ -10,6 +10,7 @@ namespace NBA_Tickets_Retail
     {
         private OracleConnection conn = Program.getOracleConnection();
         private static new Form Parent;
+        //Gets the Match_ID, Team_Name and Number of seats sold from database
         private string loadQuery = @"SELECT m.Match_ID AS Match_ID, t.Team_Name, COUNT(*) AS Seats_Sold
                                     FROM MatchSeats ms
                                     JOIN Matches m ON ms.Match_ID = m.Match_ID
@@ -35,6 +36,8 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
 
+        //Generates a chart and table with information from the query above
+        //Get statistics - most popular match, least popular match and average seats sold per match
         private void frmPopulaityAnalysis_Load(object sender, EventArgs e)
         {
             chartPopularity.Titles.Add("Popularity analysis chart");
@@ -75,6 +78,7 @@ namespace NBA_Tickets_Retail
             getStats();
         }
 
+        //This method loads the chart
         private DataSet loadChart()
         {
             DataSet ds = new DataSet();
@@ -83,6 +87,7 @@ namespace NBA_Tickets_Retail
             return ds;
         }
 
+        //This method loads the table
         private DataTable loadTable()
         {
             OracleCommand cmd = new OracleCommand(loadQuery, conn);
@@ -99,12 +104,14 @@ namespace NBA_Tickets_Retail
             return dt;
         }
 
+        //This method gets the most popular match, least popular match and average seats sold per match and display them in textboxes
         private void getStats()
         {
             string favouriteMatches = "";
             int mostSeatsSold = 0;
             string leastFavouriteMatches = "";
             int leastSeatsSold = 100;
+            int totalSeatsSold = 0;
 
             foreach (DataRow row in loadChart().Tables[0].Rows)
             {
@@ -116,7 +123,7 @@ namespace NBA_Tickets_Retail
                         favouriteMatches = "";
                     }
                     mostSeatsSold = seatsSold;
-                    favouriteMatches += $"{row["Match_ID"]} - {mostSeatsSold} seats\n";
+                    favouriteMatches += $" {row["Match_ID"]} - {mostSeatsSold} seats\n";
                 }
                 if (seatsSold <= leastSeatsSold)
                 {
@@ -125,11 +132,15 @@ namespace NBA_Tickets_Retail
                         leastFavouriteMatches = "";
                     }
                     leastSeatsSold = seatsSold;
-                    leastFavouriteMatches += $"{row["Match_ID"]} - {leastSeatsSold} seats\n";
+                    leastFavouriteMatches += $" {row["Match_ID"]} - {leastSeatsSold} seats\n";
                 }
+                totalSeatsSold += seatsSold;
             }
+            int numOfRows = loadChart().Tables[0].Rows.Count;
+            float avgSeatSold = totalSeatsSold / numOfRows;
             txtFavSeatType.Text = favouriteMatches.Trim();
             txtLeastFavSeatType.Text = leastFavouriteMatches.Trim();
+            txtAvgSeatsSold.Text = $"{Convert.ToInt32(avgSeatSold)} seats";
         }
     }
 }

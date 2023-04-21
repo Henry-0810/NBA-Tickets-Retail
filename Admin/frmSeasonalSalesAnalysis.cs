@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NBA_Tickets_Retail
 {
@@ -27,6 +26,8 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
 
+        //Generates a chart with information from the query below
+        //Get statistics - most sales match, least sales match, average sales per match and total sales per season
         private void frmSeasonalSalesAnalysis_Load(object sender, EventArgs e)
         {
             chartSales.Titles.Add("Sales analysis chart");
@@ -60,10 +61,12 @@ namespace NBA_Tickets_Retail
             
         }
 
+        //This method loads the chart
         private DataSet loadChart()
         {
             OracleConnection conn = Program.getOracleConnection();
 
+            //Gets the total sales per match by calculating the sum of total sales of sales_ID that starts with S and deducting the sum of sales_ID that starts with R
             string sqlQuery = @"SELECT DISTINCT COALESCE(sa.Match_ID, m.Match_ID) AS Match_ID, 
                                   SUM(CASE WHEN sa.Sales_ID LIKE 'S%' THEN sa.Total_Sales ELSE 0 END) -
                                   SUM(CASE WHEN sa.Sales_ID LIKE 'R%' THEN sa.Total_Sales ELSE 0 END) AS Total_Sales_Match
@@ -77,13 +80,13 @@ namespace NBA_Tickets_Retail
             return ds;
         }
 
+        //This method gets the most sales match, least sales match, average sales per match and total sales per season and display them in textboxes
         private void getStats()
         {
             string mostSalesMatchID = "";
             decimal mostSales = decimal.MinValue;
             string leastSalesMatchID = "";
             decimal leastSales = decimal.MaxValue;
-            float avgSales = 0;
             decimal totSales = 0;
 
             foreach (DataRow row in loadChart().Tables[0].Rows)
@@ -102,12 +105,11 @@ namespace NBA_Tickets_Retail
                 totSales += sales;
             }
             int numOfRows = loadChart().Tables[0].Rows.Count;
-            avgSales = (float)(totSales / numOfRows);
+            float avgSales = (float)(totSales / numOfRows);
             txtMostSales.Text = $"{mostSalesMatchID} - €{mostSales:N2}";
             txtLeastSales.Text = $"{leastSalesMatchID} - €{leastSales:N2}";
             txtAvgSales.Text = $"The average sales for {numOfRows} Matches is €{avgSales:N2}";
             txtSumOfSales.Text = $"€{totSales:N2}";
         }
-
     }
 }

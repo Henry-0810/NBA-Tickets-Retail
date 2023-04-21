@@ -21,11 +21,13 @@ namespace NBA_Tickets_Retail
 
         private void FrmViewTeams_Load(object sender, System.EventArgs e)
         {
+            //Load team details into data grid view
             Team.viewAllTeams(ref allTeams);
             foreach(Team team in allTeams)
             {
                 dgvTeamList.Rows.Add(team.TeamID, team.TeamName);
             }
+            //Adjust the height and width for the data grid view
             if (dgvTeamList.Rows.Count > 0)
             {
                 int headerHeight = dgvTeamList.ColumnHeadersHeight;

@@ -20,8 +20,9 @@ namespace NBA_Tickets_Retail
         {
             CustName = custName;
             CustMail = custMail;
-            int salesIDNumeric = GetPreviousSalesID() + 1;
+            int salesIDNumeric = getPreviousSalesID() + 1;
             string salesIDPrefix = "S";
+            //To prevent lexical order
             if (salesIDNumeric >= 1 && salesIDNumeric <= 9)
             {
                 SalesID = $"{salesIDPrefix}00{salesIDNumeric}";
@@ -51,7 +52,8 @@ namespace NBA_Tickets_Retail
             return $"SalesID: {SalesID}\nCustomer Name: {CustName}\nCustomer Mail: {CustMail}\nMatch ID: {MatchID}\nSales Date: {SalesDate}\nTotal Sales: { TotalSales}";
         }
 
-        public void AddSale()
+        //Adds a sale record to the Sales table
+        public void addSale()
         {
             string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Sales_Date, Total_Sales, Match_ID) " +
                 "VALUES (:SalesID, :CustName, :CustMail, TO_DATE(TO_CHAR(:SalesDate, 'MM/DD/YYYY HH24:MI:SS'), 'MM/DD/YYYY HH24:MI:SS'), :TotSales, :MatchID)";
@@ -68,7 +70,20 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public int GetPreviousSalesID()
+        //Check if Sales table is empty
+        public static int isSalesEmpty()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+
+            string sqlQuery = "SELECT COUNT(*) FROM Sales";
+
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        //Gets the previous sales_ID that starts with letter 'S', this prevents primary key violation
+        private int getPreviousSalesID()
         {
             string sqlQuery = "SELECT MAX(Sales_ID) FROM Sales WHERE Sales_ID LIKE 'S%'";
 
@@ -90,17 +105,6 @@ namespace NBA_Tickets_Retail
             }
             dr.Close();
             return 0;
-        }
-
-        public static int isSalesEmpty()
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = "SELECT COUNT(*) FROM Sales";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }
 }

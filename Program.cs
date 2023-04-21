@@ -20,8 +20,8 @@ namespace NBA_Tickets_Retail
             //OracleConnection won't work the first time this project is clone, user need to go
             //Tools -> NuGet Packet Manager -> Manage NuGet Packages for Solutions -> click restore
 
-            //const String oradb = "Data Source = oracle/orcl; User Id = T00229172; Password = fe4_Tdeegee6;";
-            const String oradb = "Data Source = localhost/orcl; User Id = C##User; Password = itt12345;";
+            const String oradb = "Data Source = oracle/orcl; User Id = T00229172; Password = fe4_Tdeegee6;";
+            //const String oradb = "Data Source = localhost/orcl; User Id = C##User; Password = itt12345;";
             conn = new OracleConnection(oradb);
             conn.Open();
             Console.WriteLine("Database Connection status is " + conn.State.ToString(), "Connection State");

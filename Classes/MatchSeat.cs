@@ -27,7 +27,7 @@ namespace NBA_Tickets_Retail
         public string Status { get => _Status; set => _Status = value; }
 
         //Adds a matchSeat record to the MatchSeats table
-        public void AddMatchSeat()
+        public void addMatchSeat()
         {
             string sqlQuery = $"INSERT INTO MatchSeats (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.MatchID}'" +
                 $",{this.SeatNum})";
@@ -38,7 +38,7 @@ namespace NBA_Tickets_Retail
         }
 
         //Updates the status of matchSeat from 'U' to 'O' and vice versa from the MatchSeats table
-        public static void UpdateSeatStatus(string MatchID, int seatNum)
+        public static void updateSeatStatus(string MatchID, int seatNum)
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlQuery = $"SELECT Status FROM MatchSeats WHERE MSS_ID = '{MatchID}-{seatNum}'";

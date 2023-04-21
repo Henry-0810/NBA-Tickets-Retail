@@ -12,9 +12,6 @@ namespace NBA_Tickets_Retail
         private Match match;
         private static new Form Parent;
         private static List<Team> allTeams;
-        private OracleConnection conn = Program.getOracleConnection();
-        private OracleCommand cmd;
-        private OracleDataReader dr;
         public frmScheduleMatch(Form parent)
         {
             InitializeComponent();
@@ -38,22 +35,14 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
-            for (int i = 0; i < txtMatchTime.Text.Length; i++)
+            DateTime parsedTime;
+            if (!DateTime.TryParseExact(txtMatchTime.Text, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedTime))
             {
-                if(txtMatchTime.Text[i] == ':')
-                {
-                    continue;
-                }
-                else if (Char.IsDigit(txtMatchTime.Text[i]))
-                {
-                    MessageBox.Show("Match Time must be numeric", "Error!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                    txtMatchTime.Focus();
-                    return;
-                }
+                MessageBox.Show("Invalid time format. Please enter a valid time in the format 'HH:mm'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            if(cboAwayTeam.SelectedIndex == -1)
+            if (cboAwayTeam.SelectedIndex == -1)
             {
                 MessageBox.Show("Away Team ID is blank!", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -61,11 +50,10 @@ namespace NBA_Tickets_Retail
                 return;
             }
 
-            //save to class
+            //Save to class
             match = new Match(dtPickMatchTime.Value.ToString("yyyy-MMM-dd").Substring(0, 11), txtMatchTime.Text.ToString() ,cboAwayTeam.SelectedItem.ToString().Substring(0,3));
+            //Save to database
             match.addMatch();
-            //Save data in database
-            //YOU ARE NOT IMPLEMENTING THIS!!!
 
             //Display confirmation message
             MessageBox.Show($"Match has Been Created\n{match}\nAway Team: {cboAwayTeam.SelectedItem.ToString().Substring(6)}", "Information", MessageBoxButtons.OK,
@@ -85,24 +73,15 @@ namespace NBA_Tickets_Retail
 
         private void frmScheduleMatch_Load(object sender, EventArgs e)
         {
+            //Set date time picker to now and format to 'yyyy-MM-dd'
             dtPickMatchTime.Value = DateTime.Now;
             dtPickMatchTime.Format = DateTimePickerFormat.Custom;
             dtPickMatchTime.CustomFormat = "yyyy-MM-dd";
+            //Loads teams into combobox
             Team.viewAllTeams(ref allTeams);
-            foreach(Team awayTeam in allTeams)
+            foreach(Team team in allTeams)
             {
-                cboAwayTeam.Items.Add(awayTeam.ToString());
-            }
-        }
-
-        private void txtMatchTime_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            string input = txtMatchTime.Text;
-            DateTime parsedTime;
-            if (!DateTime.TryParseExact(input, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedTime))
-            {
-                MessageBox.Show("Invalid time format. Please enter a valid time in the format 'HH:mm'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Cancel = true;
+                cboAwayTeam.Items.Add(team.ToString());
             }
         }
 

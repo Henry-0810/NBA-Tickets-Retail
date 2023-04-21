@@ -180,7 +180,6 @@ namespace NBA_Tickets_Retail
             this.txtMatchTime.Name = "txtMatchTime";
             this.txtMatchTime.Size = new System.Drawing.Size(133, 27);
             this.txtMatchTime.TabIndex = 28;
-            this.txtMatchTime.Validating += new System.ComponentModel.CancelEventHandler(this.txtMatchTime_Validating);
             // 
             // panel1
             // 

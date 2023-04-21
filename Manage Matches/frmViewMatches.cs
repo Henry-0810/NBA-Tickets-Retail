@@ -1,12 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
@@ -33,6 +26,7 @@ namespace NBA_Tickets_Retail
 
         private void frmViewMatches_Load(object sender, EventArgs e)
         {
+            //Loads match details to data grid view
             OracleConnection conn = Program.getOracleConnection();
 
             string sqlQeury = "SELECT m.Match_ID, m.Match_Date, m.Match_Time, t.Team_Name FROM Matches m JOIN Teams t ON m.Team_ID = t.Team_ID";
@@ -48,6 +42,7 @@ namespace NBA_Tickets_Retail
 
             dr.Close();
 
+            //Adjust the height for data grid view
             if (dgvMatches.Rows.Count > 0)
             {
                 dgvMatches.Height = dgvMatches.ColumnHeadersHeight + 10 * dgvMatches.Rows[0].Height + 2;

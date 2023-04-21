@@ -19,8 +19,7 @@ namespace NBA_Tickets_Retail
      
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //check all fields entered
-            //type code
+            //validation
             TextBox[] textBoxes = { txtTypeCode, txtDescription, txtPrice, txtNumSeats };
             Label[] labels = { lblTypeCode, lblDesc, lblPrice, lblNumSeats };
             for (int i = 0; i < textBoxes.Length; i++)
@@ -45,6 +44,7 @@ namespace NBA_Tickets_Retail
                 txtPrice.Focus();
                 return;
             }
+
             if (Convert.ToDouble(txtPrice.Text) <= 0)
             {
                 MessageBox.Show("Price must be more than 0", "Error!", MessageBoxButtons.OK,
@@ -52,7 +52,7 @@ namespace NBA_Tickets_Retail
                 txtPrice.Focus();
                 return;
             }
-            //check NumSeats is Integer
+
             foreach(char ch in txtNumSeats.Text)
             {
                 if (!char.IsDigit(ch))
@@ -65,14 +65,15 @@ namespace NBA_Tickets_Retail
             }
 
             //save to class
-            //create 100 object in next semester
             seatType = new SeatType(txtTypeCode.Text, txtDescription.Text, Convert.ToDouble(txtPrice.Text));
-            seatType.AddSeatType();
+            //save to database
+            seatType.addSeatType();
             int getCurrSeatNum = Seat.getCurrentSeatNum();
             for(int i = getCurrSeatNum; i < Convert.ToInt32(txtNumSeats.Text)+getCurrSeatNum; i++)
             {
+                //save to class
                 seat = new Seat(i+1, txtTypeCode.Text);
-                if (Seat.fullCapacity())
+                if (Seat.fullCapacity()) //check if stadium is full
                 {
                     MessageBox.Show("Stadium Full!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
@@ -81,6 +82,7 @@ namespace NBA_Tickets_Retail
                 }
                 else
                 {
+                    //save to database
                     seat.addSeat();
                 }
             }

@@ -33,7 +33,8 @@ namespace NBA_Tickets_Retail
             return "Type Code: " + TypeCode + "\nDescription: " + Description + "\nPrice: " + Price;
         }
 
-        public void AddSeatType()
+        //Adds a seat type record to the SeatTypes table
+        public void addSeatType()
         { 
             string sqlQuery = $"INSERT INTO SeatTypes (Type_Code, Description, Price) Values ('{this.TypeCode}'," +
                 $"'{this.Description}',{this.Price})";
@@ -43,7 +44,8 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public void UpdateSeatType()
+        //Updates seat type's details
+        public void updateSeatType()
         {
             string sqlQuery = $"UPDATE SeatTypes SET Description = '{this.Description}',Price = {this.Price} " +
                 $"WHERE Type_Code = '{this.TypeCode}'";
@@ -55,7 +57,8 @@ namespace NBA_Tickets_Retail
             SaleSeat.updateNewPrice(this.TypeCode);
         }
 
-        public static void getAllSeatTypes(ref List<string> allSeatTypes)
+        //Gets the Type_Code and Description from SeatTypes table
+        public static void getSeatTypeDetails(ref List<string> allSeatTypes)
         {
             allSeatTypes = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
@@ -76,6 +79,7 @@ namespace NBA_Tickets_Retail
             dr.Close();
         }
 
+        //Get the number of records in SeatTypes table
         public static int getSeatTypesCount()
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -87,6 +91,7 @@ namespace NBA_Tickets_Retail
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
+        //Gets the price of a seat type
         public static double getPrice(string seatType)
         {
             OracleConnection conn = Program.getOracleConnection();

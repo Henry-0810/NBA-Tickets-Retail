@@ -21,7 +21,7 @@ namespace NBA_Tickets_Retail
         }
 
 
-        private void btnPSback_Click_1(object sender, EventArgs e)
+        private void btnPSback_Click(object sender, EventArgs e)
         {
             this.Close();
             Parent.Visible = true;
@@ -29,6 +29,7 @@ namespace NBA_Tickets_Retail
 
         private void FrmProcessSales_Load(object sender, EventArgs e)
         {
+            //Load Match details into combobox
             Match.showMatchDetails(ref allMatchID);
             foreach (string matchID in allMatchID)
             {
@@ -40,7 +41,8 @@ namespace NBA_Tickets_Retail
         {
             cboSeatType.Items.Clear();
             cboSeatType.Enabled = true;
-            SeatType.getAllSeatTypes(ref allSeatTypes);
+            //Loads seat types that are still available for the selected match into combobox
+            SeatType.getSeatTypeDetails(ref allSeatTypes);
             if(cboMatches.SelectedIndex != -1)
             {
                 foreach (string seatType in allSeatTypes)
@@ -65,6 +67,7 @@ namespace NBA_Tickets_Retail
             {
                 numberOfSeats.Enabled = true;
                 numberOfSeats.Value = 1;
+                //Gets the total number of seats left for that seat type from the match, if less than 4, then maximum of number of seats will be the number of seats left
                 int seatsLeft = Seat.getTotalNumSeatsLeft(cboSeatType.SelectedItem.ToString().Substring(0,3), 
                     cboMatches.SelectedItem.ToString().Substring(0,3));
                 numberOfSeats.Maximum = Math.Min(seatsLeft, 4);
@@ -73,6 +76,7 @@ namespace NBA_Tickets_Retail
             }
         }
            
+        //Validate email format
         public bool IsValid(string emailaddress)
         {
             try
@@ -87,6 +91,7 @@ namespace NBA_Tickets_Retail
             }
         }
 
+        //When click cancel, it removes the row and adds the seat type option back to the combobox, total price would change
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCart.RowCount == 1)
@@ -118,8 +123,9 @@ namespace NBA_Tickets_Retail
             }
         }
 
-        private void btnProcess_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            //validation
             TextBox[] optionalBoxes = { txtName, txtEmail };
             for (int i = 0; i < optionalBoxes.Length; i++)
             {
@@ -151,6 +157,7 @@ namespace NBA_Tickets_Retail
                     }
                 }
             }
+            //Assigns the seat number
             int assignedSeat = Seat.getLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString().Substring(0, 3),
                 cboMatches.SelectedItem.ToString().Substring(0, 3));
             string pickedSeats = $"{assignedSeat}";
@@ -159,7 +166,9 @@ namespace NBA_Tickets_Retail
             {
                 pickedSeats += $", {assignedSeat + i}";
             }
+            //Add details to the cart
             dgvCart.Rows.Add(cboSeatType.SelectedItem.ToString().Substring(0, 3), pickedSeats, itemPrice);
+            //Adds the price to total price
             totPrice += itemPrice;
             txtTotPrice.Text = totPrice.ToString("0.00");
             //Reset UI
@@ -178,21 +187,26 @@ namespace NBA_Tickets_Retail
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
+            //Save to class
             Sale sale = new Sale(txtName.Text.ToString(), txtEmail.Text.ToString(), DateTime.Now, Convert.ToDouble(txtTotPrice.Text), 
                 cboMatches.SelectedItem.ToString().Substring(0, 3));
-            sale.AddSale();
+            //Save to database
+            sale.addSale();
             foreach(DataGridViewRow row in dgvCart.Rows)
             {
                 string[] seatNums = row.Cells["seatNum"].Value.ToString().Split(',');
                 int[] seatNumArr = Array.ConvertAll(seatNums, s => int.Parse(s));
                 for(int i = 0; i < seatNumArr.Length; i++)
                 {
+                    //Create sale seat objects and saves to database
                     SaleSeat saleSeat = new SaleSeat(sale.SalesID, seatNumArr[i]);
                     saleSeat.addSaleSeat();
-                    MatchSeat.UpdateSeatStatus(sale.MatchID,seatNumArr[i]);
+                    //Update status for matchSeats to 'O' as its occupied
+                    MatchSeat.updateSeatStatus(sale.MatchID,seatNumArr[i]);
                 }
             }
 
+            //Confirmation message
             MessageBox.Show("Succesfully purcahse seats", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //reset UI
             txtName.Clear();

@@ -16,11 +16,10 @@ namespace NBA_Tickets_Retail
             Parent = parent;
         }
 
-        
-
         private void frmUpdateSeatType_Load(object sender, EventArgs e)
         {
-            SeatType.getAllSeatTypes(ref allSeatTypes);
+            //Loads seat type to combobox
+            SeatType.getSeatTypeDetails(ref allSeatTypes);
             foreach(string seatType in allSeatTypes)
             {
                 cboSeatTypes.Items.Add(seatType);
@@ -33,10 +32,9 @@ namespace NBA_Tickets_Retail
             Parent.Visible = true;
         }
           
-
-
         private void cboSeatTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Loads selected seat type's details
             if(cboSeatTypes.SelectedIndex != -1)
             {
                 OracleConnection conn = Program.getOracleConnection();
@@ -59,7 +57,7 @@ namespace NBA_Tickets_Retail
 
         private void btnUpdate_Click(object sender, EventArgs e)
         { 
-            //check validation
+            //validation
             if (txtDescription.Text.Equals(""))
             {
                 MessageBox.Show("Description must be entered", "Error!", MessageBoxButtons.OK,
@@ -77,10 +75,8 @@ namespace NBA_Tickets_Retail
 
             //save to class
             seatType = new SeatType(cboSeatTypes.SelectedItem.ToString().Substring(0,3),txtDescription.Text, Convert.ToDouble(txtPrice.Text));
-            //Save data in database
-            seatType.UpdateSeatType();
-            //YOU ARE NOT IMPLEMENTING THIS!!!
-
+            //save to database
+            seatType.updateSeatType();
             //Display confirmation message
             MessageBox.Show("Seat Type has Been Updated\n" + seatType.ToString(), "Information", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

@@ -72,17 +72,18 @@ namespace NBA_Tickets_Retail
             for(int i = 1; i <= Seat.getSeatsCount(); i++)
             {
                 matchSeat = new MatchSeat(this.MatchID, i);
-                matchSeat.AddMatchSeat();
+                matchSeat.addMatchSeat();
             }
         }
 
+        //Gets the matchID and team names that have not yet played
         public static void showMatchDetails(ref List<string> allMatchID)
         {
             allMatchID = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
 
             string sqlQuery = "SELECT m.Match_ID, t.Team_Name FROM Matches m JOIN Teams t ON m.Team_ID = t.Team_ID " +
-                $"WHERE m.Match_Date >= TO_DATE('{DateTime.Today:dd-MMM-yy}', 'dd-MON-yy') ORDER BY t.Team_Name";
+                $"WHERE m.Match_Date >= SYSDATE ORDER BY t.Team_Name";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
@@ -98,6 +99,7 @@ namespace NBA_Tickets_Retail
             dr.Close();
         }
 
+        //Gets the number of records in Matches table
         public static int getMatchesCount()
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -109,6 +111,7 @@ namespace NBA_Tickets_Retail
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
+        //Gets the previous MatchID, this is to prevent primary key violation 
         private int getPreviousMatchID()
         {
             string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";

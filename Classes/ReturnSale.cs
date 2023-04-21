@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
-    //a class that records sale records when the respective sale is return
+    //a class that saves return sale records when the respective sale is returned
     class ReturnSale
     {
         private OracleConnection conn = Program.getOracleConnection();
@@ -19,6 +19,7 @@ namespace NBA_Tickets_Retail
         public ReturnSale(int rSalesID, string custName, string custMail, DateTime rSalesDate, double totalSales, string matchID)
         {
             string returnSalesIDPrefix = "RS";
+            //To prevent lexical order
             if (rSalesID >= 1 && rSalesID <= 9)
             {
                 RSalesID = $"{returnSalesIDPrefix}00{rSalesID}";
@@ -50,6 +51,7 @@ namespace NBA_Tickets_Retail
             return $"Return SalesID: {RSalesID}\nCustomer Name: {CustName}\nCustomer Mail: {CustMail}\nMatch ID: {MatchID}\nSales Date: {RSalesDate}\nTotal Sales: { TotalSales}";
         }
 
+        //Adds a return sale record to the Sales table
         public void addReturnSale()
         {
             string sqlQuery = "INSERT INTO Sales (Sales_ID, Cust_Name, Cust_Email, Sales_Date, Total_Sales, Match_ID) " +

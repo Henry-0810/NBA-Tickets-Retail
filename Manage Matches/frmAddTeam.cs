@@ -36,7 +36,7 @@ namespace NBA_Tickets_Retail
         {
             TextBox[] textBoxes = { txtTeamID, txtTeamName };
             Label[] labels = { lblTeamID, lblTeamName };
-            //validation
+            //Validation
             for(int j = 0; j < textBoxes.Length; j++)
             {
                 string txt = labels[j].Text.ToString().Remove(labels[j].Text.Length - 2);
@@ -58,17 +58,18 @@ namespace NBA_Tickets_Retail
                     }
                 }
             }
-            //save to class
+            //Save to class
             teams = new Team(txtTeamID.Text.ToString(), txtTeamName.Text.ToString());
+            //Save to database
             teams.addTeam();
-            //confirmation message 
+            //Confirmation message 
             MessageBox.Show("Team: " + teams.TeamName + " added to database","Successfully added", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
+            //Reset UI
             txtTeamID.Text = "";
             txtTeamName.Text = "";
             txtTeamID.Focus();
-
         }
     }
 }

@@ -22,6 +22,7 @@ namespace NBA_Tickets_Retail
 
         private void frmReturnTickets_Load(object sender, EventArgs e)
         {
+            //Gets data from sales table and display it on the data grid view
             dgvSale.DataSource = loadSalesData();
             dgvSale.Columns["Total Sales"].DefaultCellStyle.Format = "c";
             foreach(DataGridViewColumn column in dgvSale.Columns)
@@ -65,6 +66,7 @@ namespace NBA_Tickets_Retail
             dt.Columns["Match_ID"].ColumnName = "Match ID";
             dt.Columns["Seat_Num"].ColumnName = "Seat Number";
 
+            //Create a button when click it would get details from that row and display it on textboxes and date time picker
             DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn
             {
                 HeaderText = "View Details",
@@ -79,6 +81,7 @@ namespace NBA_Tickets_Retail
 
         private void dgvSale_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //When click, display selected row's details to textboxes and date time picker
             if (e.ColumnIndex == dgvSale.Columns["btnViewDetails"].Index && e.RowIndex >= 0)
             {
                 grpSaleDetails.Visible = true;
@@ -94,20 +97,26 @@ namespace NBA_Tickets_Retail
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            //Save to class
             ReturnSale rSale = new ReturnSale(Convert.ToInt32(txtSalesID.Text.Substring(1).TrimStart('0')), txtName.Text, txtEmail.Text, dtPickSalesDate.Value, 
                 Convert.ToDouble(txtTotSales.Text.Substring(1)), txtMatchID.Text);
+            //Ask user if really wants to return sale
             DialogResult dialogResult = MessageBox.Show($"Are you sure you want to return {txtSalesID.Text}?", "Return Sale", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show($"Succesfully deleted Sales ID: {txtSalesID.Text}", "Return Sale",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Confirmation of sale returned
+                MessageBox.Show($"Succesfully deleted Sales ID: {txtSalesID.Text}", "Return Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Deletes sale seat records with the sales
                 SaleSeat.deleteSaleSeat(txtSalesID.Text);
+                //Save return sale record to database
                 rSale.addReturnSale();
                 string[] seatNums = txtSeats.Text.Split(',');
                 for (int i = 0; i < seatNums.Length; i++)
                 {
-                    MatchSeat.UpdateSeatStatus(txtMatchID.Text, Convert.ToInt32(seatNums[i]));
+                    //Update matchSeats to 'U'
+                    MatchSeat.updateSeatStatus(txtMatchID.Text, Convert.ToInt32(seatNums[i]));
                 }
+                //Removes the row
                 dgvSale.Rows.Remove(dgvSale.CurrentRow);
                 //Reset UI
                 TextBox[] txtBoxes = { txtSalesID, txtName, txtEmail, txtTotSales, txtMatchID, txtSeats };
