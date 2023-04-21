@@ -17,6 +17,8 @@ namespace NBA_Tickets_Retail
         {
             //When system shuts down
             Application.ApplicationExit += new EventHandler(OnSysExit);
+            //OracleConnection won't work the first time this project is clone, user need to go
+            //Tools -> NuGet Packet Manager -> Manage NuGet Packages for Solutions -> click restore
 
             //const String oradb = "Data Source = oracle/orcl; User Id = T00229172; Password = fe4_Tdeegee6;";
             const String oradb = "Data Source = localhost/orcl; User Id = C##User; Password = itt12345;";
@@ -29,11 +31,13 @@ namespace NBA_Tickets_Retail
           
         }
 
+        //This is an event handle when system shutsdown, the database connection will be closed
         private static void OnSysExit(object sender, EventArgs e)
         {
             if (conn.State == ConnectionState.Open) conn.Close();
         }
 
+        //A function to access database in other classes/forms
         public static OracleConnection getOracleConnection()
         {
             return conn;

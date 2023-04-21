@@ -100,7 +100,7 @@
             this.addTeamsToolStripMenuItem.Name = "addTeamsToolStripMenuItem";
             this.addTeamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addTeamsToolStripMenuItem.Text = "Add Teams";
-            this.addTeamsToolStripMenuItem.Click += new System.EventHandler(this.addTeamsToolStripMenuItem_Click);
+            this.addTeamsToolStripMenuItem.Click += new System.EventHandler(this.addTeamToolStripMenuItem_Click);
             // 
             // scheduleMatchToolStripMenuItem
             // 

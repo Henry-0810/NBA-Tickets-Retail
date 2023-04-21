@@ -63,7 +63,7 @@ namespace NBA_Tickets_Retail
 
             //save to class
             match = new Match(dtPickMatchTime.Value.ToString("yyyy-MMM-dd").Substring(0, 11), txtMatchTime.Text.ToString() ,cboAwayTeam.SelectedItem.ToString().Substring(0,3));
-            match.AddMatches();
+            match.addMatch();
             //Save data in database
             //YOU ARE NOT IMPLEMENTING THIS!!!
 

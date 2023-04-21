@@ -11,6 +11,7 @@ namespace NBA_Tickets_Retail
             
         }
 
+        //Directs to the add seat type form when clicked
         private void addSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -18,7 +19,8 @@ namespace NBA_Tickets_Retail
             frmAddSeatType.Show();
         }
 
-
+        //Directs to the update seat type form when clicked
+        //Seat type must not be empty in database else this wont work
         private void updateSeatTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SeatType.getSeatTypesCount() == 0)
@@ -35,13 +37,16 @@ namespace NBA_Tickets_Retail
                 
         }
 
-        private void addTeamsToolStripMenuItem_Click(object sender, EventArgs e)
+        //Directs to the add team form when clicked
+        private void addTeamToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmAddTeams frmAddTeams = new frmAddTeams(this);
-            frmAddTeams.Show();
+            frmAddTeam frmAddTeam = new frmAddTeam(this);
+            frmAddTeam.Show();
         }
 
+        //Directs to the schedule match form when clicked
+        //Seat type and Team must not be empty in database else this wont work
         private void scheduleMatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(SeatType.getSeatTypesCount() == 0)
@@ -65,7 +70,8 @@ namespace NBA_Tickets_Retail
             }
         }
 
-
+        //Directs to the process sale form when clicked
+        //Seat type, Team and Match must not be empty in database else this wont work
         private void processSaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SeatType.getSeatTypesCount() == 0)
@@ -90,13 +96,15 @@ namespace NBA_Tickets_Retail
                     else
                     {
                         this.Hide();
-                        frmProcessSales frmProcessSales = new frmProcessSales(this);
+                        frmProcessSale frmProcessSales = new frmProcessSale(this);
                         frmProcessSales.Show();
                     }
                 }
             }
         }
 
+        //Directs to the return sale form when clicked
+        //Sale must not be empty in database else this wont work
         private void returnSaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(Sale.isSalesEmpty() == 0){
@@ -111,7 +119,8 @@ namespace NBA_Tickets_Retail
             }
         }
 
-
+        //Form Validation for Seasonal Sales analysis and Popularity analysis
+        //Seat type, Team, Match, Sale must not be empty in database else this wont work
         private void RunAnalysis(string analysisName, Form form)
         {
             if (SeatType.getSeatTypesCount() == 0)
@@ -142,11 +151,13 @@ namespace NBA_Tickets_Retail
             form.ShowDialog();
         }
 
+        //Directs to the seasonal sales analysis form when clicked
         private void seasonalSalesAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RunAnalysis("Seasonal Sales", new frmSeasonalSalesAnalysis(this));
         }
 
+        //Directs to the popularity analysis form when clicked
         private void popularityAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RunAnalysis("Popularity", new frmPopulaityAnalysis(this));

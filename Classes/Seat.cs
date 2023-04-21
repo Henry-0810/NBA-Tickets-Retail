@@ -23,7 +23,8 @@ namespace NBA_Tickets_Retail
             return "Type Code: " + TypeCode;
         }
 
-        public void AddSeat()
+        //Adds a seat record to the Seats table
+        public void addSeat()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -34,7 +35,8 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static bool FullCapacity()
+        //Check if the seats have reached their full capacity, as a stadium has limited space
+        public static bool fullCapacity()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -59,7 +61,8 @@ namespace NBA_Tickets_Retail
             }
         }
 
-        public static int GetCurrentSeatNum()
+        //Gets the latest seat number from the Seats table, this is to prevent primary key violation
+        public static int getCurrentSeatNum()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -78,7 +81,8 @@ namespace NBA_Tickets_Retail
             return currSeats;
         }
 
-        public static int GetLatestUnoccupiedSeatNum(string seatType, string matchID)
+        //Gets the latest seat number of a seat type for a match where the status is 'U' (Unoccupied)
+        public static int getLatestUnoccupiedSeatNum(string seatType, string matchID)
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -104,7 +108,8 @@ namespace NBA_Tickets_Retail
             return 0;
         }
 
-        public static int GetSeatsCount()
+        //Gets the number of records in the Seats table 
+        public static int getSeatsCount()
         {
             OracleConnection conn = Program.getOracleConnection();
 
@@ -115,6 +120,7 @@ namespace NBA_Tickets_Retail
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
+        //Gets the number of seats left for a seat type in a particular match 
         public static int getTotalNumSeatsLeft(string seatType, string matchID)
         {
             OracleConnection conn = Program.getOracleConnection();

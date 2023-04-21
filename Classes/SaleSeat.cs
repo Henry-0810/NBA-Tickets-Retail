@@ -1,9 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NBA_Tickets_Retail
 {
@@ -17,6 +13,7 @@ namespace NBA_Tickets_Retail
         private double _OriginalPrice;
         private double _NewPrice;
 
+        //NewPrice will be set to 0 by default when updating a seat type's price; only NewPrice will be updated
         public SaleSeat(string saleID, int seatNum)
         {
             SaleID = saleID;
@@ -30,6 +27,7 @@ namespace NBA_Tickets_Retail
         public double OriginalPrice { get => _OriginalPrice; set => _OriginalPrice = value; }
         public double NewPrice { get => _NewPrice; set => _NewPrice = value; }
 
+        //Adds a saleSeat record to the SaleSeats table
         public void addSaleSeat()
         {
             string sqlQuery = $"INSERT INTO SaleSeats (Sales_ID, Seat_Num, Ori_Price, New_Price) VALUES ('{this.SaleID}', {this.SeatNum}, {this.OriginalPrice}, {this.NewPrice})";
@@ -39,6 +37,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
+        //Updates the NewPrice column for a chosen SeatType when its associated Price is updated
         public static void updateNewPrice(string seatType)
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -51,6 +50,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
+        //Deletes saleSeats records from the SaleSeats table with the given saleID 
         public static void deleteSaleSeat(string saleID)
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -62,6 +62,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
+        //Gets the original price from the Price column in the SeatTypes table
         private double getOriginalPrice(int seatNum)
         {
             string sqlQuery = $"SELECT st.Price FROM SeatTypes st JOIN Seats s ON st.Type_Code = s.Type_Code WHERE s.Seat_Num = {seatNum}";

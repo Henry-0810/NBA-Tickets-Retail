@@ -4,11 +4,11 @@ using System.Windows.Forms;
 namespace NBA_Tickets_Retail
 {
     
-    public partial class frmAddTeams : Form
+    public partial class frmAddTeam : Form
     {
         Team teams;
         private static new Form Parent;
-        public frmAddTeams(Form parent)
+        public frmAddTeam(Form parent)
         {
             InitializeComponent();
             Parent = parent;

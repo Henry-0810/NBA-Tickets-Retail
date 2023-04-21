@@ -7,14 +7,14 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
-    public partial class frmProcessSales : Form
+    public partial class frmProcessSale : Form
     {
         private static double totPrice = 0;
         private static List<string> allMatchID;
         private static List<string> allSeatTypes;
         private static string[] cboSeatTypeItems;
         private static new Form Parent;
-        public frmProcessSales(Form parent)
+        public frmProcessSale(Form parent)
         {
             InitializeComponent();
             Parent = parent;
@@ -29,7 +29,7 @@ namespace NBA_Tickets_Retail
 
         private void FrmProcessSales_Load(object sender, EventArgs e)
         {
-            Match.ShowMatchID(ref allMatchID);
+            Match.showMatchDetails(ref allMatchID);
             foreach (string matchID in allMatchID)
             {
                 cboMatches.Items.Add(matchID);
@@ -151,7 +151,7 @@ namespace NBA_Tickets_Retail
                     }
                 }
             }
-            int assignedSeat = Seat.GetLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString().Substring(0, 3),
+            int assignedSeat = Seat.getLatestUnoccupiedSeatNum(cboSeatType.SelectedItem.ToString().Substring(0, 3),
                 cboMatches.SelectedItem.ToString().Substring(0, 3));
             string pickedSeats = $"{assignedSeat}";
             double itemPrice = SeatType.getPrice(cboSeatType.SelectedItem.ToString().Substring(0, 3)) * Convert.ToDouble(numberOfSeats.Value);

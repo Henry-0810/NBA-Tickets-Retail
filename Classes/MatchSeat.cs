@@ -12,6 +12,7 @@ namespace NBA_Tickets_Retail
         private int _Seat_Num;
         private string _Status;
 
+        //Status will be 'U' by default
         public MatchSeat(string matchID, int seatNum)
         {
             _MSS_ID = $"{matchID}-{seatNum}";
@@ -25,7 +26,8 @@ namespace NBA_Tickets_Retail
         public int SeatNum { get => _Seat_Num; set => _Seat_Num = value; }
         public string Status { get => _Status; set => _Status = value; }
 
-        public void AddMatchSeatStatus()
+        //Adds a matchSeat record to the MatchSeats table
+        public void AddMatchSeat()
         {
             string sqlQuery = $"INSERT INTO MatchSeats (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.MatchID}'" +
                 $",{this.SeatNum})";
@@ -35,6 +37,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
+        //Updates the status of matchSeat from 'U' to 'O' and vice versa from the MatchSeats table
         public static void UpdateSeatStatus(string MatchID, int seatNum)
         {
             OracleConnection conn = Program.getOracleConnection();

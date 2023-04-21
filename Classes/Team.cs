@@ -1,7 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
@@ -24,6 +23,7 @@ namespace NBA_Tickets_Retail
             return TeamID + " - " + TeamName;
         }
 
+        //Adds a team record to the Teams table
         public void addTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -36,6 +36,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
+        //Get all team details from the Teams table and save it into a list, this is for combobox/datagridview
         public static void viewAllTeams(ref List<Team> allTeams)
         {
             allTeams = new List<Team>();
@@ -60,6 +61,7 @@ namespace NBA_Tickets_Retail
             dr.Close();
         }
 
+        //Get the number of records in Teams table
         public static int getTeamsCount()
         {
             OracleConnection conn = Program.getOracleConnection();

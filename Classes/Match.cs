@@ -10,7 +10,7 @@ namespace NBA_Tickets_Retail
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
         private OracleDataReader dr;
-        private MatchSeat matchSeatStatus;
+        private MatchSeat matchSeat;
         private string _MatchID;
         private string _matchDate;
         private string _matchTime;
@@ -19,7 +19,7 @@ namespace NBA_Tickets_Retail
 
         public Match(string matchDate, string matchTime, string teamID)
         {
-            int matchIDNumeric = GetPreviousMatchID() + 1;
+            int matchIDNumeric = getPreviousMatchID() + 1;
             if(matchIDNumeric >= 1 && matchIDNumeric <= 9)
             {
                 MatchID = $"M0{matchIDNumeric}";
@@ -57,7 +57,8 @@ namespace NBA_Tickets_Retail
                 HomeTeam;
         }
 
-        public void AddMatches()
+        //Adds a match record to the Matches table
+        public void addMatch()
         {
             string sqlQuery = $"INSERT INTO Matches Values ('{this.MatchID}'," +
                 $"TO_DATE('{this.MatchDate}','YYYY-MM-DD'),'{this.MatchTime}','{this.TeamID}')";
@@ -66,38 +67,16 @@ namespace NBA_Tickets_Retail
 
             cmd.ExecuteNonQuery();
 
-            for(int i = 1; i <= Seat.GetSeatsCount(); i++)
+            //Gets the number of seats and creates the same number of matchSeats with that current matchID
+            //Now each seat number in each match is distinct
+            for(int i = 1; i <= Seat.getSeatsCount(); i++)
             {
-                matchSeatStatus = new MatchSeat(this.MatchID, i);
-                matchSeatStatus.AddMatchSeatStatus();
+                matchSeat = new MatchSeat(this.MatchID, i);
+                matchSeat.AddMatchSeat();
             }
         }
 
-        public int GetPreviousMatchID()
-        {
-            string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";
-
-            cmd = new OracleCommand(sqlQuery, conn);
-
-            dr = cmd.ExecuteReader();
-
-            if (dr.Read())
-            {
-                if (!dr.IsDBNull(0) && Int32.TryParse(dr.GetString(0).Substring(1),out int value))
-                {
-                    return Convert.ToInt32(dr.GetString(0).Substring(1));
-                }
-                else
-                {
-                    MessageBox.Show("No match ID found, have set match ID as 1", "Getting Match ID",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            dr.Close();
-            return 0;
-        }
-
-        public static void ShowMatchID(ref List<string> allMatchID)
+        public static void showMatchDetails(ref List<string> allMatchID)
         {
             allMatchID = new List<string>();
             OracleConnection conn = Program.getOracleConnection();
@@ -128,6 +107,30 @@ namespace NBA_Tickets_Retail
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        private int getPreviousMatchID()
+        {
+            string sqlQuery = "SELECT MAX(Match_ID) FROM Matches";
+
+            cmd = new OracleCommand(sqlQuery, conn);
+
+            dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                if (!dr.IsDBNull(0) && Int32.TryParse(dr.GetString(0).Substring(1), out int value))
+                {
+                    return Convert.ToInt32(dr.GetString(0).Substring(1));
+                }
+                else
+                {
+                    MessageBox.Show("No match ID found, have set match ID as 1", "Getting Match ID",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            dr.Close();
+            return 0;
         }
     }
 }
