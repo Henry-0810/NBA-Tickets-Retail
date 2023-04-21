@@ -8,27 +8,27 @@ namespace NBA_Tickets_Retail
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
         private string _MSS_ID;
-        private string _Match_ID;
+        private string _MatchID;
         private int _Seat_Num;
         private string _Status;
 
-        public MatchSeat(string match_ID, int seat_Num)
+        public MatchSeat(string matchID, int seatNum)
         {
-            _MSS_ID = $"{match_ID}-{seat_Num}";
-            _Match_ID = match_ID;
-            _Seat_Num = seat_Num;
+            _MSS_ID = $"{matchID}-{seatNum}";
+            _MatchID = matchID;
+            _Seat_Num = seatNum;
             _Status = "U";
         }
 
         public string MSS_ID { get => _MSS_ID; set => _MSS_ID = value; }
-        public string Match_ID { get => _Match_ID; set => _Match_ID = value; }
-        public int Seat_Num { get => _Seat_Num; set => _Seat_Num = value; }
+        public string MatchID { get => _MatchID; set => _MatchID = value; }
+        public int SeatNum { get => _Seat_Num; set => _Seat_Num = value; }
         public string Status { get => _Status; set => _Status = value; }
 
         public void AddMatchSeatStatus()
         {
-            string sqlQuery = $"INSERT INTO MatchSeats (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.Match_ID}'" +
-                $",{this.Seat_Num})";
+            string sqlQuery = $"INSERT INTO MatchSeats (MSS_ID, Match_ID, Seat_Num) VALUES ('{this.MSS_ID}','{this.MatchID}'" +
+                $",{this.SeatNum})";
 
             cmd = new OracleCommand(sqlQuery, conn);
 

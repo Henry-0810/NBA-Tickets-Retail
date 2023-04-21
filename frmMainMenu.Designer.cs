@@ -124,14 +124,14 @@
             this.processSalesToolStripMenuItem.Name = "processSalesToolStripMenuItem";
             this.processSalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.processSalesToolStripMenuItem.Text = "Process Sales";
-            this.processSalesToolStripMenuItem.Click += new System.EventHandler(this.processSalesToolStripMenuItem_Click);
+            this.processSalesToolStripMenuItem.Click += new System.EventHandler(this.processSaleToolStripMenuItem_Click);
             // 
             // returnTicketsToolStripMenuItem
             // 
             this.returnTicketsToolStripMenuItem.Name = "returnTicketsToolStripMenuItem";
             this.returnTicketsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.returnTicketsToolStripMenuItem.Text = "Return Sale";
-            this.returnTicketsToolStripMenuItem.Click += new System.EventHandler(this.returnTicketsToolStripMenuItem_Click);
+            this.returnTicketsToolStripMenuItem.Click += new System.EventHandler(this.returnSaleToolStripMenuItem_Click);
             // 
             // adminToolStripMenuItem
             // 
@@ -149,14 +149,14 @@
             this.yearlyRevenueAnalysisToolStripMenuItem.Name = "yearlyRevenueAnalysisToolStripMenuItem";
             this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Seasonal Sales Analysis";
-            this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
+            this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.seasonalSalesAnalysisToolStripMenuItem_Click);
             // 
             // seatsToolStripMenuItem
             // 
             this.seatsToolStripMenuItem.Name = "seatsToolStripMenuItem";
             this.seatsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.seatsToolStripMenuItem.Text = "Popularity Analysis";
-            this.seatsToolStripMenuItem.Click += new System.EventHandler(this.seatsToolStripMenuItem_Click);
+            this.seatsToolStripMenuItem.Click += new System.EventHandler(this.popularityAnalysisToolStripMenuItem_Click);
             // 
             // mnuMainMenu
             // 

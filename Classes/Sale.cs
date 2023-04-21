@@ -9,9 +9,9 @@ namespace NBA_Tickets_Retail
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
         private OracleDataReader dr;
+        private string _salesID;
         private string _CustName;
         private string _CustMail;
-        private string _salesID;
         private DateTime _salesDate;
         private double _totalSales;
         private string _matchID;
@@ -39,9 +39,9 @@ namespace NBA_Tickets_Retail
             MatchID = matchID;
         }
 
+        public string SalesID { get => _salesID; set => _salesID = value; }
         public string CustName { get => _CustName; set => _CustName = value; }
         public string CustMail { get => _CustMail; set => _CustMail = value; }
-        public string SalesID { get => _salesID; set => _salesID = value; }
         public DateTime SalesDate { get => _salesDate; set => _salesDate = value; }
         public double TotalSales { get => _totalSales; set => _totalSales = value; }
         public string MatchID { get => _matchID; set => _matchID = value; }

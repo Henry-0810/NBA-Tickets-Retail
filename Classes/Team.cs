@@ -5,23 +5,23 @@ using System.Windows.Forms;
 
 namespace NBA_Tickets_Retail
 {
-    class AwayTeam
+    class Team
     {
-        private string _awayTeamID;
+        private string _teamID;
         private string _teamName;
 
-        public AwayTeam(string awayTeamID, string teamName)
+        public Team(string teamID, string teamName)
         {
-            AwayTeamID = awayTeamID;
+            TeamID = teamID;
             TeamName = teamName;
         }
 
-        public string AwayTeamID { get => _awayTeamID; set => _awayTeamID = value; }
+        public string TeamID { get => _teamID; set => _teamID = value; }
         public string TeamName { get => _teamName; set => _teamName = value; }
 
         public override string ToString()
         {
-            return AwayTeamID + " - " + TeamName;
+            return TeamID + " - " + TeamName;
         }
 
         public void addTeam()
@@ -29,16 +29,16 @@ namespace NBA_Tickets_Retail
             OracleConnection conn = Program.getOracleConnection();
 
             string sqlQuery = "INSERT INTO Teams (Team_ID, Team_Name) Values ('"
-                + this.AwayTeamID + "','" + this.TeamName + "')";
+                + this.TeamID + "','" + this.TeamName + "')";
 
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
 
             cmd.ExecuteNonQuery();
         }
 
-        public static void viewAllTeams(ref List<AwayTeam> allTeams)
+        public static void viewAllTeams(ref List<Team> allTeams)
         {
-            allTeams = new List<AwayTeam>();
+            allTeams = new List<Team>();
             OracleConnection conn = Program.getOracleConnection();
 
             string sqlQuery = "SELECT * FROM Teams ORDER BY Team_Name";
@@ -52,7 +52,7 @@ namespace NBA_Tickets_Retail
                 string team_ID = dr.GetString(0);
                 string team_Name = dr.GetString(1);
 
-                allTeams.Add(new AwayTeam(team_ID, team_Name));
+                allTeams.Add(new Team(team_ID, team_Name));
             }
 
             

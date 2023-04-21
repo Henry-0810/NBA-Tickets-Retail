@@ -72,7 +72,7 @@ namespace NBA_Tickets_Retail
             {
                 dgvPopularityAnalysis.Height = dgvPopularityAnalysis.ColumnHeadersHeight + (10 * dgvPopularityAnalysis.Rows[0].Height) + 2;
             }
-            //getStats();
+            getStats();
         }
 
         private DataSet loadChart()
@@ -101,42 +101,35 @@ namespace NBA_Tickets_Retail
 
         private void getStats()
         {
-            string favouriteSeatType = "";
-            decimal mostSeatTypeCount = 0;
-            string leastFavouriteSeatType = "";
-            decimal leastSeatTypeCount = 100;
+            string favouriteMatches = "";
+            int mostSeatsSold = 0;
+            string leastFavouriteMatches = "";
+            int leastSeatsSold = 100;
 
             foreach (DataRow row in loadChart().Tables[0].Rows)
             {
-                decimal soldPercentage = Convert.ToDecimal(row["Popularity"]);
-                if (soldPercentage > mostSeatTypeCount)
+                int seatsSold = Convert.ToInt32(row["Seats_Sold"]);
+                if (seatsSold >= mostSeatsSold)
                 {
-                    mostSeatTypeCount = soldPercentage;
-                    favouriteSeatType = row["Seat_Type"].ToString();
+                    if (seatsSold > mostSeatsSold)
+                    {
+                        favouriteMatches = "";
+                    }
+                    mostSeatsSold = seatsSold;
+                    favouriteMatches += $"{row["Match_ID"]} - {mostSeatsSold} seats\n";
                 }
-                if (soldPercentage < leastSeatTypeCount)
+                if (seatsSold <= leastSeatsSold)
                 {
-                    leastSeatTypeCount = soldPercentage;
-                    leastFavouriteSeatType = row["Seat_Type"].ToString();
+                    if (seatsSold < leastSeatsSold)
+                    {
+                        leastFavouriteMatches = "";
+                    }
+                    leastSeatsSold = seatsSold;
+                    leastFavouriteMatches += $"{row["Match_ID"]} - {leastSeatsSold} seats\n";
                 }
             }
-            txtFavSeatType.Text = $"{favouriteSeatType} - {mostSeatTypeCount:0.00}%";
-            txtLeastFavSeatType.Text = $"{leastFavouriteSeatType} - {leastSeatTypeCount:0.00}%";
-        }
-
-        private int getTotalSeats(string seatType)
-        {
-            string sqlQuery = $"SELECT COUNT(ms.Seat_Num) FROM Seats s LEFT JOIN MatchSeats ms ON s.Seat_Num = ms.Seat_Num WHERE s.Type_Code = '{seatType}'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if(dr.Read() && !dr.IsDBNull(0))
-            {
-                return dr.GetInt32(0);
-            }
-            return 0;
+            txtFavSeatType.Text = favouriteMatches.Trim();
+            txtLeastFavSeatType.Text = leastFavouriteMatches.Trim();
         }
     }
 }

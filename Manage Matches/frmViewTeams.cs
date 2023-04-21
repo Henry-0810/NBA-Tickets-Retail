@@ -6,7 +6,7 @@ namespace NBA_Tickets_Retail
 {
     public partial class frmViewTeams : Form
     {
-        private static List<AwayTeam> allTeams;
+        private static List<Team> allTeams;
         private static new Form Parent;
         public frmViewTeams(Form parent)
         {
@@ -21,10 +21,10 @@ namespace NBA_Tickets_Retail
 
         private void FrmViewTeams_Load(object sender, System.EventArgs e)
         {
-            AwayTeam.viewAllTeams(ref allTeams);
-            foreach(AwayTeam team in allTeams)
+            Team.viewAllTeams(ref allTeams);
+            foreach(Team team in allTeams)
             {
-                dgvTeamList.Rows.Add(team.AwayTeamID, team.TeamName);
+                dgvTeamList.Rows.Add(team.TeamID, team.TeamName);
             }
             if (dgvTeamList.Rows.Count > 0)
             {

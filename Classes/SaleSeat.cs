@@ -51,47 +51,6 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public static string[] getSaleSeat(string saleID)
-        {
-            List<string> seats = new List<string>();
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = $"SELECT Seat_Num FROM SaleSeats WHERE Sales_ID = '{saleID}'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read() && getSaleSeatCount(saleID) > 0)
-            {
-                for(int i = 0; i < getSaleSeatCount(saleID); i++)
-                {
-                    seats.Add(dr["Seat_Num"].ToString());
-                }
-            }
-            dr.Close();
-            return null;
-        }
-
-        public static int getSaleSeatCount(string saleID)
-        {
-            OracleConnection conn = Program.getOracleConnection();
-
-            string sqlQuery = $"SELECT COUNT(Seat_Num) FROM SaleSeats WHERE Sales_ID = '{saleID}'";
-
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-
-            if(dr.Read() && !dr.IsDBNull(0))
-            {
-                return dr.GetInt32(0);
-            }
-
-            dr.Close();
-            return 0;
-        }
-
         public static void deleteSaleSeat(string saleID)
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -103,7 +62,7 @@ namespace NBA_Tickets_Retail
             cmd.ExecuteNonQuery();
         }
 
-        public double getOriginalPrice(int seatNum)
+        private double getOriginalPrice(int seatNum)
         {
             string sqlQuery = $"SELECT st.Price FROM SeatTypes st JOIN Seats s ON st.Type_Code = s.Type_Code WHERE s.Seat_Num = {seatNum}";
 

@@ -15,9 +15,9 @@ namespace NBA_Tickets_Retail
         private string _matchDate;
         private string _matchTime;
         private string _homeTeam;
-        private string _awayTeamID;
+        private string _teamID;
 
-        public Match(string matchDate, string matchTime, string awayTeamID)
+        public Match(string matchDate, string matchTime, string teamID)
         {
             int matchIDNumeric = GetPreviousMatchID() + 1;
             if(matchIDNumeric >= 1 && matchIDNumeric <= 9)
@@ -31,7 +31,7 @@ namespace NBA_Tickets_Retail
             MatchDate = matchDate;
             MatchTime = matchTime;
             HomeTeam = "";
-            AwayTeamID = awayTeamID;
+            TeamID = teamID;
         }
 
         public string MatchID
@@ -45,9 +45,9 @@ namespace NBA_Tickets_Retail
             get => _homeTeam;
             set { _homeTeam = "Golden State Warriros"; }
         }
-        public string AwayTeamID { 
-            get => _awayTeamID; 
-            set => _awayTeamID = value; 
+        public string TeamID { 
+            get => _teamID; 
+            set => _teamID = value; 
         }
         public string MatchDate { get => _matchDate; set => _matchDate = value; }
 
@@ -60,7 +60,7 @@ namespace NBA_Tickets_Retail
         public void AddMatches()
         {
             string sqlQuery = $"INSERT INTO Matches Values ('{this.MatchID}'," +
-                $"TO_DATE('{this.MatchDate}','YYYY-MM-DD'),'{this.MatchTime}','{this.AwayTeamID}')";
+                $"TO_DATE('{this.MatchDate}','YYYY-MM-DD'),'{this.MatchTime}','{this.TeamID}')";
 
             cmd = new OracleCommand(sqlQuery, conn);
 

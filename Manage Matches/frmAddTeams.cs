@@ -6,7 +6,7 @@ namespace NBA_Tickets_Retail
     
     public partial class frmAddTeams : Form
     {
-        AwayTeam teams;
+        Team teams;
         private static new Form Parent;
         public frmAddTeams(Form parent)
         {
@@ -59,7 +59,7 @@ namespace NBA_Tickets_Retail
                 }
             }
             //save to class
-            teams = new AwayTeam(txtTeamID.Text.ToString(), txtTeamName.Text.ToString());
+            teams = new Team(txtTeamID.Text.ToString(), txtTeamName.Text.ToString());
             teams.addTeam();
             //confirmation message 
             MessageBox.Show("Team: " + teams.TeamName + " added to database","Successfully added", MessageBoxButtons.OK,

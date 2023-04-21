@@ -11,7 +11,7 @@ namespace NBA_Tickets_Retail
     {
         private Match match;
         private static new Form Parent;
-        private static List<AwayTeam> allTeams;
+        private static List<Team> allTeams;
         private OracleConnection conn = Program.getOracleConnection();
         private OracleCommand cmd;
         private OracleDataReader dr;
@@ -88,8 +88,8 @@ namespace NBA_Tickets_Retail
             dtPickMatchTime.Value = DateTime.Now;
             dtPickMatchTime.Format = DateTimePickerFormat.Custom;
             dtPickMatchTime.CustomFormat = "yyyy-MM-dd";
-            AwayTeam.viewAllTeams(ref allTeams);
-            foreach(AwayTeam awayTeam in allTeams)
+            Team.viewAllTeams(ref allTeams);
+            foreach(Team awayTeam in allTeams)
             {
                 cboAwayTeam.Items.Add(awayTeam.ToString());
             }

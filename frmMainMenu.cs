@@ -35,6 +35,12 @@ namespace NBA_Tickets_Retail
                 
         }
 
+        private void addTeamsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAddTeams frmAddTeams = new frmAddTeams(this);
+            frmAddTeams.Show();
+        }
 
         private void scheduleMatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -45,7 +51,7 @@ namespace NBA_Tickets_Retail
             }
             else
             {
-                if(AwayTeam.getTeamsCount() == 0)
+                if(Team.getTeamsCount() == 0)
                 {
                     MessageBox.Show("No Team, must assign team before scheduling a match!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -60,7 +66,7 @@ namespace NBA_Tickets_Retail
         }
 
 
-        private void processSalesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void processSaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SeatType.getSeatTypesCount() == 0)
             {
@@ -69,7 +75,7 @@ namespace NBA_Tickets_Retail
             }
             else
             {
-                if (AwayTeam.getTeamsCount() == 0)
+                if (Team.getTeamsCount() == 0)
                 {
                     MessageBox.Show("No Team, must assign a team before processing a sale!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -91,7 +97,7 @@ namespace NBA_Tickets_Retail
             }
         }
 
-        private void returnTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void returnSaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(Sale.isSalesEmpty() == 0){
                 MessageBox.Show("No Sale, must assign a sale before returning a sale!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -106,73 +112,45 @@ namespace NBA_Tickets_Retail
         }
 
 
-        private void yearlyRevenueAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RunAnalysis(string analysisName, Form form)
         {
             if (SeatType.getSeatTypesCount() == 0)
             {
-                MessageBox.Show("No Seat Type, must assign a seat type before running a seasonal sales analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No Seat Type, must assign a seat type before running a {analysisName} Analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-            {
-                if (AwayTeam.getTeamsCount() == 0)
-                {
-                    MessageBox.Show("No Team, must assign a team before running a seasonal sales analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    if (Match.getMatchesCount() == 0)
-                    {
-                        MessageBox.Show("No Match, must assign a match before running a seasonal sales analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        this.Hide();
-                        frmSeasonalSalesAnalysis frmSeasonalAnalysis = new frmSeasonalSalesAnalysis(this);
-                        frmSeasonalAnalysis.Show();
-                    }
-                }
-            }
-        }
 
-        private void seatsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (SeatType.getSeatTypesCount() == 0)
+            if (Team.getTeamsCount() == 0)
             {
-                MessageBox.Show("No Seat Type, must assign a seat type before running a popularity analysis!", "Seat Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No Team, must assign a team before running a {analysisName} Analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-            {
-                if (AwayTeam.getTeamsCount() == 0)
-                {
-                    MessageBox.Show("No Team, must assign a team before running a popularity analysis!", "Team", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    if (Match.getMatchesCount() == 0)
-                    {
-                        MessageBox.Show("No Match, must assign a match before running a popularity analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else {
-                        this.Hide();
-                        frmPopulaityAnalysis frmPopulaityAnalysis = new frmPopulaityAnalysis(this);
-                        frmPopulaityAnalysis.Show();
-                    }
-                }
-            }
-        }
-        
 
-        private void addTeamsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            if (Match.getMatchesCount() == 0)
+            {
+                MessageBox.Show($"No Match, must assign a match before running a {analysisName} Analysis!", "Match", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Sale.isSalesEmpty() == 0)
+            {
+                MessageBox.Show($"No Sale, must assign a sale before running a {analysisName} Analysis!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             this.Hide();
-            frmAddTeams frmAddTeams = new frmAddTeams(this);
-            frmAddTeams.Show();
+            form.ShowDialog();
         }
+
+        private void seasonalSalesAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunAnalysis("Seasonal Sales", new frmSeasonalSalesAnalysis(this));
+        }
+
+        private void popularityAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunAnalysis("Popularity", new frmPopulaityAnalysis(this));
+        }
+
     }
 }
